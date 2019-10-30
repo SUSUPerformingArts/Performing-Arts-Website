@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Annex Theatre - SUSU Performing Arts' Theatre in Southampton</title>
+    <link rel="stylesheet" href="annex.css" type="text/css" media="only screen">
+    <link rel="stylesheet" media="handheld, only screen and (max-device-width: 320px)" href="phone.css">
+<meta name="viewport" content="width=360, initial-scale=1, maximum-scale=1,user-scalable=no">
+<script type="text/javascript" src="jquery-1.2.6.min.js"></script>
+
+<script type="text/javascript">
+
+/*** 
+    Simple jQuery Slideshow Script
+    Released by Jon Raasch (jonraasch.com) under FreeBSD license: free to use or modify, not responsible for anything, etc.  Please link out to me if you like it :)
+***/
+
+function slideSwitch() {
+    var $active = $('#slideshow IMG.active');
+
+    if ( $active.length == 0 ) $active = $('#slideshow IMG:last');
+
+    // use this to pull the images in the order they appear in the markup
+    var $next =  $active.next().length ? $active.next()
+        : $('#slideshow IMG:first');
+
+    // uncomment the 3 lines below to pull the images in random order
+    
+     var $sibs  = $active.siblings();
+     var rndNum = Math.floor(Math.random() * $sibs.length );
+     var $next  = $( $sibs[ rndNum ] );
+
+
+    $active.addClass('last-active');
+
+    $next.css({opacity: 0.0})
+        .addClass('active')
+        .animate({opacity: 1.0}, 1000, function() {
+            $active.removeClass('active last-active');
+        });
+}
+
+$(function() {
+    setInterval( "slideSwitch()", 5000 );
+});
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33011990-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<div id=wrapper>
+<div id=logo> 
+    <div id=slideshow>
+        <img src="" alt="" class="active" />
+        <img src="img/gallery/vindice3.jpg" alt="" />
+        <img src="img/gallery/VindiceHippolito2.jpg" alt="" />
+        <img src="img/gallery/AmbitiosoSupervacuo4.jpg" alt=""  />
+    </div>
+
+</div>
+<h1>The Annex Theatre</h1>
+<div class="row" id ="about">
+<div class="aLogo">
+    <img src="annex.png" alt="" class="annex" />
+    </div>
+    </div>
+    <div class="row" id ="about">
+    <div class="col2">
+    <p>The Annex Theatre is University of Southampton Students' Union's Theatre, featuring shows by <a href="http://theatre.susu.org">Theatre Group</a>, <a href="http://www.susushowstoppers.co.uk/">Showstoppers</a>, <a href="http://www.southampton.ac.uk/~lopsoc/index.html">LOpSoc</a>, <a href="http://www.revue.soton.ac.uk/">Medics Revue</a>, <a href="http://comedy.susu.org/">Comedy Soc</a> and many others in the Performing Arts.</p>
+    </div>
+    <div class="col2">
+    <p>The Annex almost always has someone performing in it, whether they're performing a Play, a Musical, a Light Opera or something completely different.</p>
+    </div>
+</div>
+<div class=row id=whatson>
+    <h2>Whats On</h2>
+    <hr/>
+    <div class=show>
+    <h4>Theatre Group Presents</h4>
+    <h3>Macbeth</h3>
+    <div class=date>October 30th to<br> November 3rd 2012</div>
+    <a href="http://theatre.susu.org/showpage.php?id=136"><img src="posters/macbeth.png" alt="Theatre Group's Macbeth" class="poster"></a>
+    <p>Tickets Coming soon</p>
+    </div>
+        <div class=show>
+            <h4>Theatre Group Presents</h4>
+    <h3>Great Expectations</h3>
+
+    <div class=date>November 14th to<br> 17th 2012</div>
+    <a href="http://theatre.susu.org/showpage.php?id=137"><img src="posters/greatexpectations.png" alt="" class="poster"></a>
+    <p>Tickets Coming soon</p>
+    </div>
+            <div class=show>
+                <h4>Showstoppers Present</h4>
+    <h3>Winter Revue 2012</h3>
+    <div class=date>November 23rd to<br> November 24th 2012</div>
+    <a href="http://theatre.susu.org/showpage.php?id=136"><img src="posters/revue.png" alt="" class="poster"></a>
+    <p>Tickets Coming soon</p>
+    </div>
+        <div class=show>
+                <h4>Theatre Group Presents</h4>
+    <h3>The Comedy Of Errors</h3>
+
+    <div class=date>December 5th to<br> 8th 2012</div>
+    <a href="http://theatre.susu.org/showpage.php?id=138"><img src="posters/tcoe.png" alt="" class="poster"></a>
+    <p>Tickets Coming soon</p>
+    </div>
+
+</div>
+<div class="row" id="where">
+    <h2>How to find us</h2>
+    <hr/>
+    
+
+<iframe style='width:700px; height:400px; border: solid 1px black;' 
+src='http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;z=16&amp;q=http%3A%2F%2Fdata.southampton.ac.uk%2Fviewers%2Fsite.kml%2F1%3Fb%3D2A%26am%3D0%26bus%3D0%26pt%3D0%26pl%3D1%26bg%3D0&amp;output=embed'></iframe>
+<div><a href='http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;z=16&amp;q=http%3A%2F%2Fdata.southampton.ac.uk%2Fviewers%2Fsite.kml%2F1%3Fb%3D2A%26am%3D0%26bus%3D0%26pt%3D0%26pl%3D1%26bg%3D0'>View Larger Map</a> (<a href='http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;z=16&amp;q=http%3A%2F%2Fdata.southampton.ac.uk%2Fviewers%2Fsite.kml%2F1%3Fb%3D2A%26am%3D0%26bus%3D0%26pt%3D0%26pl%3D1%26bg%3D0&amp;output=embed'>Full Screen</a>)
+
+
+    </div>
+    <p>University Road, just next to the Nuffield Theatre.</p>
+    <div id=clear></div>
+</div>
+<div id=clear></div>
+</body>
+<footer>
+<hr/>
+<a href="http://www.susu.org/"><img src="logos/susu.png" alt="" height="100" /></a>
+<img src="logos/PAsmallwhite.png" alt="" height="100" />
+<a href="http://stagesoc.susu.org/"><img src="logos/stagesoc.png" alt="" height="100" /></a>
+<!-- <h3>Links</h3> -->
+<!-- 
+<ul>
+    <li><a href="http://www.susu.org">SUSU</a></li>
+    <li><a href="http://perform.susu.org">SUSU Performing Arts</a></li>
+    <li><a href="StageSoc"</li>
+    <li>Theatre Group</li>
+    <li>Showstoppers</li>
+    <li>LOpSoc</li>
+    <li>Comedy Soc</li>
+    
+</ul>
+ -->
+ <div id=clear></div>
+ <div id=clear></div>
+    <p>Website &copy; SUSU Performing Arts and <a href="http://www.joehart.co.uk/">Joe Hart</a> 2012</p>
+ </div>
+ <div id=clear></div>
+</footer>
+</html>

@@ -1,0 +1,184 @@
+
+C:\windows\system32>D:
+
+D:\uploadedFiles\8a39775af258e371e5705aadb4fd98-3b235dbb8435315f>cd D:\uploadedFiles\cfe9ce6eb9c958ce8c42a2ea5167583f-67383353ddb93a6f\ 
+
+D:\uploadedFiles\cfe9ce6eb9c958ce8c42a2ea5167583f-67383353ddb93a6f>C:\ZamApps\ConversionTools\IZArc\izarce -e "D:\uploadedFiles\cfe9ce6eb9c958ce8c42a2ea5167583f-67383353ddb93a6f\p1bghesrsu2lnkfa1b3sjlr1h9u4.tar" 
+IZArc Command Line Extraction Add-On Version 1.1 (Build: 130)
+Copyright(c) 2007 Ivan Zahariev, All Rights Reserved.
+http://www.izarc.org    contact@izarc.org
+
+
+Archive File: p1bghesrsu2lnkfa1b3sjlr1h9u4.tar
+
+  extracting: pax_global_header                                   OK
+  extracting: .gitignore                                          OK
+  extracting: ARC2.php                                            OK
+  extracting: ARC2_Class.php                                      OK
+  extracting: ARC2_Graph.php                                      OK
+  extracting: ARC2_Reader.php                                     OK
+  extracting: ARC2_Resource.php                                   OK
+  extracting: ARC2_getFormat.php                                  OK
+  extracting: ARC2_getPreferredFormat.php                         OK
+  extracting: README.md                                           OK
+  extracting: build.xml                                           OK
+  extracting: composer.json                                       OK
+  extracting: ARC2_DcExtractor.php                                OK
+  extracting: ARC2_ErdfExtractor.php                              OK
+  extracting: ARC2_MicroformatsExtractor.php                      OK
+  extracting: ARC2_OpenidExtractor.php                            OK
+  extracting: ARC2_PoshRdfExtractor.php                           OK
+  extracting: ARC2_RDFExtractor.php                               OK
+  extracting: ARC2_RdfaExtractor.php                              OK
+  extracting: ARC2_TwitterProfilePicExtractor.php                 OK
+  extracting: ARC2_AtomParser.php                                 OK
+  extracting: ARC2_CBJSONParser.php                               OK
+  extracting: ARC2_JSONParser.php                                 OK
+  extracting: ARC2_LegacyXMLParser.php                            OK
+  extracting: ARC2_RDFParser.php                                  OK
+  extracting: ARC2_RDFXMLParser.php                               OK
+  extracting: ARC2_RSSParser.php                                  OK
+  extracting: ARC2_SGAJSONParser.php                              OK
+  extracting: ARC2_SPARQLParser.php                               OK
+  extracting: ARC2_SPARQLPlusParser.php                           OK
+  extracting: ARC2_SPARQLXMLResultParser.php                      OK
+  extracting: ARC2_SPOGParser.php                                 OK
+  extracting: ARC2_SemHTMLParser.php                              OK
+  extracting: ARC2_TurtleParser.php                               OK
+  extracting: ARC2_JSONLDSerializer.php                           OK
+  extracting: ARC2_LegacyHTMLSerializer.php                       OK
+  extracting: ARC2_LegacyJSONSerializer.php                       OK
+  extracting: ARC2_LegacyXMLSerializer.php                        OK
+  extracting: ARC2_MicroRDFSerializer.php                         OK
+  extracting: ARC2_NTriplesSerializer.php                         OK
+  extracting: ARC2_POSHRDFSerializer.php                          OK
+  extracting: ARC2_RDFJSONSerializer.php                          OK
+  extracting: ARC2_RDFSerializer.php                              OK
+  extracting: ARC2_RDFXMLSerializer.php                           OK
+  extracting: ARC2_RSS10Serializer.php                            OK
+  extracting: ARC2_TurtleSerializer.php                           OK
+  extracting: ARC2_SPARQLScriptParser.php                         OK
+  extracting: ARC2_SPARQLScriptProcessor.php                      OK
+  extracting: ARC2_MemStore.php                                   OK
+  extracting: ARC2_RemoteStore.php                                OK
+  extracting: ARC2_Store.php                                      OK
+  extracting: ARC2_StoreAskQueryHandler.php                       OK
+  extracting: ARC2_StoreAtomLoader.php                            OK
+  extracting: ARC2_StoreCBJSONLoader.php                          OK
+  extracting: ARC2_StoreConstructQueryHandler.php                 OK
+  extracting: ARC2_StoreDeleteQueryHandler.php                    OK
+  extracting: ARC2_StoreDescribeQueryHandler.php                  OK
+  extracting: ARC2_StoreDumpQueryHandler.php                      OK
+  extracting: ARC2_StoreDumper.php                                OK
+  extracting: ARC2_StoreEndpoint.php                              OK
+  extracting: ARC2_StoreHelper.php                                OK
+  extracting: ARC2_StoreInsertQueryHandler.php                    OK
+  extracting: ARC2_StoreLoadQueryHandler.php                      OK
+  extracting: ARC2_StoreQueryHandler.php                          OK
+  extracting: ARC2_StoreRDFXMLLoader.php                          OK
+  extracting: ARC2_StoreRSSLoader.php                             OK
+  extracting: ARC2_StoreSGAJSONLoader.php                         OK
+  extracting: ARC2_StoreSPOGLoader.php                            OK
+  extracting: ARC2_StoreSelectQueryHandler.php                    OK
+  extracting: ARC2_StoreSemHTMLLoader.php                         OK
+  extracting: ARC2_StoreTableManager.php                          OK
+  extracting: ARC2_StoreTurtleLoader.php                          OK
+  extracting: ARC2_TestCase.php                                   OK
+  extracting: ARC2_TestHandler.php                                OK
+  extracting: feed.atom                                           OK
+  extracting: crunchbase-facebook.js                              OK
+  extracting: sparql-select-result.json                           OK
+  extracting: test.nt                                             OK
+  extracting: planetrdf-bloggers.rdf                              OK
+  extracting: manifest.ttl                                        OK
+  extracting: ARC2_ReaderTest.php                                 OK
+  extracting: ARC2_ClassTest.php                                  OK
+  extracting: ARC2_GraphTest.php                                  OK
+  extracting: ARC2_Test.php                                       OK
+  extracting: ARC2_getFormatTest.php                              OK
+  extracting: ARC2_getPreferredFormatTest.php                     OK
+  extracting: phpunit.xml                                         OK
+
+D:\uploadedFiles\cfe9ce6eb9c958ce8c42a2ea5167583f-67383353ddb93a6f>C:\ZamApps\ConversionTools\IZArc\izarcc -a "D:\uploadedFiles\cfe9ce6eb9c958ce8c42a2ea5167583f-67383353ddb93a6f\p1bghesrsu2lnkfa1b3sjlr1h9u4.zip" "*.*" 
+IZArc Command Line Compression Add-On Version 1.1 (Build: 130)
+Copyright(c) 2007 Ivan Zahariev, All Rights Reserved.
+http://www.izarc.org    contact@izarc.org
+
+Archive File: p1bghesrsu2lnkfa1b3sjlr1h9u4.zip
+
+   adding: .gitignore                                          OK
+   adding: ARC2.php                                            OK
+   adding: ARC2_AtomParser.php                                 OK
+   adding: ARC2_CBJSONParser.php                               OK
+   adding: ARC2_Class.php                                      OK
+   adding: ARC2_ClassTest.php                                  OK
+   adding: ARC2_DcExtractor.php                                OK
+   adding: ARC2_ErdfExtractor.php                              OK
+   adding: ARC2_getFormat.php                                  OK
+   adding: ARC2_getFormatTest.php                              OK
+   adding: ARC2_getPreferredFormat.php                         OK
+   adding: ARC2_getPreferredFormatTest.php                     OK
+   adding: ARC2_Graph.php                                      OK
+   adding: ARC2_GraphTest.php                                  OK
+   adding: ARC2_JSONLDSerializer.php                           OK
+   adding: ARC2_JSONParser.php                                 OK
+   adding: ARC2_LegacyHTMLSerializer.php                       OK
+   adding: ARC2_LegacyJSONSerializer.php                       OK
+   adding: ARC2_LegacyXMLParser.php                            OK
+   adding: ARC2_LegacyXMLSerializer.php                        OK
+   adding: ARC2_MemStore.php                                   OK
+   adding: ARC2_MicroformatsExtractor.php                      OK
+   adding: ARC2_MicroRDFSerializer.php                         OK
+   adding: ARC2_NTriplesSerializer.php                         OK
+   adding: ARC2_OpenidExtractor.php                            OK
+   adding: ARC2_PoshRdfExtractor.php                           OK
+   adding: ARC2_POSHRDFSerializer.php                          OK
+   adding: ARC2_RdfaExtractor.php                              OK
+   adding: ARC2_RDFExtractor.php                               OK
+   adding: ARC2_RDFJSONSerializer.php                          OK
+   adding: ARC2_RDFParser.php                                  OK
+   adding: ARC2_RDFSerializer.php                              OK
+   adding: ARC2_RDFXMLParser.php                               OK
+   adding: ARC2_RDFXMLSerializer.php                           OK
+   adding: ARC2_Reader.php                                     OK
+   adding: ARC2_ReaderTest.php                                 OK
+   adding: ARC2_RemoteStore.php                                OK
+   adding: ARC2_Resource.php                                   OK
+   adding: ARC2_RSS10Serializer.php                            OK
+   adding: ARC2_RSSParser.php                                  OK
+   adding: ARC2_SemHTMLParser.php                              OK
+   adding: ARC2_SGAJSONParser.php                              OK
+   adding: ARC2_SPARQLParser.php                               OK
+   adding: ARC2_SPARQLPlusParser.php                           OK
+   adding: ARC2_SPARQLScriptParser.php                         OK
+   adding: ARC2_SPARQLScriptProcessor.php                      OK
+   adding: ARC2_SPARQLXMLResultParser.php                      OK
+   adding: ARC2_SPOGParser.php                                 OK
+   adding: ARC2_Store.php                                      OK
+   adding: ARC2_StoreAskQueryHandler.php                       OK
+   adding: ARC2_StoreAtomLoader.php                            OK
+   adding: ARC2_StoreCBJSONLoader.php                          OK
+   adding: ARC2_StoreConstructQueryHandler.php                 OK
+   adding: ARC2_StoreDeleteQueryHandler.php                    OK
+   adding: ARC2_StoreDescribeQueryHandler.php                  OK
+   adding: ARC2_StoreDumper.php                                OK
+   adding: ARC2_StoreDumpQueryHandler.php                      OK
+   adding: ARC2_StoreEndpoint.php                              OK
+   adding: ARC2_StoreHelper.php                                OK
+   adding: ARC2_StoreInsertQueryHandler.php                    OK
+   adding: ARC2_StoreLoadQueryHandler.php                      OK
+   adding: ARC2_StoreQueryHandler.php                          OK
+   adding: ARC2_StoreRDFXMLLoader.php                          OK
+   adding: ARC2_StoreRSSLoader.php                             OK
+   adding: ARC2_StoreSelectQueryHandler.php                    OK
+   adding: ARC2_StoreSemHTMLLoader.php                         OK
+   adding: ARC2_StoreSGAJSONLoader.php                         OK
+   adding: ARC2_StoreSPOGLoader.php                            OK
+   adding: ARC2_StoreTableManager.php                          OK
+   adding: ARC2_StoreTurtleLoader.php                          OK
+   adding: ARC2_Test.php                                       OK
+   adding: ARC2_TestCase.php                                   OK
+   adding: ARC2_TestHandler.php                                OK
+   adding: ARC2_TurtleParser.php                               OK
+   adding: ARC2_TurtleSerializer.php                           OK
+   adding

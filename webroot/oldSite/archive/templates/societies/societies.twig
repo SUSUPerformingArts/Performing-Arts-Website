@@ -1,0 +1,175 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Society :: " ~ society.name) }}
+
+{% set susuPrefix = "https://www.susu.org/groups/" %}
+{% set isStagesoc = (society.id == 25) %}
+
+    <div class="well well-pa">
+        <div class="topleft-indicator">{{ society.societyType }} society</div>
+        <h1>{% if society.logo %}<img src="{{ society.logo }}" alt="{{ society.name }}" style="max-height: 40px;">{% endif %} {{ society.name }} 
+            {% if canEditGivenSociety(society.id) %}
+                <a class="btn btn-primary" href="{{ urlFor("show_add") }}?society={{ society.id }}">Add show</a>
+		<a class="btn btn-pa" target="_blank" href="{{society.teamup_edit_link}}">Edit Calendar</a>
+                <a class="btn btn-pa" href="{{ urlFor("society_edit", { "society" : society.id }) }}">Edit</a>
+            {% endif %}</h1>
+        {% if society.subtitle %}<p>{{ society.subtitle }}</p>{% endif %}
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+
+
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="archive-block society-block society-block-description">
+                    <h2>About {{ society.name }}</h2>
+                    {{ society.description|e|markdown }}
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+                <h2>Links</h2>
+
+                <div class="archive-block society-block society-block-contact soc-main-contact">
+
+                    {% if society.email %}
+                        <div class="soc-contact-url">
+                            <a href="mailto:{{ society.email }}">
+                                <img src="/img/icons/email.png" alt="Email Logo"> 
+                                {{ society.email }}
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    {% if society.website %}
+                        <div class="soc-contact-url">
+                            <a href="{{ society.website }}">
+                                <img src="/img/icons/web.png" alt="Website Logo"> 
+                                {{ society.website }}
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    
+                    {% if society.susuPage %}
+                        <div class="soc-contact-url">
+                            <a href="{{ susuPrefix }}{{ society.susuPage }}">
+                                <img src="/img/icons/susu.png" alt="Website Logo"> 
+                                SUSU Groups page
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    {% if society.facebookPage %}
+                        <div class="soc-contact-url">
+                            <a href="https://fb.com/{{ society.facebookPage }}">
+                                <img src="/img/icons/fb.png" alt="Facebook Logo"> 
+                                https://fb.com/{{ society.facebookPage }}
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    {% if society.facebookGroup %}
+                        <div class="soc-contact-url">
+                            <a href="{{ society.facebookGroup }}">
+                                <img src="/img/icons/fb.png" alt="Facebook Logo"> 
+                                {{ society.facebookGroup }}
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    {% if society.twitter %}
+                        <div class="soc-contact-url">
+                            <a href="https://twitter.com/{{ society.twitter }}">
+                                <img src="/img/icons/twitter.png" alt="Twitter Logo"> 
+                                {{ society.twitter }}
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    {% if society.instagram %}
+                        <div class="soc-contact-url">
+                            <a href="https://instagram.com/{{ society.instagram }}">
+                                <img src="/img/icons/instagram.png" alt="Instagram Logo"> 
+                                {{ society.instagram }}
+                            </a>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="hr-smaller">
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                {% if upcomingShows|length > 0 %}
+                    <div class="archive-block society-block society-block-upcomingShows">
+                        <h2>Upcoming shows</h2>
+                        <ul>
+                            {% for show in upcomingShows %}
+                                <li>
+                                    <a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">{{ show.name }}</a>
+                                    {% if isStagesoc and show.societyId != 25 %}(with <a href="{{ urlFor("society", { "society" : show.societySlug }) }}">{{ show.societyName }}</a>){% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if pastShows|length > 0 and year %}
+                    <div class="archive-block society-block society-block-pastShows">
+                        <h2>Shows in {{ year }} - {{ year + 1 }}</h2>
+                        <ul>
+                            {% for show in pastShows %}
+                                <li><a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">{{ show.name }}</a>
+                                    {% if isStagesoc and show.societyId != 25 %}(with <a href="{{ urlFor("society", { "society" : show.societySlug }) }}">{{ show.societyName }}</a>){% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if (upcomingShows|length > 0 or (pastShows|length > 0 and year)) and isStagesoc %}<p class="small">StageSoc provide the techincal support to other society's shows, those shows are also shown here.</p>{% endif %}
+            </div>
+
+
+            <div class="col-sm-6">
+                {% if members|length > 0 %}
+                    <div class="archive-block society-block society-block-members">
+                        <h2>Current members</h2>
+                        <ul>
+                            {% for member in members %}
+                                {% set id = (member.memberId)?member.memberId:member.suggestedMemberId %}
+                                {% set pathName = (member.memberId)?"member":"suggested_member" %}
+                                <li><a href="{{ urlFor(pathName, { "member" : id }) }}">{{ member.fullName }}</a> {% if member.committeePosition %}({{ member.committeePosition }}){% endif %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+        {% if yearsData or datelessShows %}
+            <hr class="hr-smaller">
+
+            <div class="rchive-block society-block society-block-years">
+                <h2>{{ society.name }} in previous years</h2>
+                <p> | 
+                    {% for year in yearsData %}
+                        <a href="{{ urlFor("society_yearShows" , { "society" : society.slug, "year" : year.year }) }}">{{ year.year }} - {{ year.year + 1 }}</a> | 
+                    {% endfor %}
+                    {% if datelessShows %}<a href="{{ urlFor("society_yearNone", { "society" : society.slug }) }}">Shows with no date</a> | {% endif %}
+                </p>
+            </div>
+        {% endif %}
+
+   </div>
+
+
+{# Standard PA footer #}
+{{ footer() }}

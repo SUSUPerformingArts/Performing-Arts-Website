@@ -1,0 +1,122 @@
+{# Call the header function to create the standard PA header #}
+{{ header('PA Archive :: Admin') }}
+{{ fancySubHeader(0, "Performing Arts Admin Page") }}
+
+    {% include "includes/messages.twig" %}
+
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="well well-pa">
+                <h2>Your committees</h2>
+                <p class="subtle-text">If you are on the committee for a society you can also edit all performances by that society.</p>
+                <ul>
+                    {% for committee in committees %}
+                        <li>
+                            <a href="{{ urlFor("pa_society", { "society" : committee.slug }) }}">{{ committee.name }}</a> (<a href="{{ urlFor("pa_society_edit", { "society" : committee.id }) }}">edit</a>)
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="well well-pa">
+                <h2>Production teams</h2>
+                <ul>
+                    {% for show in shows %}
+                        <li>
+                            <a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">
+                                {{ show.name }}
+                            </a>
+                            (<a href="{{ urlFor("pa_show_edit", { "show" : show.id }) }}">edit</a>)
+                        </li>
+                    {% endfor %}
+                </ul>
+                
+            </div>
+        </div>
+
+        {% if authenticate('is_on_a_committee') %}
+          <div class="col-md-12">
+            <div class="well well-pa">
+              <h2>Performing arts API</h2>
+              <p>
+                To help PA societies intergrate their websites with the PA site, there is an extensive API available for PA data aquasition. The documentation is included below, and for futher assistance please speak to the PA web officer, <a href="mailto:web@susuperformingarts.org">web@susuperformingarts.org</a>.
+              </p>
+
+              {{ api|markdown }}
+            </div>
+          </div>
+        {% endif %}
+        
+        {% if authenticate('is_PA_webmaster') %}
+        <div class="col-md-12">
+            <div class="well well-pa">
+                <h2>Webmaster</h2>
+                <p>Hello! So you're the lucky one this year ;) So here you can automatically add societies submitted from the form: <a href="https://perform.susu.org/submitCommittee">here</a></p>
+                
+                <p>If everything is good, just click below </p>
+                
+                <a class="btn btn-pa" href="#" onClick="submitComm(); return false;">Update all committees</a>
+
+            </div>
+            
+            <div class="col-md-4">
+              <div class="well well-pa">
+                <h3>New Members</h3>
+                <ul>
+                  {% for member in newMembers %}
+                    <li>{{member.name}} ({{member.username}})</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            
+            <div class="col-md-4">
+              <div class="well well-pa">
+                <h3>New Positions</h3>
+                <ul>
+                  {% for position in newPositions %}
+                    <li>{{ position }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            
+            <div class="col-md-4">
+              <div class="well well-pa">
+                <h3>New Roles</h3>
+                <ul>
+                  {% for role in newRoles %}
+                    <li>
+                      <p>
+                        {{role.socName}}<br />
+                        {{role.positionName}}<br />
+                        {{role.name}} ({{ role.username }})<br />
+                      </p>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            
+        </div>
+        {% endif %}
+
+    </div>
+
+<script>
+  function submitComm() {
+    $.post("{{ urlFor("pa_add_submitted_committees") }}", function(data) {
+      console.log(data);
+      //window.location.reload(false);
+    });
+    
+  }
+  
+  
+</script>
+{# Standard PA footer #}
+{{ footer() }}

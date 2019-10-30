@@ -1,0 +1,15 @@
+{{ header("SUSU Performing Arts - About") }}
+{{ fancySubHeader(0, "About SUSU Performing Arts", "", "About PA", "/img/logos/pa_white_centered.svg") }}
+
+<div class="row">
+  <div id="col1" class="col-md-6">
+    <div class="well well-pa">
+      {{ about|markdown }}
+    </div>
+  </div>
+  
+  <div id="col2" class="col-md-6" style="padding-bottom: 20px; ">
+     <div style="width: 100%; height: 100%; background-image: url('{{ photo }}'); background-size: cover"></div>
+  </div>
+</div>
+{{ footer() }}

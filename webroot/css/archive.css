@@ -1,0 +1,61 @@
+/* Header */
+.navbar-brand.pa-archive-brand{
+	padding: 15px 0.6em;
+}
+
+
+
+
+.well-pa>p {
+	text-indent: 1em;
+}
+
+.archive-block>p {
+	margin-left: 1em;
+}
+
+.topleft-indicator {
+	position: absolute;
+	top: 10px;
+	right: 0.5em;
+
+	font-size: 20px;
+	font-weight: 500;
+
+	color: #bfbfbf;
+}
+
+.actions {
+	position: absolute; 
+	right: 10px; 
+	bottom: 10px;
+}
+
+.clear-textbox {
+	background-color: inherit !important;
+	color: inherit !important;
+
+	font: inherit;
+
+	border-radius: 0px;
+}
+.tb-large {
+	height: 55px;
+}
+
+
+/* Member pages */
+.member-block {
+	margin-bottom: 40px;
+}
+
+
+
+/* Shows pages */
+.shows-tickets-details p {
+	margin-left: 1em;
+}
+
+.show-intro {
+	font-style: italic;
+}

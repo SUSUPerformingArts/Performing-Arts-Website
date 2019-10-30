@@ -1,0 +1,48 @@
+{# Call the header function to create the standard PA header #}
+{{ header('PA Archive :: Admin') }}
+
+    <div class="well well-pa">
+        <h1>Performing Arts Admin Page</h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="well well-pa">
+                <h2>Your committees</h2>
+                <p class="subtle-text">If you are on the committee for a society you can also edit all performances by that society.</p>
+                <ul>
+                    {% for committee in committees %}
+                        <li>
+                            <a href="{{ urlFor("society", { "society" : committee.slug }) }}">{{ committee.name }}</a> (<a href="{{ urlFor("society_edit", { "society" : committee.id }) }}">edit</a>)
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="well well-pa">
+                <h2>Production teams</h2>
+                <ul>
+                    {% for show in shows %}
+                        <li>
+                            <a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">
+                                {{ show.name }}
+                            </a>
+                            (<a href="{{ urlFor("show_edit", { "show" : show.id }) }}">edit</a>)
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+
+{# Standard PA footer #}
+{{ footer() }}

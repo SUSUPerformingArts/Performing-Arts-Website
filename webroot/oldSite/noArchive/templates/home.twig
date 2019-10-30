@@ -1,0 +1,237 @@
+{# Call the header function to create the standard PA header #}
+{{ header() }}
+
+</main>
+
+<div class="welcome">
+  <main class="container" style="height:100%">
+    
+    
+    <div class="hidden-xs">
+       <div style="position: absolute; top: 15vh; left: 12vw;">
+         <img src="/img/icons/pa_big_white.svg" style="height: 30vh" />
+       </div>
+       
+       
+       <div style="position: absolute; bottom: 7vh; left: 10vw;">
+         <a href="http://www.susu.org/" target="_blank" >
+           <img src="/img/logos/susu.svg" style="height: 18vh" />
+         </a>
+       </div>
+       
+       <div style="position: absolute; bottom: 7vh; right: 10vw;">
+         <img src="/img/logos/pa_white_centered.svg" style="height: 25vh" />
+       </div>
+       
+       <div style="position: absolute; top: 17vh; right: 10vw;">
+         <a href="{{ urlFor('pa_societies_by_type', { "type" : "dance" }) }}" class="welcome_button btn dance" style="width: 120px; text-align: right; ">dance</a>
+       </div>
+       <div style="position: absolute; right:0; top: calc(17vh + 21px); width: 10vw; border-bottom: thin #fff solid"></div>
+       
+       <div style="position: absolute; top: calc(17vh + 52px); right: 10vw;">
+         <a href="{{ urlFor('pa_societies_by_type', { "type" : "music" }) }}" class="welcome_button btn music" style="width: 120px; text-align: right; ">music</a>
+       </div>
+       <div style="position: absolute; right:0; top: calc(17vh + 73px); width: 10vw; border-bottom: thin #fff solid"></div>
+       
+       <div style="position: absolute; top: calc(17vh + 104px); right: 10vw;">
+         <a href="{{ urlFor('pa_societies_by_type', { "type" : "theatrical" }) }}" class="welcome_button btn theatrical" style="width: 120px; text-align: right; ">theatrical</a>
+       </div>
+       <div style="position: absolute; right:0; top: calc(17vh + 125px); width: 10vw; border-bottom: thin #fff solid"></div>
+       
+       <div style="position: absolute; top: calc(17vh + 156px); right: 10vw;">
+         <a href="{{ urlFor('pa_societies_by_type', { "type" : "theatrical" }) }}/#tech" class="welcome_button btn theatrical" style="width: 120px; text-align: right; ">tech</a>
+       </div>
+       <div style="position: absolute; right:0; top: calc(17vh + 177px); width: 10vw; border-bottom: thin #fff solid"></div>
+       
+       
+       <div style="position: absolute; bottom: 7vh; left: 50%;">
+         <div style="position: relative; left: -50%; ">
+           <a onClick="$('html,body').animate({scrollTop: ($('#after_intro').offset().top-50)});" class="welcome_button btn">find out more</a>
+         </div>
+       </div>
+       
+       <div style="position: absolute; bottom:0; left: 50%; height: 7vh; border-left: thin #fff solid" ></div>
+    </div>
+    
+    <div class="visible-xs">
+       <div style="position: absolute; top: calc(10vw + 50px); left: 50vw;">
+          <div style="margin-left:-50%">
+             <img src="/img/icons/pa_big_white.svg" style="max-height: 30vh; max-width: 80vw" />
+          </div>
+       </div>
+       
+       
+       <div style="position: absolute; top: calc(40vw + 70px); right: 10vw;">
+         <a href="{{ urlFor('pa_societies_by_type', { "type" : "dance" }) }}" class="welcome_button btn dance" style="width: 120px; text-align: right; ">dance</a>
+       </div>
+       <div style="position: absolute; right:0; top: calc(40vw + 70px + 21px); width: 10vw; border-bottom: thin #fff solid"></div>
+       
+       <div style="position: absolute; top: calc(40vw + 70px + 52px); right: 10vw;">
+         <a href="{{ urlFor('pa_societies_by_type', { "type" : "music" }) }}" class="welcome_button btn music" style="width: 120px; text-align: right; ">music</a>
+       </div>
+       <div style="position: absolute; right:0; top: calc(40vw + 70px + 73px); width: 10vw; border-bottom: thin #fff solid"></div>
+       
+       <div style="position: absolute; top: calc(40vw + 70px + 104px); right: 10vw;">
+         <a href="{{ urlFor('pa_societies_by_type', { "type" : "theatrical" }) }}" class="welcome_button btn theatrical" style="width: 120px; text-align: right; ">theatrical</a>
+       </div>
+       <div style="position: absolute; right:0; top: calc(40vw + 70px + 125px); width: 10vw; border-bottom: thin #fff solid"></div>
+       
+       <div style="position: absolute; top: calc(40vw + 70px + 156px); right: 10vw;">
+         <a href="{{ urlFor('pa_societies_by_type', { "type" : "theatrical" }) }}/#tech" class="welcome_button btn theatrical" style="width: 120px; text-align: right; ">tech</a>
+       </div>
+       <div style="position: absolute; right:0; top: calc(40vw + 70px + 177px); width: 10vw; border-bottom: thin #fff solid"></div>
+       
+       
+       <div style="position: absolute; bottom: 5vw; left: 5vw;">
+         <a href="http://www.susu.org/" target="_blank" >
+            <img src="/img/logos/susu.svg" style="max-height: 30vh; max-width: 30vw" />
+         </a>
+       </div>
+       
+       <div style="position: absolute; bottom: 5vw; right: 5vw;">
+         <img src="/img/logos/pa_white_centered.svg" style="max-height: 30vh; max-width: 30vw" />
+       </div>
+    </div>
+  </main>
+</div>
+
+<main class="container pa-main-content">
+
+<!--<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-4">
+			<img src="/img/logos/pa_white.png" alt="SUSU Performing Arts" class="img-responsive">
+		</div>
+		<div class="col-md-8">
+			<p class="lead">Dance. Music. Theatre. Tech.</p>
+			<p>With over 40 societies ranging from Theatre Group to Folk Soc, and shows, concerts and events on a weekly basis, there's something for pretty much everyone who's passionate about performing, managing or viewing within the arts.</p>
+			<p><a href="/about" class="btn btn-pa btn-lg">Learn More »</a>
+			<a href="/societies" class="btn btn-pa btn-lg">Get Involved »</a>
+			<a href="/calendar" class="btn btn-pa btn-lg">What's On »</a>
+			<a href="/boxoffice" class="btn btn-pa btn-lg">Buy Tickets »</a></p>
+		</div>
+	</div>
+</div>-->
+
+</main>
+
+{% if carouselImages|length > 0 %}
+<main id="carouselContainer" class="container {% if carouselImages.0.socType==1 %} theatrical {% elseif carouselImages.0.socType==2 %} music {% else %} dance {% endif %}">
+	<main class="container">
+		<div id="after_intro" class="row" style="height:10px"> </div>
+		<div id="carousel-shows" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				{% for i in range(0, (carouselImages|length - 1)) %}
+					<li data-target="#carousel-shows" data-slide-to="{{ i }}" {% if i==0 %} class="active" {% endif %}></li>
+				{% endfor %}
+			</ol>
+			
+			<div class="carousel-inner" role="listbox">
+			
+			{% for img in carouselImages %}
+				{% if img == carouselImages.0 %} <div class="item active" {% else %} <div class="item" {% endif %} socType="{{ img.socType }}" >
+				
+					<a href="{{urlFor("pa_show_byId", {show: img.id}) }}">
+						<img src="/img/archive/shows/{{ img.image }}" title=" {{ img.name }}" alt="{{ img.name }}">
+					</a>
+				</div>
+			{% endfor %}
+			
+			{% if carouselImages|length > 1 %}
+				<a class="left carousel-control" href="#carousel-shows" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel-shows" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			{% endif %}
+			
+			</div>
+		</div>
+		<div class="pull-right" style="margin: 10px 0px;">
+			<a class="btn btn-pa" href="{{ urlFor("pa_shows") }}">See what's on &raquo;</a>
+		</div>
+		<div class="clearfix"></div>
+	</main>
+</main>
+<!--  -->
+<script>
+$("docuemnt").ready(function() {
+	$('#carousel-shows').bind('slid.bs.carousel', function (e) {
+		var socType = e.relatedTarget.attributes.socType.nodeValue;
+		
+		if (socType === "1") $('#carouselContainer').removeClass("music theatrical dance").addClass("theatrical").fadeIn('fast');
+		if (socType === "2") $('#carouselContainer').removeClass("music theatrical dance").addClass("music").fadeIn('fast');
+		if (socType === "3") $('#carouselContainer').removeClass("music theatrical dance").addClass("dance").fadeIn('fast');
+	});
+});
+</script>
+{% endif %}
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=124957894633494";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<main class="container pa-main-content">
+	<div class="row">
+		<div class="col-md-12 col-lg-8">
+			<h2>Follow us</h2>
+			<div class="row">
+				
+				<div class="col-sm-6">
+				  <div class="fb-page" data-href="https://www.facebook.com/SUSUPerformingArts/" data-tabs="timeline" data-width="500" data-height="700" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/SUSUPerformingArts/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SUSUPerformingArts/">SUSU Performing Arts</a></blockquote></div>
+				</div>
+				
+				<div class="col-sm-6">
+					<a class="twitter-timeline" data-height="700" data-theme="light" data-link-color="#8c628b" href="https://twitter.com/SUSUPerform">Tweets by SUSUPerform</a> 
+					<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-lg-4">
+			<h2>Try something new!</h2>
+			
+			<div class="well {% if society.type==1 %} well-theatrical-fancy {% elseif society.type==2 %} well-music-fancy {% else %} well-dance-fancy {% endif %}" style="height: 700px">
+                {% if society.logo %}
+                    <div style="text-align: center">
+						<img id="randomSocImg" style="width: 100%; margin-bottom: 1em;" src="{{ society.logo }}" title="{{ society.name }}" alt="{{ society.name }}">
+					</div>
+				{% else %}
+					<h3>
+						{{ society.name }}
+					</h3>
+                {% endif %}
+                <div id="randomSocDesc" style="overflow-x: hidden; ">{{ society.description|e|markdown }}</div>
+
+                <p class="text-right"><a style="position: absolute; bottom: 1em; right: 1em;" href="{{ urlFor("pa_society", { "society" : society.slug }) }}" class="btn btn-pa">Learn more &#8658;</a>
+            </div>
+		</div>
+	</div>
+</main>
+<script>
+$(window).load(function () {
+	var img = $("#randomSocImg");
+	var h = img.height();
+	
+	if (h > 200) {
+		img.css("height", "200px");
+		h = 200;
+		img.css("width", "auto");
+	}
+	
+	var val = "calc(660px - 4em - " + h + "px)";
+	
+	$("#randomSocDesc").css("height", val);
+});
+</script>
+
+{# Standard PA footer #}
+{{ footer() }}

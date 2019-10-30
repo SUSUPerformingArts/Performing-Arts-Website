@@ -1,0 +1,142 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Shows :: " ~ show.name) }}
+
+{% set ticketSourceURL = "/boxoffice" %}
+
+
+    <div class="well well-pa">
+        <div class="topleft-indicator">Show</div>
+        <h1>
+            {{ show.name }} {% if canEditGivenShow(show.id) %}<a class="btn btn-pa" href="{{ urlFor("show_edit", { "show" : show.id }) }}">Edit show</a> <a class="btn btn-pa" href="{{ urlFor("show_edit_members", { "show" : show.id }) }}">Edit members</a>{% endif %}
+        </h1>
+        <p>A production by <a href="{{ urlFor("society", { "society" : show.societySlug }) }}">{{ show.societyName }}</a>.</p>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+
+    <div class="well well-pa">
+
+        {# <p class="lead show-intro"><b>{{ show.name }}</b> {% if dates.past %}was{% else %}will be{% endif %} performed by <a href="/societies/society/?id={{ show.societyId }}">{{ show.societyName }}</a>{% if dates.start %} between {{ dates.start|date(dateformatShort) }} and {{ dates.end|date(dateformatShort) }}{% endif %} in {{ show.venueName }}.</p> #}
+
+        {% if images.poster %}
+            <div class="shows-image shows-image_poster visible-xs-block">
+                <img src="{{ images.poster }}" alt="{{ show.name }}" class="img-responsive">
+            </div>
+            <div class="shows-image shows-image_poster pull-right hidden-xs" style="max-width:50%">
+                <img src="{{ images.poster }}" alt="{{ show.name }}" class="img-responsive">
+            </div>
+        {% endif %}
+
+        {% if images.cover %}
+            <div class="shows-image shows-image_cover" style="margin-bottom: 20px;">
+                <img src="{{ images.cover }}" alt="{{ show.name }}" class="img-responsive center-block">
+            </div>
+        {% endif %}
+
+
+        <p>{{ show.description|e|markdown }}</p>
+
+        {% if show.showBaseUrl and show.societyPage %}<p style="font-weight: bold;"><a href="{{ show.showBaseUrl ~ show.societyPage }}">Read more on the {{ show.societyName }} website</a></p>{% endif %}
+
+        {% if dates.all|length > 0 %}
+            <div class="archive-block shows-block show-dates">
+                <h2>Performance dates</h2>
+                <ul style="list-style: none;">
+                    {% for date in dates.all %}
+                        <li>
+                            {% if date.link and not dates.past %}<a href="{{ date.link }}" style="color: white;" title="Add event to Google Calendar" target="_blank">{% endif %}
+                                {{ date.d|date(dateformat) }}
+                            {% if date.link and not dates.past %}</a>{% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {% if show.venueId %}
+            <div class="archive-block shows-block show-venue">
+                <h2>Venue</h2>
+                <p>
+                    <a href="{{ urlFor("venue", { "venue" : show.venueId }) }}">{{ show.venueName }}</a>
+                    {% if show.venueLat and show.venueLon %} <small>(<a href="https://www.google.co.uk/maps/dir//{{ show.venueLat }},{{ show.venueLon }}" target="_blank">Get directions</a>)</small>{% endif %}
+                </p>
+            </div>
+        {% endif %}
+
+        {% if show.ticketDetails or show.ticketSource %}
+            <div class="archive-block shows-block shows-tickets">
+                <h2>Tickets</h2>
+                {% if show.ticketDetails %}
+                    <div class="shows-tickets-details">
+                        {# Complicated, I know.. But it works #}
+                        {#<p>{{ show.ticketDetails|convert_encoding('UTF-8', 'ISO-8859-1')|e|replace({ "£" : "&pound;" })|raw|nl2br }}</p>#}
+                        <p>{{ show.ticketDetails|e|replace({ "£" : "&pound;" })|raw|nl2br }}</p> {# This seems to work when the database isn't inputted directly #}
+                    </div>
+                {% endif %}
+                {# Do not disaply the link if the show has already happened #}
+                {% if show.ticketSource and not dates.past %}
+                    {# Show ticketsource page or the given URL #}
+                    <p><a href="{% if show.ticketSource == "1" %}{{ ticketSourceURL }}{% else %}{{ show.ticketSource }}{% endif %}">Get tickets!</a></p>
+                {% endif %}
+            </div>
+
+        {% endif %}
+
+        {% if roles|length > 0 %}
+            <div class="archive-block shows-block show-roles">
+                <h2>Members</h2>
+                <p>{{ totalMembers }} <em>Performing Arts</em> {% if totalMembers > 1 %}members{% else %}member{% endif %} took part in this production</p>
+
+                <ul style="list-style: none;" class="row">
+                    {% for area, role in roles %}
+                        <li class="col-sm-6">
+                            {# Special case for performers: They are all their own full catagory #}
+                            {% if area == "Performers" %}
+
+                                {% for roleName, members in role %}
+                                    <h3>{{ roleName }}</h3>
+                                    <ul>
+                                        {% for member in members %}
+                                            {% set id = (member.memberId)?member.memberId:member.suggestedMemberId %}
+                                            {% set pathName = (member.memberId)?"member":"suggested_member" %}
+                                            <li><a href="{{ urlFor(pathName, { "member" : id }) }}">{{ member.fullName }}</a> {% if member.notes %}({{ member.notes }}){% endif %}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endfor %}
+
+                            {# Normal case, for other catagories #}
+                            {% else %}
+
+                                <h3>{{ area }}</h3>
+                                <ul style="list-style: none;">
+                                    {% for roleName, members in role %}
+                                        <li>
+                                            <h4>{{ roleName }}</h4>
+                                            <ul>
+                                                {% for member in members %}
+                                                    {% set id = (member.memberId)?member.memberId:member.suggestedMemberId %}
+                                                    {% set pathName = (member.memberId)?"member":"suggested_member" %}
+                                                    <li><a href="{{ urlFor(pathName, { "member" : id }) }}">{{ member.fullName }}</a> {% if member.notes %}({{ member.notes }}){% endif %}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                            {% endif %}
+
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        {% endif %}
+
+
+        {# Keeps the floating images bounded by the parent box #}
+        <div class="clearfix"></div>
+    </div>
+
+{# Standard PA footer #}
+{{ footer() }}

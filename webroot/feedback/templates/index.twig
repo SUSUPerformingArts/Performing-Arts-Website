@@ -1,0 +1,75 @@
+{{ header("SUSU Performing Arts - Feedback") }}
+
+{% from 'list_item.twig' import list_item %}
+
+
+    <div class="well well-pa">
+        <div class="pull-right"></div>
+        <h1>Website feedback and suggestions <a href="{{ urlFor('submit') }}" class="pull-right btn btn-pa">Click here to submit feedback</a></h1>
+        <div class="clearfix"></div>
+    </div>
+
+
+
+    <ul class="nav nav-tabs" id="showTabs" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#tab_suggestions" aria-controls="tab_suggestions" role="tab" data-toggle="tab">Suggestions</a>
+        </li>
+        {% for progressName in progressNames %}
+            {% set urlName = progressName|lower|replace({ ' ' : '-', '\'' : '' }) %}
+            <li role="presentation">
+                <a href="#tab_{{ urlName }}" aria-controls="tab_{{ urlName }}" role="tab" data-toggle="tab">{{ progressName }}</a>
+            </li>
+        {% endfor %}
+        <li role="presentation">
+            <a href="#tab_feedback" aria-controls="tab_feedback" role="tab" data-toggle="tab">Feedback</a>
+        </li>
+    </ul>
+
+    <div class="well well-pa">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="tab_suggestions">
+                {% for item in suggestions %}
+                    {{
+                        list_item(
+                            item,
+                            urlFor('suggestion', { 'suggestion': item.id })
+                        )
+                    }}
+                {% else %}
+                    There are currently no suggestions.
+                {% endfor %}
+            </div>
+
+            {% for progressId, progressName in progressNames %}
+                {% set urlName = progressName|lower|replace({ ' ' : '-', '\'' : '' }) %}
+                    <div role="tabpanel" class="tab-pane" id="tab_{{ urlName }}">
+                        {% for item in development[progressId] %}
+                            {{
+                                list_item(
+                                    item,
+                                    urlFor('feature', { 'feature': item.id })
+                                )
+                            }}
+                        {% else %}
+                            Nothing here :(
+                        {% endfor %}
+                    </div>
+            {% endfor %}
+
+            <div role="tabpanel" class="tab-pane" id="tab_feedback">
+                {% for item in feedback %}
+                    {{
+                        list_item(
+                            item,
+                            urlFor('feedback', { 'feedback': item.id })
+                        )
+                    }}
+                {% else %}
+                    There is currently no feeback.
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{{ footer() }}

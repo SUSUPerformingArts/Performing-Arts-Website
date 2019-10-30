@@ -1,0 +1,20 @@
+{# Call the header function to create the standard PA header #}
+{{ header("SUSU Performing Arts - Venues") }}
+
+
+    <div class="well well-pa-fancy">
+        <h1>Performing Arts Venues</h1>
+    </div>
+
+    <div class="well well-pa">
+		<div class="autoCols">
+			{% for venue in venues %}
+				<div>
+					<h2><a href="{{ urlFor("pa_venue", { "venue" : venue.id }) }}">{{ venue.name }}</a></h2>
+				</div>
+			{% endfor %}
+		</div>
+    </div>
+
+{# Standard PA footer #}
+{{ footer() }}

@@ -1,0 +1,30 @@
+RewriteEngine On
+
+# Some hosts may require you to use the `RewriteBase` directive.
+# If you need to use the `RewriteBase` directive, it should be the
+# absolute physical path to the directory that contains this htaccess file.
+#
+# RewriteBase /
+
+##### These all need to be here too..
+
+
+## Redirect to SSL (https)
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+## Redirect pau (and all else) to perform (no need for susu check, as we don't need to deal with gone-rogue etc)
+RewriteCond %{HTTP_HOST} !^perform\.susu\.org$ [NC]
+RewriteRule (.*) https://perform.susu.org/archive/$1 [L,R=301,QSA]
+
+## Rewrite susuperformingarts.org to perform
+RewriteCond %{HTTP_HOST} ^susuperformingarts\.org$ [NC]
+RewriteRule (.*) https://perform.susu.org/archive/$1 [L,R=301,QSA]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+
+

@@ -1,0 +1,44 @@
+
+{# File will display errors, successes, notices and warnings (in that order, using those flash variables) #}
+
+    {% if flash.errors|length > 0 %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for error in flash.errors %}
+                    <li>{{ error|raw }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if flash.successes|length > 0 %}
+        <div class="alert alert-success">
+            <ul>
+                {% for success in flash.successes %}
+                    <li>{{ success|raw }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if flash.notices|length > 0 %}
+        <div class="alert alert-info">
+            <ul>
+                {% for  notice in flash.notices %}
+                    <li>{{  notice|raw }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if flash.warnings|length > 0 %}
+        <div class="alert alert-warning">
+            <ul>
+                {% for warning in flash.warnings %}
+                    <li>{{ warning|raw }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+{# That's handy!! #}

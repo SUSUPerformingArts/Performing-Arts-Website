@@ -1,0 +1,181 @@
+@font-face {
+    font-family: "goudy";
+    src: url('GoudyBookletter1911.otf');
+}
+
+@font-face {
+    font-family: "bebas";
+    src: url('BebasNeue.otf');
+}
+
+h2 {
+    font-family: bebas;
+    font-size: 3em;
+    margin-bottom: 0px;
+    font-weight: normal;
+    padding-top:0;
+    margin-top: 0.5em;
+}
+
+
+body {
+    /**font-family: 'goudy', serif;*/
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+	color: #FFF;
+	padding: 0px;
+	height: inherit;
+	padding-top: 0px;
+	background-color: #E6E6E6;
+	width: 320px;
+}
+
+a {
+	color: #FF6666;
+	font-weight: bold;
+	text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+a:hover {
+    color: #FFF;
+	text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+}
+
+p{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+#clear {
+    display: block;
+    max-width: 320px;
+    float: left;
+    clear: both;
+}
+
+#wrapper {
+	display: block;
+	margin: 0px auto;
+	margin-top: 0;
+	padding-top: 0;
+	padding: 0;
+	height: 100%;
+	text-align: center;
+	width: 320px;
+	background-color: maroon;
+	/*border: 1px black inset;*/
+	    -webkit-box-shadow:  0px 5px 45px 3px rgba(0, 0, 0, 0.8);
+    box-shadow:  0px 5px 45px 3px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+.row {
+display: block;
+width: 320px;
+margin: 0 auto;
+clear: both;
+text-align: center;
+}
+
+.row #whatson {
+display: block;
+width: 320px;
+margin: 0 auto;
+padding: 0px;
+clear: both;
+text-align: center;
+}
+
+.col2 {
+    max-width: 320px;
+    min-width: 280px;
+    float: left;
+    display: block;
+    padding: 30px;
+    padding-bottom: 0px;
+    padding-top: 0px
+}
+
+h1{
+    font-size: 0px;
+}
+
+#about {
+    font-size: 0.95em;
+    font-weight: bold;
+    text-align: justify;
+    text-justify: auto;
+}
+
+#slideshow {
+	position: relative;
+	max-height: 300px;
+
+}
+
+#slideshow IMG {
+    top: -100px;
+    left: 0;
+    z-index: 8;
+    320px;
+    clip: rect(0px 300px 300px 0px);
+
+}
+hr {
+	background-color: #440F25;
+	height: 1px;
+	width: 90%;
+	border: 1pt;
+}
+#logo {
+    position: relative;
+    height: 200px;
+    text-align: center;
+}
+
+IMG.annex {
+
+    width: 300px;
+    z-index: 11;
+}
+.aLogo {
+padding: 20px;
+    max-width: 320px;
+    text-align: center;
+}
+#slideshow IMG.active {
+    z-index: 10;
+}
+
+.show {
+	float: left;
+	height: 400px;
+	margin:25px;
+}
+
+h3 {
+    font-family: bebas;
+    font-size: 2em;
+    margin-bottom: -10px;
+    font-weight: normal;
+}
+
+.show IMG.poster {
+    height: 265px;
+    margin:10px;
+    -webkit-box-shadow:  0px 5px 15px 1px rgba(0, 0, 0, 0.6);
+    box-shadow:  0px 5px 15px 1px rgba(0, 0, 0, 0.6);
+}
+
+.show IMG.poster:hover {
+    -webkit-box-shadow:  0px 5px 45px 3px rgba(0, 0, 0, 0.8);
+    box-shadow:  0px 5px 45px 3px rgba(0, 0, 0, 0.8);
+}
+#logo IMG.annex {
+    z-index: 11;
+}
+#slideshow IMG.last-active{
+    z-index:9;
+}
+#map iframe {
+    width:90%;
+}

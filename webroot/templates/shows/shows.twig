@@ -1,0 +1,184 @@
+{# Call the header function to create the standard PA header #}
+{{ header("SUSU Performing Arts - " ~ show.name, ["https://use.fontawesome.com/8b7f3e837d.js"]) }}
+{% set subHeader %}
+  A production by <a href="{{ urlFor("pa_society", { "society" : show.societySlug }) }}">{{ show.societyName }}</a>
+{% endset %}
+
+{{ fancySubHeader(show.societyType, show.name, subHeader, "Show", society.logo) }}
+
+{% set ticketSourceURL = "/boxoffice" %}
+
+    {% include "includes/messages.twig" %}
+
+	{% if canEditGivenShow(show.id) %}
+		<div class="fancyActions">
+			<a class="btn btn-pa" href="{{ urlFor("pa_show_edit", { "show" : show.id }) }}">Edit show</a>
+			<a class="btn btn-pa" href="{{ urlFor("pa_show_edit_members", { "show" : show.id }) }}">Edit members</a>
+		</div>
+	{% endif %}
+
+    <div class="row">
+    	<div class="col-md-7">
+
+	        {% if images.poster %}
+	            <div class="shows-image shows-image_cover" style="margin-bottom: 20px;">
+	                <img src="{{ images.poster }}" alt="{{ show.name }}" class="img-responsive" style="width:100%;">
+	            </div>
+	        {% endif %}
+
+	        {% if images.cover %}
+	            <div class="shows-image shows-image_cover" style="margin-bottom: 20px;">
+	                <img src="{{ images.cover }}" alt="{{ show.name }}" class="img-responsive" style="width:100%;">
+	            </div>
+	        {% endif %}
+
+			{% set desc = show.description|e|split('.',2) %}
+
+			<div class="lead">{{ desc[0]|markdown }}</div>
+			<p>{{ desc[1]|markdown }}</p>
+        </div>
+        
+
+		
+		<div class="col-md-5">
+			
+			{% if show.showBaseUrl and show.societyPage %}<p style="font-weight: bold;"><a href="{{ show.showBaseUrl ~ show.societyPage }}">Read more on the {{ show.societyName }} website</a></p>{% endif %}
+
+			{% if dates.all|length > 0 %}
+				{% if show.societyType==1 %} <div class="well well-theatrical"> 
+				{% elseif show.societyType==2 %} <div class="well well-music"> 
+				{% else %} <div class="well well-dance"> {% endif %}
+					<div class="archive-block shows-block show-dates">
+						<h2>Performance dates</h2>
+						<ul style="list-style: none; padding:0">
+							{% for date in dates.all %}
+								<li>
+									{% if date.link and not dates.past %}<a href="{{ date.link }}" style="color: white;" title="Add event to Google Calendar" target="_blank">{% endif %}
+										{{ date.d|date(dateformat) }}
+									{% if date.link and not dates.past %}</a>{% endif %}
+								</li>
+							{% endfor %}
+						</ul>
+						
+						<h1 style="text-align:right; margin:0; font-size: 56px"><i class="fa fa-calendar" aria-hidden="true"></i></h1>
+
+                		<div style="position: absolute; bottom: 19px; left: 19px;"><a href="{{ dates.all[0].link }}" class="btn btn-pa">Add to your gCalendar</a></div>
+					</div>
+				</div>
+			{% endif %}
+
+			{% if show.venueId %}
+				{% if show.societyType==1 %} <div class="well well-theatrical"> 
+				{% elseif show.societyType==2 %} <div class="well well-music"> 
+				{% else %} <div class="well well-dance"> {% endif %}
+					<div class="archive-block shows-block show-venue">
+						
+						{% if show.venueImage %}<div style="height: 140px; width: calc(100% + 38px); margin-left: -19px; margin-top: -19px; margin-right: -19px; border-radius: 4px 4px 0 0; background-image:url('{{show.venueImage}}'); background-size: cover; background-position: center" ></div>{% endif %}
+
+						<h2>{{ show.venueName }}</h2>
+						<p style="margin:0">{{ show.venueDescription }}</p>
+						<h1 style="text-align:right; margin:0; font-size: 56px"><i class="fa fa-map-marker" aria-hidden="true"></i></h1>
+
+                		<div style="position: absolute; bottom: 19px; left: 19px;"><a href="{{ urlFor("pa_venue", { "venue" : show.venueId }) }}" class="btn btn-pa">Get Directions</a></div>
+					</div>
+				</div>
+			{% endif %}
+
+			{% if show.ticketDetails or show.ticketSource %}
+				{% if show.societyType==1 %} <div class="well well-theatrical"> 
+				{% elseif show.societyType==2 %} <div class="well well-music"> 
+				{% else %} <div class="well well-dance"> {% endif %}
+					<div class="archive-block shows-block shows-tickets">
+						<h2>Tickets</h2>
+						{% if show.ticketDetails %}
+							<div>
+								{# Complicated, I know.. But it works #}
+								{#<p>{{ show.ticketDetails|convert_encoding('UTF-8', 'ISO-8859-1')|e|replace({ "£" : "&pound;" })|raw|nl2br }}</p>#}
+								<p style="margin:0">{{ show.ticketDetails|e|replace({ "£" : "&pound;" })|raw|nl2br }}</p> {# This seems to work when the database isn't inputted directly #}
+							</div>
+						{% endif %}
+						{# Do not disaply the link if the show has already happened #}
+						{% if show.ticketSource and not dates.past %}
+							{# Show ticketsource page or the given URL #}
+							<div style="position: absolute; bottom: 19px; left: 19px"><a class="btn btn-pa" target="_blank" href="{% if show.ticketSource == "1" %}{{ ticketSourceURL }}{% else %}{{ show.ticketSource }}{% endif %}">Buy tickets</a></div>
+						{% endif %}
+
+						<h1 style="text-align:right; margin:0; font-size: 56px"><i class="fa fa-ticket" aria-hidden="true"></i></h1>
+					</div>
+				</div>
+			{% endif %}
+
+			<div class="well {% if society.type==1 %} well-theatrical {% elseif society.type==2 %} well-music {% else %} well-dance {% endif %}">
+				<h2>{{ society.name }}</h2>
+                <div id="randomSocDesc" style="overflow-x: hidden; margin:0">{{ society.description|split("\n")[0]|e|markdown }}</div>
+
+                <h1 style="text-align:right; margin:0; font-size: 56px"><i class="fa fa-group" aria-hidden="true"></i></h1>
+
+                <div style="position: absolute; bottom: 19px; left: 19px;"><a href="{{ urlFor("pa_society", { "society" : society.slug }) }}" class="btn btn-pa">More about {{ society.name }}</a></div>
+            </div>
+		</div>
+	</div>
+	
+	{% if roles|length > 0 %}
+		<div class="row">
+			<div class="col-md-12">
+				{% if show.societyType==1 %} <div class="well well-theatrical"> 
+				{% elseif show.societyType==2 %} <div class="well well-music"> 
+				{% else %} <div class="well well-dance"> {% endif %}
+		            <div class="archive-block shows-block show-roles">
+		                <h2>Members</h2>
+		                <p>{{ totalMembers }} <em>Performing Arts</em> {% if totalMembers > 1 %}members{% else %}member{% endif %} took part in this production</p>
+						
+						<div class="autoCols">
+							<ul style="list-style: none;" class="row">
+								{% for area, role in roles %}
+									<li class="col-sm-6">
+										{# Special case for performers: They are all their own full catagory #}
+										{% if area == "Performers" %}
+
+											{% for roleName, members in role %}
+												<h3>{{ roleName }}</h3>
+												<ul>
+													{% for member in members %}
+														{% set id = (member.memberId)?member.memberId:member.suggestedMemberId %}
+														{% set pathName = (member.memberId)?"pa_member":"pa_suggested_member" %}
+														<li><a href="{{ urlFor(pathName, { "member" : id }) }}">{{ member.fullName }}</a> {% if member.notes %}({{ member.notes }}){% endif %}</li>
+													{% endfor %}
+												</ul>
+											{% endfor %}
+
+										{# Normal case, for other catagories #}
+										{% else %}
+
+											<h3>{{ area }}</h3>
+											<ul style="list-style: none;">
+												{% for roleName, members in role %}
+													<li>
+														<h4>{{ roleName }}</h4>
+														<ul>
+															{% for member in members %}
+																{% set id = (member.memberId)?member.memberId:member.suggestedMemberId %}
+																{% set pathName = (member.memberId)?"pa_member":"pa_suggested_member" %}
+																<li><a href="{{ urlFor(pathName, { "member" : id }) }}">{{ member.fullName }}</a> {% if member.notes %}({{ member.notes }}){% endif %}</li>
+															{% endfor %}
+														</ul>
+													</li>
+												{% endfor %}
+											</ul>
+
+										{% endif %}
+
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+    {% endif %}
+
+    
+
+{# Standard PA footer #}
+{{ footer() }}

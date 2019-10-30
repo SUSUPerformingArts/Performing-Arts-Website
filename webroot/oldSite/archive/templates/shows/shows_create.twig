@@ -1,0 +1,253 @@
+{# Call the header function to create the standard PA header #}
+{% set titleEnd = (edit)?"Edit":"Create" %}
+{{ header("PA Archive :: Shows :: " ~ titleEnd) }}
+
+
+    <div class="well well-pa">
+        <h1>{% if edit %}Edit Show ({{ show.showName }}){% else %}Create Show{% endif %}</h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+
+
+    <form class="show-edit-form" id="show-edit-form" autocomplete="off" action="" method="post" enctype="multipart/form-data" {% if edit %}data-show="{{ show.showId }}"{% endif %}>
+
+        <div class="well well-pa">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2 class="h3">Show Information</h2>
+
+                    <div class="form-group">
+                        <label for="show_society">*Society</label>
+                        
+                        {% if edit %}
+                            <select class="form-control" id="show_society" size="1" disabled>
+                                <option selected>{{ show.societyName }}</option>
+                            </select>
+                            <input type="hidden" name="show_society" value="{{ show.societyId }}">
+                            <input type="hidden" name="show_society_name" value="{{ show.societyName }}">
+                        {% else %}
+                            <select class="form-control" id="show_society" name="show_society" size="10" required>
+                                {% for type, socs in societies %}
+                                    <optgroup label="{{ type }}">
+                                        {% for soc in socs %}
+                                            <option value="{{ soc.id }}" {% if show.societyId == soc.id or selectedSoc == soc.id %}selected{% endif %}>{{ soc.name }}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                {% endfor %}
+                            </select>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <input type="checkbox" class="form-control" id="show_stagesoc" name="show_stagesoc" {% if show.stagesoc %}checked{% endif %}>
+                        <label for="show_stagesoc">Are StageSoc involved?</label>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="show_name">*Show name</label>
+                        <input type="text" class="form-control" id="show_name" name="show_name" placeholder="Show name" required value="{{ show.showName }}"> 
+                    </div>
+
+                    <div class="form-group">
+                        <label for="show_description">Show description</label>
+                        <p>Add styles and links to the description using <a href="{{ urlFor("help_main") ~ "#markdown"}}">Markdown</a></p>
+                        <textarea class="form-control" id="show_description" name="show_description" placeholder="Show description" rows="8">{{ show.description }}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#image-upload-model">
+                            Upload new show image
+                        </button>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="show_venue">Venue</label>
+                        <select class="form-control" id="show_venue" name="show_venue">
+                            <option></option>
+                            {% for venue in venues %}
+                                <option value="{{ venue.id }}" {% if venue.id == show.venueId %}selected{% endif %}>{{ venue.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="show_tickets">Ticket Details (separate ticket types with new lines):</label>
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-push-8 monospace">
+                                Example:<br>
+                                Adult: £10<br>
+                                Student: £7<br>
+                                PA member: £5
+                            </div>
+                            <div class="col-sm-8 col-sm-pull-4">
+                                <textarea class="form-control" id="show_tickets" name="show_tickets" placeholder="Ticket Details" rows="5">{{ show.ticketDetails }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-inline">
+                        <input type="checkbox" class="form-control" id="show_ticketsource" name="show_ticketsource" {% if show.ticketSource == 1 %}checked{% endif %}>
+                        <label for="show_ticketsource">Using TicketSource?</label>
+                    </div>
+                    <div class="form-group" id="show_ticketURL_container" {% if show.ticketSource == 1 %}style="display: none;"{% endif %}>
+                        <label for="show_ticketURL">URL where tickets can be reserved/bought</label>
+                        <input type="url" class="form-control" id="show_ticketURL" name="show_ticketURL" placeholder="Ticket URL" {% if show.ticketSource == 1 %}disabled {% else %}value="{{ show.ticketSource }}"{% endif %}> 
+                    </div>
+
+
+                    {% if show.showBaseUrl %}
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="show_url_suffix">URL for this show on your society website:</label>
+                        <div class="form-inline">
+                            {{ show.showBaseUrl }}
+                            <input type="text" class="form-control clear-textbox" id="show_url_suffix" name="show_url_suffix" placeholder="Show url" value="{{ show.societyPage }}">
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <hr>
+
+                    <div class="form-group hidden-xs">
+                        <button type="submit" class="btn btn-pa show_submit">{% if edit %}Update{% else %}Create{% endif %} show</button>
+                        <button type="submit" class="btn btn-pa show_submit-members">Update &amp; edit members</button>
+                        {% if edit %}<a href="{{ urlFor("show_delete", { "show" : show.showId }) }}" class="btn btn-danger show_delete">Delete show</a>{% endif %}
+                        <a href="{% if edit %}{{ getShowUrl({ "id" : show.showId }) }}{% else %}{{ urlFor("shows") }}{% endif %}" class="btn btn-default">Cancel</a>
+                    </div>
+                </div>
+
+
+
+                <div class="col-sm-6">
+                    <div class="show-edit-dates">
+                        <h2 class="h3">Show Dates</h2>
+                        <div id="show-dates-block">
+
+                            {% if dates|length > 0 %}
+                                {% for date in dates %}
+                                    <div class="form-group">
+                                        <div class="input-group date datetimepicker">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            <input type="text" class="form-control" autocomplete="off" name="show_dates[]" value="{{ date.showDate|date("d/m/Y g:ia") }}">
+                                            <!--<span class="input-group-btn"><button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></span>-->
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                {% for i in 1..5 %}
+                                    <div class="form-group">
+                                        <div class="input-group date datetimepicker">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            <input type="text" class="form-control" autocomplete="off" name="show_dates[]">
+                                            <!--<span class="input-group-btn"><button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button></span>-->
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                        </div>
+
+                        <button type="button" class="btn btn-primary" id="shows-dates-add">Add extra date</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="visible-xs-block">
+
+            <div class="form-group visible-xs-block">
+                <button type="submit" class="btn btn-pa show_submit">{% if edit %}Update{% else %}Create{% endif %} show</button>
+                <button type="submit" class="btn btn-pa show_submit-members">Update &amp; edit members</button>
+                {% if edit %}<a href="{{ urlFor("show_delete", { "show" : show.showId }) }}" class="btn btn-danger show_delete">Delete show</a>{% endif %}
+                <a href="{% if edit %}{{ getShowUrl({ "id" : show.showId }) }}{% else %}{{ urlFor("shows") }}{% endif %}" class="btn btn-default">Cancel</a>
+            </div>
+
+        </div>
+
+
+
+        {# 
+         # Lovely model for image uploading 
+         # Contained here as it is in the form
+        #}
+        <div class="modal fade" id="image-upload-model" tabindex="-1" role="dialog" aria-labelledby="image-upload-model_label">
+            <div class="modal-dialog" role="document" style="color: #000000;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="image-upload-model_label">Image upload</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="show_image">Upload new show image: </label>
+                            <div class="input-group">
+                                <input type="file" name="show_image" id="show_image" class="form-control" accept="image/gif, image/jpeg, image/jpg, image/png">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <img src="{{ images.preferred }}" alt="{{ show.showName }}" data-orgsrc="{{ images.preferred }}" id="show_image_display" class="img-responsive center-block">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        {% if edit %}
+                            <button type="button" class="btn btn-danger" id="show_image-delete" data-dismiss="modal">
+                                <input type="checkbox" class="" id="show_image-delete_input" name="show_image-delete_input"> Delete image
+                            </button>
+                        {% endif %}
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        {# Hidden field to indicate whether to move to member screen next #}
+        <input type="hidden" name="member-next" id="member-next">
+    </form>
+
+
+
+
+
+<script>
+{# Kinda hacky way, but it's so much easier!! #}
+var oldMembers = [];
+{%- for member in members -%}
+oldMembers.push({
+{%- for i, j in member -%}
+{{- i -}} : {% if j matches '/^\\d+$/' %}{{- j -}}{% else %}"{{- j -}}"{% endif %},
+{%- endfor -%}
+old : true
+});
+{%- endfor %}
+{%- for member in newMembers -%}
+oldMembers.push({
+{%- for i, j in member -%}
+{{- i -}} : {% if j matches '/^\\d+$/' %}{{- j -}}{% else %}"{{- j -}}"{% endif %},
+{%- endfor -%}
+old : false
+});
+{%- endfor %}
+
+</script>
+
+{# PA footer with extra JavaScript #}
+{{ footer({"1" : "/js/show_create.js"}) }}

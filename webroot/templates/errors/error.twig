@@ -1,0 +1,29 @@
+{# Call the header function to create the standard PA header #}
+{{ header() }}
+{{ fancySubHeader(0, "Error", null, uid, "/img/icons/error.gif") }}
+
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+    	<p class="lead">Sorry, an error occurred and your action couldn't be completed.</p>
+
+    	<p>
+    		{% if emailed %}
+    			The error has been logged, and we should be on it soon! If you have more questions or it is please urgent contact the Web Officer at <a href="mailto:web@susuperformingarts.org?subject={{ ('Error on the performing arts website. ID: ' ~ uid)|url_encode }}">web@susuperformingarts.org</a> quoting the error ID <em>{{ uid }}</em>.
+    		{% else %}
+    			We were unable to log this error for some reason. If it is urgent please contact the Web Officer <a href="mailto:web@susuperformingarts.org?subject={{ ('Error on the performing arts website. ID: ' ~ uid)|url_encode }}">web@susuperformingarts.org</a> quoting the error ID <em>{{ uid }}</em>.
+    		{% endif %}
+    	</p>
+
+    	<p>
+    		<ul style="list-unstyled">
+    			<li><a href="javascript:history.go(-1)">Go back</a></li>
+    			<li><a href="/">Go to the homepage</a></li>
+    		</ul>
+    	</p>
+    </div>
+
+
+{# Standard PA footer #}
+{{ footer() }}

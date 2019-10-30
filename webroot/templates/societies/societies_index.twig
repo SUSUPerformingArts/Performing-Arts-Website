@@ -1,0 +1,85 @@
+{# Call the header function to create the standard PA header #}
+{{ header("SUSU Performing Arts - Societies") }}
+{% set areaTitle %}
+  {% if type==0 %}PA{% endif %}
+  {% if type==3 %}dance{% endif %}
+  {% if type==2 %}music{% endif %}
+  {% if type==1 %}theatrical{% endif %}
+{% endset %}
+
+{{ fancySubHeader(type, areaTitle ~ " societies", "", "", type==0 ? null : "/img/logos/" ~ areaTitle|trim ~ "_silhouette.png") }}
+
+{% set noOfSocs=0 %}
+{% for society in societies %}
+	{% if (type==0 or type==society.type) %}
+		{% set noOfSocs = noOfSocs+1 %}
+	{% endif %}
+{% endfor %}
+
+{% set socNo = 0 %}
+{% set cutOff = (noOfSocs/2)|round(0, 'ceil') %}
+
+<div class="row">
+	{% for society in societies %}{% if (type==0 or type==society.type) %}
+		{% if socNo==0 or socNo==cutOff %} <div class="col-md-6"> {% endif %}
+		
+			<div class="well well-{% if type==0 %}pa{% elseif type==1 %}theatrical{% elseif type==2 %}music{% else %}dance{% endif %}" style="max-height:320px; overflow: hidden">
+				
+				{% if society.image %}
+					<a href="{{ urlFor("pa_society", { "society" : society.slug }) }}"><img src="{{society.image}}" style="max-width:45%; max-height:144px; float: left; margin-right:0.5em; margin-bottom:0.5em" /></a>
+				{% else %}
+					<h2><a href="{{ urlFor("pa_society", { "society" : society.slug }) }}">{{ society.name }}</a></h2>
+				{% endif %}
+				
+				<p style="margin-bottom:25px">
+					{% set text=society.description|markdown|striptags  %}
+					{{ text|length > 350 ? text|slice(0, 350) ~ '...' : text  }}
+				</p>
+				
+				<div class="actions">
+					<a class="btn btn-pa" href="{{ urlFor("pa_society", { "society" : society.slug }) }}">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+			
+			{% set socNo = socNo+1 %}
+		{% if (socNo==0 or socNo==cutOff or socNo==(noOfSocs)) %}</div>{% endif %}
+	{% endif %}{% endfor %}
+</div>
+
+{% if type==1 %}
+	{% set stageSoc=societies[35] %}
+	<div id="stageSoc"> </div>
+	{{ fancySubHeader(1, stageSoc.name, stageSoc.subtitle, "Tech Society", stageSoc.image)}}
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="well well-theatrical">
+				<p class="lead" style="margin-bottom:32px">
+					{{stageSoc.description}}
+				</p>
+
+				<div class="actions">
+					<a class="btn btn-pa" href="{{ urlFor("pa_society", { "society" : stageSoc.slug }) }}">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="height: 200px"> </div>
+	
+	
+<script>
+  var hash = window.location.hash.substr(1);
+  
+  if (hash === "tech") {
+    $('html,body').animate({scrollTop: ($('#stageSoc').offset().top-70)});
+  }
+</script>
+{% endif %}
+
+{# Standard PA footer #}
+{{ footer() }}

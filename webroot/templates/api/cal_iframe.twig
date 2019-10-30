@@ -1,0 +1,248 @@
+{# Call the header function to create the standard PA header #}
+{{ header("SUSU Performing Arts - " ~ society.name, ["/libs/moment.js","/libs/fullcalendar/js/fullcalendar/jquery.fullcalendar.min.js","/libs/vex/vex.combined.min.js", "/libs/marked.js"], ["/libs/fullcalendar/css/fullcalendar/fullcalendar.css", "/libs/vex/vex.css", "/libs/vex/vex-theme-default.css"], "2.1.4") }}
+
+<style>
+   .pa-wrapper {
+      padding-top: 0px;
+   }
+   .container {
+      padding: 0px;
+      margin: 0;
+      width: 100%;
+   }
+   #calendar {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+   }
+   body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+   }
+</style>
+
+{% if society.societyType=="Theatrical" %} <div class="well well-theatrical" style="margin: 0"> 
+{% elseif society.societyType=="Music" %} <div class="well well-music" style="margin: 0"> 
+{% else %} <div class="well well-dance" style="margin: 0"> {% endif %}
+
+	<div style="position:absolute; right: 19px; top:19px; "><a class="btn btn-pa" href="#" onClick="showSubscribe();">subscribe</a></div>
+
+	<div id='calendar' style="margin-top: 35px"></div>
+	<script>
+		$(document).ready(function() {
+			var data = new Object();
+			data.soc = {{society.id}};
+			data.json = "true";
+			data.colour = "#{% if society.societyType=="Theatrical" %}208744{% elseif society.societyType=="Music" %}2372b5{% else %}ffa126{% endif %}";
+			
+			$.get("https://perform.susu.org/schedule/feed.php", 
+				data,
+				function(data) {
+					vex.defaultOptions.className = 'vex-theme-default';
+					
+					$('#calendar').fullCalendar({
+						defaultView: 'agendaWeek',
+						height: $(window).height()-83,
+						firstHour: 15,
+						firstDay: 1,
+						events: data,
+						
+						eventClick: function(e, jsEvent, view) {
+							var title_parts = e.title.split(":");
+							var soc = title_parts[0];
+							var title = title_parts[1];
+							
+							title_parts.forEach(function(v,i) {
+								if (i<2) return;
+								
+								title += ":" + v;
+							});
+							
+							var img = "/img/societies/logo_by_name/" + soc.replace(/\s/g, '').toLowerCase();
+							
+							if (e.location == null) e.location = "Southampton";
+							var l = e.location.replace(/\//g, "_");
+							$.get("{{ urlFor("pa_api_cal_format", {"loc_string":""}) }}"+l, function (data) {
+   							e.location = data.humanString;
+   							var map = data.appString;
+   							
+   							if (e.details == null) e.details = "";
+   							var desc = marked(e.details);
+   							
+   							var date = new Date(e.start);
+   							var options = {
+   								weekday: "long", year: "numeric", month: "short",
+   								day: "numeric", hour: "2-digit", minute: "2-digit", hour12: "true"
+   							};
+   							
+   							var printDate = date.toLocaleTimeString("en-gb", options);
+   							
+   							html = "<header><h2><img style='height:3em; margin-right:15.4px' src='" + img + "' onerror='this.style.display = \"none\";' />" + title + "</h2></header><p>" + desc + "</p>\
+   							<p align='center' style='opacity:0.65'>"+e.location + " | " + printDate + " | " + soc + "</p><iframe width='100%' height='250' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCyOvyFMRWdCk2Wa0KSa_sNSyIi_RKN08U&q=" + map + "' allowfullscreen></iframe>";
+   							
+   							
+   							
+   							vex.open({content: html, 
+   								contentCSS: {width: '70vw', 
+   									"background-color":"#{% if society.societyType=="Theatrical" %}208744{% elseif society.societyType=="Music" %}2372b5{% else %}ffa126{% endif %}", 
+   									"color":"#ffffff"} });
+							}, "json");
+							
+							return false;
+						},
+						header: {
+							left: 'prev,next today',
+							center: 'title',
+							right: 'month,agendaWeek,agendaDay'
+						},
+					});
+					
+					$(".fc-button").css("margin", "5px");
+					$(".fc-button").removeClass("fc-button").addClass("btn btn-pa");
+					$(".fc-button-inner").each(function(i,e) {
+						e = $(e);
+						e.css("background-color", "rgba(0,0,0,0)");
+						e.css("color", "#ffffff");
+						e.css("border-style", "none");
+					});
+					
+					$(".fc-button-effect").each(function(i,e) {
+						e = $(e);
+						e.css("display", "none");
+					});
+					
+				},
+				"json");
+		});
+		
+		function showSubscribe() {
+			var html = "<header><h2>Add {{ society.name }}'s calendar to your calendar</h2></header>\
+						<ul class='list-inline text-center'>\
+							</li><li>Choose how to add: \
+							<select id='subscription_method' style='color: #000'>\
+								<option value='google_cal_information'>Google Calendar</option>\
+								<option value='apple_cal_information'>iPhone and iPad</option>\
+								<option value='imac_cal_information'>iMac</option>\
+								<option value='outlook_cal_information'>Online Outlook</option>\
+								<option value='download_cal_information'>Download Events (one off)</option>\
+							</select>\
+							</li>\
+						</ul>\
+			<div id='google_cal_information' class='cal_information' style='display:inline'>\
+				<h4>Adding PA events to Google Calendar</h4>\
+				<p>There are just a few steps that you need to do, and they can't be done from a phone (unless you can view the desktop site). So:\
+				<ol><li>Open <a href='https://www.google.com/calendar' target='_blank'>Google Calendar</a> and sign in if you need to</li>\
+				<li>In the bottom left, to the right of \'Other calendars\', click the down arrow and select \'Add by URL\'</li>\
+				<li>Then copy the following URL into the box and click Add calendar</li>\
+				</ol></p>\
+				<p style='text-align:center;'><strong><span id='display_URL' /></strong></p>\
+				<p>For more information click <a href='https://support.google.com/calendar/answer/37100?co=GENIE.Platform%3DDesktop&hl=en' target='_blank'>here</a> to view Google's help files\
+				<img style='height:80px; float:right;' src='/img/icons/google_calendar.png' />\
+				\
+			</div><div id='apple_cal_information' class='cal_information' style='display:none'>\
+				<h4>Adding PA events to Google Calendar</h4>\
+				<p>There are just a few steps that you need to do which need doing from your iPad or iPhone So:\
+				<ol><li>Open the settings app</li>\
+				<li>On the left, open the \'Mail, Contacts, Calendars\'</li>\
+				<li>Tap \'Add Account\'</li>\
+				<li>Tap \'Add Subscribed Calendar\'</li>\
+				<li>Copy and paste the following URL into the \'Server\' field and click next</li>\
+				<li>Change any settings you with, then click save</li>\
+				</ol></p>\
+				<p style='text-align:center;'><strong><span id='display_URL' /></strong></p>\
+				<p>For more information click <a href='http://www.imore.com/how-subscribe-calendars-your-iphone-or-ipad' target='_blank'>here</a> to view other help files\
+				<img style='height:80px; float:right;' src='/img/icons/icloud.png' />\
+				\
+			</div><div id='imac_cal_information' class='cal_information' style='display:none'>\
+				<h4>Adding PA events to iCloud/iCal on your mac</h4>\
+				<p>There are just a few steps that you need to do, and must be done from an mac (not windows or a phone etc.). So:\
+				<ol><li>Open the Calendar app</li>\
+				<li>Go to file > New Calendar Subscription</li>\
+				<li>Copy the following URL into the \'Subscibe to\' box, change any settings you wish to and click OK</li>\
+				</ol></p>\
+				<p style='text-align:center;'><strong><span id='display_URL' /></strong></p>\
+				<p>For more information click <a href='https://support.apple.com/en-gb/HT202361' target='_blank'>here</a> to view Apple's help files\
+				<img style='height:80px; float:right;' src='/img/icons/icloud.png' /></p>\
+				\
+			</div><div id='outlook_cal_information' class='cal_information' style='display:none'>\
+				<h4>Adding PA events to Outlook Web App (ie. Live mail, hotmail, office365 etc.)</h4>\
+				<p>There are just a few steps that you need to do, and they can't be done from a phone (unless you can view the desktop site). So:\
+				<ol><li>Open the import page here <a href='https://calendar.live.com/import.aspx' target='_blank'>here</a> and sign in if you need to</li>\
+				<li>On the left, select subscribe</li>\
+				<li>Then copy the following URL into the \'Calendar URL\' box, choose a name, colour and charm, then click subscribe</li>\
+				</ol></p>\
+				<p style='text-align:center;'><strong><span id='display_URL' /></strong></p>\
+				<p>For more information click <a href='https://support.office.com/en-us/article/Import-or-subscribe-to-a-calendar-in-Outlook-com-or-Outlook-on-the-web-CFF1429C-5AF6-41EC-A5B4-74F2C278E98C?ui=en-US&rs=en-001&ad=US' target='_blank'>here</a> to view Microsoft's help files\
+				<img style='height:80px; float:right;' src='/img/icons/owa.png' />\
+				\
+			</div><div id='download_cal_information' class='cal_information' style='display:none'>\
+				<h4>Download PA events as iCal (.ics) file</h4>\
+				<p>This method does not have the auto-update that the other calendars do, but if you would like to download the events click below.</p>\
+				<p style='text-align:center;'><strong><a id='display_URL' /></strong></p>\
+				<p>This file can then be imported into many calendar applications\
+				<img style='height:80px; float:right;' src='/img/icons/download.png' /></p>\
+				\
+			</div>";
+			
+			vex.open({
+				content: html, 
+				contentCSS: {width: '70vw', 
+									"background-color":"#{% if society.societyType=="Theatrical" %}208744{% elseif society.societyType=="Music" %}2372b5{% else %}ffa126{% endif %}", 
+									"color":"#ffffff"},
+				afterOpen: function($vexContent) {
+					$("#subscribe_calendar").val($("#soc_select").val());
+					$("#subscription_method").change(function(e) {
+						$(".cal_information").each(function(index, element) {
+							$(element).css("display", "none");
+						});
+						
+						$("#" + $("#subscription_method").val()).css("display", "inline");
+					});
+					function updateURL() {
+						$("span[id=display_URL]").each(function(index, element) {
+							$(element).html("https://perform.susu.org{{ urlFor('pa_user_api_iCal', {'soc':society.slug }) }}");
+						});
+						$("a[id=display_URL]").each(function(index, element) {
+							$(element).attr("href", "{{ urlFor('pa_user_api_iCal', {'soc':society.slug }) }}");
+							$(element).attr("download", $("#subscribe_calendar option[value='{{ society.id }}']").text() + ".ics");
+							$(element).html("https://perform.susu.org{{ urlFor('pa_user_api_iCal', {'soc':society.slug }) }}");
+						});
+					}
+					$("#subscribe_calendar").change(updateURL);
+					updateURL();
+				}
+		  });
+			
+		}
+	</script>
+	
+	<style>
+		/* Just some custom bits for full calendar */
+		.fc-header-title h2 {
+			opacity: 0.8;
+			font-size: 20px;
+		}
+		
+		.fc-event{
+			cursor: pointer;
+		}
+		
+		.navbar, .pa-main-footer {
+		   display: none;
+		}
+		
+	</style>
+	
+	<script>
+	   $(function() {
+	      function noBg() {$("body, .pa-wrapper").css("background-color", "rgba(0,0,0,0)");}
+	     setTimeout(noBg, 1000);
+	     
+	   });
+	</script>
+
+</div>
+
+{# Standard PA footer #}
+{{ footer() }}

@@ -1,0 +1,35 @@
+/**
+ * @version		$Id: admin-ccboard.css 110 2009-04-26 07:59:21Z thomasv $
+ * @Project		ccBoard - Joomla! Bulletin Board Extension/Component
+ * @author 		Thomas Varghese 
+ * @package		ccBoard
+ * @copyright	Copyright (C) 2008-2009 codeclassic.org. All rights reserved.
+ * @license 	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2
+*/
+div.ccbgendiv		{ width:100%; margin:0px; padding:0px; }
+p.ccbheaderdesc		{ font-family: arial; font-size: 14px; color: gray;}
+td.ccbgeneralvalue	{ width:300px; }
+td.ccbgeneraldesc	{ font-family: verdana, arial; font-size: 12px; color: gray;}
+p.ccbsubheader		{ font-family: verdana, arial; font-size: 12px; color: gray;}
+p.ccbaboutdesc		{ font-family: verdana, arial; font-size: 10px; color: gray;}
+div.ccbusereditor	{ width: 400px; }
+
+/** Custom title icons **/
+.icon-48-ccboard		{ background-image: url( ./48-codeclassic.png); }
+.icon-48-configuration	{ background-image: url( ./config.png ); }
+.icon-48-category		{ background-image: url( ./category.png ); }
+.icon-48-cat_edit		{ background-image: url( ./category-edit.png ); }
+.icon-48-cat_add		{ background-image: url( ./category-add.png ); }
+.icon-48-forums			{ background-image: url( ./forums.png); }
+.icon-48-forum_edit		{ background-image: url( ./forum-edit.png ); }
+.icon-48-forum_add		{ background-image: url( ./forum-add.png ); }
+.icon-48-users			{ background-image: url( ./users.png ); }
+.icon-48-about			{ background-image: url( ./about.png); }
+.icon-48-useredit		{ background-image: url( ./user.png); }
+.icon-48-edit_css		{ background-image: url( ./editcss.png); }
+.icon-48-ranks			{ background-image: url( ./ranks.png); }
+.icon-48-tools			{ background-image: url( ./tools.png); }
+.icon-48-rankadd		{ background-image: url( ./rank_add.png); }
+.icon-48-rankedit		{ background-image: url( ./rank-edit.png); }
+
+ 

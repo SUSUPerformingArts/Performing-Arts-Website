@@ -1,0 +1,172 @@
+{
+    "19": {
+        "name": "SU Phil",
+        "members": [
+            {
+                "position": "President",
+                "name": "Charles Gooderham",
+                "username": "cbg1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Lucy-Anne Taylor",
+                "username": "lct1g13"
+            },
+            {
+                "position": "Librarian",
+                "name": "Sarah How",
+                "username": "sh14g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Rosie Sheppard",
+                "username": "rss1e15"
+            },
+            {
+                "position": "Social Sec",
+                "name": "Marta Ross",
+                "username": "mr10g15"
+            }
+        ]
+    },
+    "25": {
+        "name": "StageSoc",
+        "members": [
+            {
+                "position": "President",
+                "name": "Edmund King",
+                "username": "ek7g14"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Joe Lynch",
+                "username": "jl16g15"
+            },
+            {
+                "position": "Secretary",
+                "name": "Patrick Edwards",
+                "username": "pe2g14"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "unfilled",
+                "username": "stagesoc"
+            },
+            {
+                "position": "Training Officer",
+                "name": "unfilled",
+                "username": "stagesoc"
+            },
+            {
+                "position": "Annex Officer",
+                "name": "Laurie Kirkcaldy",
+                "username": "ljk1g14"
+            },
+            {
+                "position": "Webmaster",
+                "name": "George Tucker",
+                "username": "gkjt1g15"
+            },
+            {
+                "position": "Ordinary member",
+                "name": "Josh Curry",
+                "username": "jsc3g14"
+            },
+            {
+                "position": "Ordinary member",
+                "name": "Phoebe Lewis",
+                "username": "psl1g14"
+            }
+        ]
+    },
+    "16": {
+        "name": "LOpSoc",
+        "members": [
+            {
+                "position": "Chair",
+                "name": "Amy Wardle",
+                "username": "alw1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Abigail Smith",
+                "username": "abs1g13"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Barnaby Wilson",
+                "username": "bw7g13"
+            },
+            {
+                "position": "Publicity",
+                "name": "Amber Courage",
+                "username": "ac28g15"
+            },
+            {
+                "position": "Publicity",
+                "name": "Jamie Hizzett",
+                "username": "jlh2g14"
+            },
+            {
+                "position": "Webmaster",
+                "name": "Renata Stella",
+                "username": "rsk1e13"
+            },
+            {
+                "position": "Archivist",
+                "name": "Ben Walker",
+                "username": "bjw1g14"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Lucia Watts",
+                "username": "lzw1g13"
+            },
+            {
+                "position": "Tours Officer",
+                "name": "Rhiannon Creffield",
+                "username": "rc5g10"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "David Child",
+                "username": "dac1g15"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "Katie Giles",
+                "username": "kg6g14"
+            }
+        ]
+    },
+    "8": {
+        "name": "Circus Society",
+        "members": [
+            {
+                "position": "President",
+                "name": "Jacob Brown",
+                "username": "jb21g14"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Mark Powell",
+                "username": "map1g14"
+            },
+            {
+                "position": "Events Manager",
+                "name": "Eleanor Dodd",
+                "username": "ed7g11"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Hannah Baron",
+                "username": "hb9g14"
+            },
+            {
+                "position": "Kit Secretary",
+                "name": "Alexander Guess",
+                "username": "ajg1g15"
+            }
+        ]
+    }
+}

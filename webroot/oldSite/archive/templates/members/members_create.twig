@@ -1,0 +1,43 @@
+{# Call the header function to create the standard PA header #}
+{{ header() }}
+
+
+   <div class="well well-pa">
+        <h1>Create new member</h1>
+   </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+        <form class="member-create-form" id="member-create-form" autocomplete="off" action="" method="post">
+
+            <p class="lead">
+                Please make sure you have completely checked if this member already exists before creating a new one. 
+                <br>
+                You can search <a href="{{ urlFor("members") }}" target="_blank">here</a>
+            </p>
+
+            {#<div class="form-group">
+                <label for="member_name_first">First Name</label>
+                <input type="text" id="member_name_first" name="member_name_first" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="member_name_last">Last Name</label>
+                <input type="text" id="member_name_last" name="member_name_last" class="form-control" required>
+            </div>#}
+
+            <div class="form-group">
+                <label for="member_username">University username</label>
+                {#<div><small>Please add if known, as it makes the identification process much easier!!</small></div>#}
+                <input type="text" id="member_username" name="member_username" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create User</button>
+        </form>
+    </div>
+
+
+
+{# Standard PA footer #}
+{{ footer() }}

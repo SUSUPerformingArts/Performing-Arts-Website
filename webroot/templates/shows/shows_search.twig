@@ -1,0 +1,17 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Seach all shows") }}
+{{ fancySubHeader(0, "Search Performing Arts Shows") }}
+
+    <div class="well well-pa">
+        {% 
+            include "includes/shows_search.twig" with
+            { "ms" :  {
+                "autosearch" : true,
+                "wrapform" : true,
+                "samePage" : true
+            }} 
+        %}
+    </div>
+
+{# Standard PA footer #}
+{{ footer() }}

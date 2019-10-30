@@ -1,0 +1,55 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Shows by year") }}
+
+
+    <div class="well well-pa">
+        <h1>Performing Arts Shows
+            {% if canAdd %}
+                <a class="btn btn-primary" href="{{ urlFor("show_add") }}">Add show</a>
+            {% endif %}</h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+        <div class="archive-block shows-block upcoming-shows">
+        <h2>Years with data</h2>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr><th>Year</th><th>Societies</th><th>Shows</th></tr>
+                </thead>
+                <tbody>
+                    {% for year in years %}
+                        <tr>
+                            <td><a href="{{ urlFor("shows_year", { "year" : year.academicYear }) }}">{{ year.academicYear }}</a></td>
+                            <td>{{ year.societyNum }}</td>
+                            <td>{{ year.showNum }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+<script>
+window.addEventListener("load", (function(){
+    $("#society-type-filter").on("change", function(e){
+        var id = $(this.selectedOptions[0]).attr("name");
+
+        if(id == 0){
+            $(".upcoming-show").show();
+        }else{
+            // Select all options
+            $(".upcoming-show:not(.society-type-" + id + ")").hide();
+            $(".upcoming-show.society-type-" + id).show();
+        }
+    });
+}));
+</script>
+
+{# Standard PA footer #}
+{{ footer() }}

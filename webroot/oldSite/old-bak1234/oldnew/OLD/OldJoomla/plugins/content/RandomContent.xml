@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="content">
+	<name>Content - RandomContent</name>
+	<author>Joe Guo</author>
+	<creationDate>18 May 2008</creationDate>
+
+	<copyright>GNU/GPLv2</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>guohongqiao@gmail.com</authorEmail>
+	<authorUrl>http://www.eboga.org</authorUrl>
+	<version>1.1</version>
+    <description>
+    RandomContent-This Plugin shows a list of published items randomly of the same category as what the user browse.
+	</description>
+	<files>
+		<filename plugin="RandomContent">RandomContent.php</filename>
+	</files>	
+<params>
+   <param name="tableHeader" type="text" default="Random Content" label="Table Header" description="Show at the table header, default is Random Content" />
+   <param name="Exclude_Category_Ids" type="text" default="" label="Exclude category ids" description="The Articles in the category will not show random content, Seperator by comma ','."/>
+   <param name="Category_Ids" type="text" default="" label="Category ids" description="The random articles will only from the categories, Seperator by comma ','."/>
+   <param name="count" type="text" default="10" label="Count" description="The number of items to display (default 10)" />
+   <param name="CssClass" type="text" default="random" label="Css Class" description="The css class" />
+</params>
+</install>

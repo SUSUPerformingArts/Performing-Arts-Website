@@ -1,0 +1,16 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Help") }}
+
+	<div class="well well-pa">
+	    <h1>Help</h1>
+	</div>
+
+	{% include "includes/messages.twig" %}
+
+	<div>
+		{{ help|markdown }}
+	</div>
+
+
+{# Standard PA footer #}
+{{ footer() }}

@@ -1,0 +1,112 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Members :: Edit") }}
+
+
+{% include "includes/messages.twig" %}
+
+<form class="user-edit-form" id="user-edit-form" autocomplete="off" action="{% if urlRedirect %}?continue={{ urlRedirect }}{% endif %}" method="post" enctype="multipart/form-data">
+
+    <div class="well well-pa form-inline">
+        <h1><input type="text" class="form-control clear-textbox tb-large" id="user_edit_pname" name="user_pname" placeholder="{{ user.firstName }}" value="{{ user.preferredName }}"> {{ user.lastName }} ({{ user.iSolutionsUsername }})</h1>
+    </div>
+
+
+    <div class="well well-pa">
+        <div class="row">
+            <div class="col-md-6 col-md-push-6">
+                <div class="form-group">
+                    <label for="user_image">Upload new profile picture: </label>
+                    <div class="input-group">
+                        <input type="file" name="user_image" id="user_image" class="form-control" accept="image/gif, image/jpeg, image/jpg, image/png">
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                        </span>
+                    </div>
+                    
+                    <div class="form-inline">
+                        <input type="checkbox" name="user_image-delete" id="user_image-delete" class="form-control">
+                        <label for="user_image-delete">Delete current image? </label>
+                    </div>
+                </div>
+
+                <div class="form-group form-inline">
+
+                </div>
+                
+                <div>
+                    <img src="{{ images.profile }}" alt="{{ member.fullName }}" data-orgsrc="{{ images.profile }}" id="user_image_display" class="img-responsive center-block">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-md-pull-6">
+                <div class="archive-block member-block member-bio">
+                    <h2>About you</h2>
+                    <div>
+                        <p>Add styles and links to your bio using <a href="{{ urlFor("help_main") ~ "#markdown"}}">Markdown</a></p>
+                        <textarea class="form-control" id="user_bio" name="user_bio" placeholder="About you" rows="8">{{ user.bio }}</textarea>
+                    </div>
+                </div>
+
+                <div class="archive-block member-block member-societies">
+                    <h2>
+                        Society Membership
+                        <div class="subtle-text">(You can only add society membership for the current year)</div>
+                    </h2>
+                    {% if currentMembership|length > 0 %}
+                        <ul class="list-group" style="color: black">
+                            {% for soc in currentMembership %}
+                                <li class="list-group-item"><span>
+                                    <a href="{{ urlFor("society", { "society" : soc.societySlug }) }}">{{ soc.societyName }}</a> ({{ soc.year }})
+                                    {% if soc.committeePositionId %}
+                                         ({{ soc.committeePosition }})
+                                    {% elseif soc.year >= academicYear %}
+                                        <button type="button" class="btn btn-danger btn-sm btn_delete_soc"><span class="glyphicon glyphicon-remove"></span></button>
+                                    {% endif %}
+                                </span>{% if soc.year >= academicYear %}<input type="hidden" name="user_socs_delete[{{ soc.id }}]" value="false">{% endif %}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <div class="hidden" id="socs_add_base">
+                        <div class="form-group" style="width: 50%;">
+                            <select class="form-control" name="user_socs_add[]">
+                                <option selected></option>
+                                {% for type, socs in allSocs %}
+                                    <optgroup label="{{ type }}">
+                                        {% for soc in socs %}
+                                            <option value="{{ soc.id }}">{{ soc.name }}</option>
+                                        {% endfor %}
+                                    </optgroup>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div id="socs_add_block">
+
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btn_add_soc">New society</button>
+                </div>
+
+                {# Do this later maybe, it is complicated
+                <div class="archive-block member-block member-externalProfiles">
+                    <h2>Other PA profiles</h2>
+                    <ul style="list-style: none;">
+                        {% for soc in currentMembership %}
+                            {% if soc.profileBaseUrl and  soc.societyProfileId %}
+                                <li class="form-inline">
+                                    {{ soc.profileBaseUrl }} <input type="text" class="form-control clear-textbox" name="user_extern[soc.id]" value="{{ soc.societyProfileId }}">
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                #}
+
+                <button type="submit" class="btn btn-pa">Update Profile</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+{# PA footer with extra JavaScript #}
+{{ footer({"1" : "/js/member_edit.js"}) }}

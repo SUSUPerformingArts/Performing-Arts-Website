@@ -1,0 +1,992 @@
+{
+    "19": {
+        "name": "SU Phil",
+        "members": [
+            {
+                "position": "President",
+                "name": "Charles Gooderham",
+                "username": "cbg1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Lucy-Anne Taylor",
+                "username": "lct1g13"
+            },
+            {
+                "position": "Librarian",
+                "name": "Sarah How",
+                "username": "sh14g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Rosie Sheppard",
+                "username": "rss1e15"
+            },
+            {
+                "position": "Social Sec",
+                "name": "Marta Ross",
+                "username": "mr10g15"
+            }
+        ]
+    },
+    "25": {
+        "name": "StageSoc",
+        "members": [
+            {
+                "position": "President",
+                "name": "Edmund King",
+                "username": "ek7g14"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Joe Lynch",
+                "username": "jl16g15"
+            },
+            {
+                "position": "Secretary",
+                "name": "Patrick Edwards",
+                "username": "pe2g14"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "unfilled",
+                "username": "stagesoc"
+            },
+            {
+                "position": "Training Officer",
+                "name": "unfilled",
+                "username": "stagesoc"
+            },
+            {
+                "position": "Annex Officer",
+                "name": "Laurie Kirkcaldy",
+                "username": "ljk1g14"
+            },
+            {
+                "position": "Webmaster",
+                "name": "George Tucker",
+                "username": "gkjt1g15"
+            },
+            {
+                "position": "Ordinary member",
+                "name": "Josh Curry",
+                "username": "jsc3g14"
+            },
+            {
+                "position": "Ordinary member",
+                "name": "Phoebe Lewis",
+                "username": "psl1g14"
+            }
+        ]
+    },
+    "16": {
+        "name": "LOpSoc",
+        "members": [
+            {
+                "position": "Chair",
+                "name": "Amy Wardle",
+                "username": "alw1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Abigail Smith",
+                "username": "abs1g13"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Barnaby Wilson",
+                "username": "bw7g13"
+            },
+            {
+                "position": "Publicity",
+                "name": "Amber Courage",
+                "username": "ac28g15"
+            },
+            {
+                "position": "Publicity",
+                "name": "Jamie Hizzett",
+                "username": "jlh2g14"
+            },
+            {
+                "position": "Webmaster",
+                "name": "Renata Stella",
+                "username": "rsk1e13"
+            },
+            {
+                "position": "Archivist",
+                "name": "Ben Walker",
+                "username": "bjw1g14"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Lucia Watts",
+                "username": "lzw1g13"
+            },
+            {
+                "position": "Tours Officer",
+                "name": "Rhiannon Creffield",
+                "username": "rc5g10"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "David Child",
+                "username": "dac1g15"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "Katie Giles",
+                "username": "kg6g14"
+            }
+        ]
+    },
+    "8": {
+        "name": "Circus Society",
+        "members": [
+            {
+                "position": "President",
+                "name": "Jacob Brown",
+                "username": "jb21g14"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Mark Powell",
+                "username": "map1g14"
+            },
+            {
+                "position": "Events Manager",
+                "name": "Eleanor Dodd",
+                "username": "ed7g11"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Hannah Baron",
+                "username": "hb9g14"
+            },
+            {
+                "position": "Kit Secretary",
+                "name": "Alexander Guess",
+                "username": "ajg1g15"
+            }
+        ]
+    },
+    "10": {
+        "name": "Contemporary Dance",
+        "members": [
+            {
+                "position": "President",
+                "name": "Alice Ainsworth",
+                "username": "ala1g14"
+            },
+            {
+                "position": "Vice President",
+                "name": "Sophie Drew",
+                "username": "smd1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "David Sidebottom",
+                "username": "dbs1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Catherine Miller",
+                "username": "cm7g15"
+            },
+            {
+                "position": "Social secretary",
+                "name": "Tiffany To",
+                "username": "tt4g14"
+            }
+        ]
+    },
+    "21": {
+        "name": "Showstoppers",
+        "members": [
+            {
+                "position": "President",
+                "name": "Lydia Edge",
+                "username": "le2g13"
+            },
+            {
+                "position": "Vice President",
+                "name": "Charlie Taylor",
+                "username": "crt1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Jamie Martin",
+                "username": "jpam1g14"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Angharad Morgan",
+                "username": "alm2g13"
+            },
+            {
+                "position": "Web and Promotions Officer",
+                "name": "Charlie House",
+                "username": "ch20g13"
+            },
+            {
+                "position": "Development Officer",
+                "name": "Gem Tunley",
+                "username": "gct2g14"
+            },
+            {
+                "position": "Development Officer",
+                "name": "Bella Norris",
+                "username": "iln1g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Ellen Fleming",
+                "username": "ebf1g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "David Miller",
+                "username": "dm11g15"
+            },
+            {
+                "position": "Tours Officer",
+                "name": "Andy Banks",
+                "username": "ajb2g13"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "Joe Barr",
+                "username": "jb18g14"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "Elliot Murray-Flint",
+                "username": "ejm1g14"
+            }
+        ]
+    },
+    "29": {
+        "name": "Theatre Group",
+        "members": [
+            {
+                "position": "President",
+                "name": "Emily Bradshaw",
+                "username": "eb7g14"
+            },
+            {
+                "position": "Vice President",
+                "name": "Charlie Randall",
+                "username": "cwr2g15"
+            },
+            {
+                "position": "Secretary",
+                "name": "Joshua Vaatstra",
+                "username": "jlv1g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Rob Bradshaw",
+                "username": "rb14g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Flora Whitmarsh",
+                "username": "fkbw1g15"
+            },
+            {
+                "position": "Publicity Officer",
+                "name": "Ilsa Jones",
+                "username": "ijlj1g15"
+            },
+            {
+                "position": "Tours Officer",
+                "name": "Phoebe Judd",
+                "username": "pj2g14"
+            },
+            {
+                "position": "Web Master",
+                "name": "William Shere",
+                "username": "whws1g14"
+            },
+            {
+                "position": "Workshops Officer",
+                "name": "Rachel Harden",
+                "username": "rwh2g15"
+            },
+            {
+                "position": "Workshop Officer",
+                "name": "Samena Brunning",
+                "username": "sb26g15"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "Kimberly Pearson",
+                "username": "kap1g14"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "Felicia de Angeli",
+                "username": "fda1g13"
+            }
+        ]
+    },
+    "2": {
+        "name": "Ballroom and Latin",
+        "members": [
+            {
+                "position": "Vice President",
+                "name": "Louis Iveson",
+                "username": "L.Iveson"
+            },
+            {
+                "position": "Secretary",
+                "name": "Bart Jennings",
+                "username": "bpj1g14"
+            },
+            {
+                "position": "Treasurer",
+                "name": "George Simmons",
+                "username": "ggs1e14"
+            },
+            {
+                "position": "Male Team Captain",
+                "name": "Tom Vartdal",
+                "username": "tv1g14"
+            },
+            {
+                "position": "Female Team Captain",
+                "name": "Hannah Ward-Glenton",
+                "username": "hswg1g15"
+            },
+            {
+                "position": "Social Secrtary",
+                "name": "Sam Hartwell",
+                "username": "sh23g13"
+            },
+            {
+                "position": "Publicity Officer",
+                "name": "Hugo Manning",
+                "username": "hm2g15"
+            },
+            {
+                "position": "Standing Member",
+                "name": "Dougie Annesley",
+                "username": "da1g14"
+            },
+            {
+                "position": "President",
+                "name": "Emma Collins",
+                "username": "elc1g14"
+            }
+        ]
+    },
+    "38": {
+        "name": "Kandyan and Bharata Natyam",
+        "members": [
+            {
+                "position": "President",
+                "name": "Ameeta Kumar",
+                "username": "ak12g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Minuri Dassanayake",
+                "username": "mnd2g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Shalaina Jannoo",
+                "username": "sdbj1g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Ravi Jayanti",
+                "username": "rj6g13"
+            },
+            {
+                "position": "Bharatanatyam Dance Captain",
+                "name": "Maiurei Sivachelvam",
+                "username": "ms28g15"
+            },
+            {
+                "position": "Kandyan Dance Captain",
+                "name": "Aashni Shah",
+                "username": "abs5g14"
+            }
+        ]
+    },
+    "13": {
+        "name": "Jazz Dance",
+        "members": [
+            {
+                "position": "President",
+                "name": "Charlotte Walker",
+                "username": "caw5g14"
+            },
+            {
+                "position": "Vice President",
+                "name": "Brittany Fuller",
+                "username": "bf4g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Charlotte Christie",
+                "username": "cc11g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Eleanor Ruck",
+                "username": "er3g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Jacqueline Man",
+                "username": "sjm6g15"
+            },
+            {
+                "position": "Advanced Captain",
+                "name": "Bethany Cox",
+                "username": "bvc1g14"
+            },
+            {
+                "position": "Novice Captain",
+                "name": "Claire Mason",
+                "username": "chm1g15"
+            }
+        ]
+    },
+    "34": {
+        "name": "Piano Soc",
+        "members": [
+            {
+                "position": "President",
+                "name": "Louis Collins",
+                "username": "lhjc1g15"
+            },
+            {
+                "position": "Vice President",
+                "name": "Patrick Edwards",
+                "username": "pe2g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Yi Ch'ng",
+                "username": "yc7g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Austin Lovell",
+                "username": "al26g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Kareem Marsh-Henry",
+                "username": "kmh1g15"
+            }
+        ]
+    },
+    "35": {
+        "name": "Melodics",
+        "members": [
+            {
+                "position": "President",
+                "name": "Yvette Mepham",
+                "username": "ym10g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Andy Lau",
+                "username": "al8g14"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Hebe Neate-Clegg",
+                "username": "hanc1g13"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Tim Lutton",
+                "username": "tl7g14"
+            },
+            {
+                "position": "Musical Director",
+                "name": "Dylan Grey",
+                "username": "dg9g14"
+            },
+            {
+                "position": "Health and Safety Officer",
+                "name": "Mikey Tagg",
+                "username": "mht3g14"
+            }
+        ]
+    },
+    "32": {
+        "name": "Tap Dance",
+        "members": [
+            {
+                "position": "President",
+                "name": "Aimee Haywood",
+                "username": "ach2g14"
+            },
+            {
+                "position": "Vice President",
+                "name": "Scarlet Taylor-Waller",
+                "username": "stw1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Sophie Onn",
+                "username": "sfo1g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Leyla Elsey",
+                "username": "le1g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Muriel Courtney",
+                "username": "mc1g15"
+            },
+            {
+                "position": "Advanced Dance Captain",
+                "name": "Chloe Taylor",
+                "username": "cat1g15"
+            },
+            {
+                "position": "Novice Dance Captain",
+                "name": "Emily Jackson",
+                "username": "ecaj1g14"
+            }
+        ]
+    },
+    "9": {
+        "name": "Concert Band",
+        "members": [
+            {
+                "position": "President",
+                "name": "Lucy-Anne Taylor",
+                "username": "lct1g13"
+            },
+            {
+                "position": "Vice President",
+                "name": "Tony Hart",
+                "username": "ah21g10"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Philly Broadbent",
+                "username": "pkb1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Karen Mortby",
+                "username": "kvm1g14"
+            },
+            {
+                "position": "Librarian",
+                "name": "James Ellicott",
+                "username": "je10g15"
+            },
+            {
+                "position": "Communications Secretary",
+                "name": "Ellie Bristow",
+                "username": "elb1g14"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Matthew Brooks",
+                "username": "mb13g14"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "Daniel Wilmot",
+                "username": "dbw1g15"
+            }
+        ]
+    },
+    "1": {
+        "name": "Ballet Society",
+        "members": [
+            {
+                "position": "President",
+                "name": "Amy Wallington",
+                "username": "ajfw1g13"
+            },
+            {
+                "position": "Vice President",
+                "name": "Rosalind Whitehair",
+                "username": "rw11g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Laura Wallace",
+                "username": "lcw2g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Angus Clark",
+                "username": "ac14g13"
+            },
+            {
+                "position": "Social secretary",
+                "name": "Kallie Townsend",
+                "username": "klkt1g15"
+            }
+        ]
+    },
+    "12": {
+        "name": "Folk Soc",
+        "members": [
+            {
+                "position": "President",
+                "name": "Chris Hartland",
+                "username": "cph2g15"
+            },
+            {
+                "position": "Vice President",
+                "name": "Gemma Stiles",
+                "username": "gls1g14"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Emily Watt",
+                "username": "ecw2g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Rob Knott",
+                "username": "rgk1g15"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "Douglas Morgan",
+                "username": "dm3g14"
+            }
+        ]
+    },
+    "28": {
+        "name": "Comedy Soc",
+        "members": [
+            {
+                "position": "President",
+                "name": "Sean Gilbody",
+                "username": "sg3g14"
+            },
+            {
+                "position": "Vice President",
+                "name": "Robbie Smith",
+                "username": "rgs1g14"
+            },
+            {
+                "position": "Ciaran Madeley",
+                "name": "Secretary",
+                "username": "ccm1g15"
+            },
+            {
+                "position": "Philip Archer-Lock",
+                "name": "Treasurer",
+                "username": "paal1g14"
+            },
+            {
+                "position": "Henry Lane",
+                "name": "Social Secretary",
+                "username": "hl11g14"
+            },
+            {
+                "position": "Paige Williams",
+                "name": "Publicity Officer",
+                "username": "pw6g15"
+            }
+        ]
+    },
+    "17": {
+        "name": "Magic Soc",
+        "members": [
+            {
+                "position": "President",
+                "name": "Tom Phipps",
+                "username": "tp13g15@soton.ac.uk"
+            },
+            {
+                "position": "Vice President",
+                "name": "Jamie Kelly",
+                "username": "jk21g14@soton.ac.uk"
+            },
+            {
+                "position": "Secretary",
+                "name": "James Easton",
+                "username": "jwe1g13@soton.ac.uk"
+            },
+            {
+                "position": "Secretary",
+                "name": "Natasha Hazel Celeste Smith",
+                "username": "nhcs1g13@soton.ac.uk"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Georgina Hollands",
+                "username": "gah1g13@soton.ac.uk"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Alex Hewitt",
+                "username": "adh1g14@soton.ac.uk"
+            }
+        ]
+    },
+    "22": {
+        "name": "Sinfonietta",
+        "members": [
+            {
+                "position": "President",
+                "name": "Katherine Roberts",
+                "username": "kr4g14"
+            },
+            {
+                "position": "Vice President",
+                "name": "Serena Evans",
+                "username": "sae1g15"
+            },
+            {
+                "position": "Librarian",
+                "name": "Hannah Brierley",
+                "username": "hnb1g14"
+            },
+            {
+                "position": "Tour Secretary",
+                "name": "Lewis Savory",
+                "username": "ls10g15"
+            },
+            {
+                "position": "Secretary",
+                "name": "Celia Diaz Brito",
+                "username": "cdb1g14"
+            },
+            {
+                "position": "Treasurer",
+                "name": "James Abrams",
+                "username": "ja11g14"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Frazer Pearce",
+                "username": "fhp1g15"
+            },
+            {
+                "position": "Orchestral Manager",
+                "name": "Dan Keen",
+                "username": "dk7g15"
+            },
+            {
+                "position": "Assistant Conductor",
+                "name": "Joci Olexa",
+                "username": "jo2g14"
+            },
+            {
+                "position": "Publicity Officer",
+                "name": "Joe Roberts",
+                "username": "jmsr1g14"
+            }
+        ]
+    },
+    "40": {
+        "name": "Chamber Opera Society",
+        "members": [
+            {
+                "position": "President",
+                "name": "Grace Curtis",
+                "username": "gec1g15"
+            },
+            {
+                "position": "Secretary",
+                "name": "Lucy Grant",
+                "username": "lffg1g15"
+            },
+            {
+                "position": "Ordinary Member",
+                "name": "Sabrina Beever",
+                "username": "sab5g15"
+            },
+            {
+                "position": "Librarian",
+                "name": "Charlie May Hawkins",
+                "username": "cmh2g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "George Smith",
+                "username": "gas1g13"
+            },
+            {
+                "position": "Publicity officer",
+                "name": "Nicola Roberts",
+                "username": "njr1g14"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Benjamin Cousins",
+                "username": "bc1g14"
+            }
+        ]
+    },
+    "7": {
+        "name": "Chamber Choir",
+        "members": [
+            {
+                "position": "President",
+                "name": "Hugh Alabaster",
+                "username": "haa3g13"
+            },
+            {
+                "position": "Secretary",
+                "name": "Tom Gratton",
+                "username": "tg2g14"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Lucy-Kate Chaudhuri",
+                "username": "lc5g15"
+            },
+            {
+                "position": "PR\/Webmaster",
+                "name": "Hannah Donald",
+                "username": "h.k.donald"
+            },
+            {
+                "position": "Tour Secretary",
+                "name": "Alexander Atack",
+                "username": "aa7g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Elliott Titcombe",
+                "username": "et7g14"
+            }
+        ]
+    },
+    "20": {
+        "name": "Salsa Soc",
+        "members": [
+            {
+                "position": "President",
+                "name": "Lizzie Chick",
+                "username": "ejc2g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Anna Zatorska",
+                "username": "amz1g13"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Guillermo Racero",
+                "username": "gar1g13"
+            },
+            {
+                "position": "Social Sec",
+                "name": "Daisy Combe",
+                "username": "dc2g14"
+            },
+            {
+                "position": "Health and Safety",
+                "name": "Sarah Boazman",
+                "username": "sjb3g14"
+            },
+            {
+                "position": "Advertising and Promotions",
+                "name": "Rodrigo Gil Marin",
+                "username": "rgm2g13"
+            },
+            {
+                "position": "Team Captain",
+                "name": "Alexander Magnusson",
+                "username": "am31g13"
+            },
+            {
+                "position": "Fresher's Rep",
+                "name": "Kyle Ogata",
+                "username": "kmlo1g15"
+            },
+            {
+                "position": "Committee Member",
+                "name": "Bogdan Lazarescu",
+                "username": "bl10g15"
+            },
+            {
+                "position": "Committee Member",
+                "name": "Daniela Milhai",
+                "username": "adm1g15"
+            }
+        ]
+    },
+    "15": {
+        "name": "Jazzmanix",
+        "members": [
+            {
+                "position": "President",
+                "name": "Leafy Hoad",
+                "username": "ah5g13"
+            },
+            {
+                "position": "Vice President Annual Events",
+                "name": "Emma Rowlands",
+                "username": "er3g13"
+            },
+            {
+                "position": "Vice President External Engagements",
+                "name": "Catherine Thorpe",
+                "username": "cet1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Sarah Birch",
+                "username": "sb19g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Mari Aanesen",
+                "username": "ma4g15"
+            },
+            {
+                "position": "Publicity and Marketing Secretary",
+                "name": "Helena Smyth",
+                "username": "hes1g15"
+            },
+            {
+                "position": "Social Secretary",
+                "name": "Rozz Norgate",
+                "username": "rn4g13"
+            },
+            {
+                "position": "Online Media Secretary",
+                "name": "TBC",
+                "username": "TBC"
+            },
+            {
+                "position": "Tour Secretary",
+                "name": "TBC",
+                "username": "TBC"
+            },
+            {
+                "position": "Musical Director",
+                "name": "TBC",
+                "username": "TBC"
+            },
+            {
+                "position": "Assistant Musical Director",
+                "name": "Zainab Ottun",
+                "username": "zomo1g14"
+            },
+            {
+                "position": "Assistant Musical Director",
+                "name": "Natasha Bennetts",
+                "username": "nsb2g15"
+            },
+            {
+                "position": "Assistant Musical Director",
+                "name": "Kenni Alli",
+                "username": "kea1g14"
+            }
+        ]
+    }
+}

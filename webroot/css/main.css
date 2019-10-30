@@ -1,0 +1,763 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,900,900i');
+
+body {
+    font-family: 'Lato', sans-serif, "museo-sans-1","museo-sans-2";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    background-color: #111111;
+    max-width:100vw;
+    overflow-x: hidden;
+}
+
+.well > * {
+	color: #ffffff;
+}
+
+.well select, .well option, .well input {
+	color: #000000;
+}
+
+
+
+.monospace {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.pa-main-content {
+    /*min-height: 300px;*/
+}
+.pa-wrapper {
+    padding-top: 70px;
+    background-color: #f7e6f6; /* old colour 3c065a */
+}
+
+.row.text-center > div {
+    display: inline-block;
+    float: none;
+}
+
+/* Make the footer large */
+.pa-main-footer {
+    width: 100%;
+    padding: 2em 0px;
+    margin-top: 0px;
+    border-top: 1px solid #999999;
+
+    background-color: #1b1b1b;
+    background-image: -moz-linear-gradient(top, #222222, #111111);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+    background-image: -webkit-linear-gradient(top, #222222, #111111);
+    background-image: -o-linear-gradient(top, #222222, #111111);
+    background-image: linear-gradient(to bottom, #222222, #111111);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+}
+
+.pa-main-footer a {
+    color: #9d9d9d;
+}
+.pa-main-footer a:hover {
+    color: white;
+}
+
+.pa-main-footer ul {
+    list-style: none;
+    padding-left: 40px;
+}
+
+/* Multiple column text */
+@media (min-width: 600px) {
+  .autoCols {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 40px;
+    -moz-column-gap: 40px;
+    column-gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .autoCols {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}
+
+/* Media adjustment for the top body gutter (this is due to the navbar doubling in height for "small" bootstrap devices) */
+@media(min-width: 768px) and (max-width: 991px){
+    .pa-wrapper {
+        padding-top: 120px;
+    }
+    a.anchor {
+        top: -120px !important;
+    }
+}
+
+/* Required for the snazzy PA card transition effect, to be removed maybe */
+.st1 {
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 0.6;
+    stroke-miterlimit: 10;
+    display: none;
+}
+
+a {
+    color: #e2e2e2;
+}
+a:hover {
+    color: #6222f0;
+    text-decoration: none;
+}
+a.anchor {
+    display: block;
+    visibility: hidden;
+    position: relative;
+    top: -70px;
+}
+a.white-link {
+    color: #ffffff;
+}
+a.white-link.white-link-hover:hover {
+    color: #ffffff;
+}
+
+/* New welcome page */
+div.welcome {
+  height: calc(100vh - 48px);
+  width: 100%;
+  background-image: url("/img/logos/pa_bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+a.welcome_button {
+  border-color: #ffffff;
+  border-width: 1px;
+  background-color: rgba(255,255,255,0.2);
+  transition: background-color 0.25s ease;
+  font-size: 20px;
+}
+
+a.welcome_button:hover {
+  background-color: rgba(255,255,255,0.4);
+  color: #ffffff;
+}
+
+div.welcome .btn.music {
+  border-color: #ffffff;
+  border-width: 1px;
+  background-color: rgba(83,152,209,0.8);
+  transition: background-color 0.25s ease;
+  font-size: 20px;
+}
+
+div.welcome .btn.music:hover {
+  background-color: rgba(83,152,209,1);
+  color: #ffffff;
+}
+
+div.welcome .btn.theatrical {
+  border-color: #ffffff;
+  border-width: 1px;
+  background-color: rgba(94,145,118,0.8);
+  transition: background-color 0.25s ease;
+  font-size: 20px;
+}
+
+div.welcome .btn.theatrical:hover {
+  background-color: rgba(94,145,118,1);
+  color: #ffffff;
+}
+
+div.welcome .btn.dance {
+  border-color: #ffffff;
+  border-width: 1px;
+  background-color: rgba(219,164,83,0.8);
+  transition: background-color 0.25s ease;
+  font-size: 20px;
+}
+
+div.welcome .btn.dance:hover {
+  background-color: rgba(219,164,83,1);
+  color: #ffffff;
+}
+
+.jumbotron img {
+    margin: auto;
+}
+
+hr.hr-smaller{
+    width: 75%;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+/* Committee page */
+.img-committee{
+    width: 60%;
+}
+
+/* White links */
+.committee a {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #4f4f4f; /* old 6222f0 */
+}
+
+.committee .committee-member-container {
+    margin-bottom: 30px;
+}
+
+/* Socs pages */
+.soc-block {
+    margin-bottom: 50px;
+}
+.soc-contact {
+    margin-top: 10px;
+}
+.soc-contact-url {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    border-top: 1px solid #636363; /* old 3c065a*/
+    padding: 5px;
+}
+.soc-main-contact .soc-contact-url {
+    padding: 10px 5px;
+}
+.soc-main-description {
+    margin-bottom: 10px;
+}
+
+.soc-logo {
+    max-height: 2em;
+}
+
+.soc-contact-url img {
+    width: 25px;
+}
+
+.soc-block>h3 {
+    min-height: 2em;
+}
+
+.soc-block .soc-description {
+    height: 13em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin-bottom: 10px;
+}
+
+/* Custom bootstrap additions */
+/* Navbar colours */
+.navbar-inverse {
+    background-color: #301d2f;
+    background-image: -moz-linear-gradient(top, #4c2c4a, #301d2f);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4c2c4a), to(#301d2f));
+    background-image: -webkit-linear-gradient(top, #4c2c4a, #301d2f);
+    background-image: -o-linear-gradient(top, #4c2c4a, #301d2f);
+    background-image: linear-gradient(to bottom, #4c2c4a, #301d2f);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+    /*border-color: #999999;*/
+	border: none;
+}
+.navbar-inverse .navbar-nav>li>a {
+	color: #d3d3d3;
+}
+.pa.navbar-inverse .navbar-nav>.open>a, .pa.navbar-inverse .navbar-nav>.open>a:focus, .pa.navbar-inverse .navbar-nav>.open>a:hover {
+   background-color: #301d2f;
+}
+.theatrical.navbar-inverse .navbar-nav>.open>a, .theatrical.navbar-inverse .navbar-nav>.open>a:focus, .theatrical.navbar-inverse .navbar-nav>.open>a:hover {
+   background-color: #1b5133;
+}
+.music.navbar-inverse .navbar-nav>.open>a, .music.navbar-inverse .navbar-nav>.open>a:focus, .music.navbar-inverse .navbar-nav>.open>a:hover {
+   background-color: #274259;
+}
+.dance.navbar-inverse .navbar-nav>.open>a, .dance.navbar-inverse .navbar-nav>.open>a:focus, .dance.navbar-inverse .navbar-nav>.open>a:hover {
+   background-color: #564105;
+}
+span.navbar-brand {
+    position: relative;
+    top: -10px;
+}
+.navbar-brand img {
+    vertical-align: bottom;
+}
+.navbar-brand .brand-pa {
+    float: none;
+}
+.navbar-toggle {
+   border: none;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    background-color: #1c1b1b;
+}
+.dropdown-menu>li>a {
+    color: #ffffff;
+}
+.navbar-nav>li>.dropdown-menu {
+   margin-top: -1px;
+   margin-left: -1px;
+   margin-right: -1px;
+}
+.dropdown-menu>li>a:hover {
+    color: #ffffff;
+    background-color: #cc49c5; /*old 8e60f4 */
+    background-image: -moz-linear-gradient(top, #c64bc0, #ba32b3); /* old #956af5, #8452f3 */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#c64bc0), to(#ba32b3));
+    background-image: -webkit-linear-gradient(top, #c64bc0, #ba32b3);
+    background-image: -o-linear-gradient(top, #c64bc0, #ba32b3);
+    background-image: linear-gradient(to bottom, #c64bc0, #ba32b3);
+}
+
+.theatrical.dropdown-menu>li>a:hover {
+   background-color: #21ba63; /*old 8e60f4 */
+    background-image: -moz-linear-gradient(top, #27b564, #159b4f); /* old #956af5, #8452f3 */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#27b564), to(#159b4f));
+    background-image: -webkit-linear-gradient(top, #27b564, #159b4f);
+    background-image: -o-linear-gradient(top, #27b564, #159b4f);
+    background-image: linear-gradient(to bottom, #27b564, #159b4f);
+}
+
+.dance.dropdown-menu>li>a:hover {
+   background-color: #d1b436; /*old 8e60f4 */
+    background-image: -moz-linear-gradient(top, #c6ab35, #d8b000); /* old #956af5, #8452f3 */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#c6ab35), to(#d8b000));
+    background-image: -webkit-linear-gradient(top, #c6ab35, #d8b000);
+    background-image: -o-linear-gradient(top, #c6ab35, #d8b000);
+    background-image: linear-gradient(to bottom, #c6ab35, #d8b000);
+}
+
+.music.dropdown-menu>li>a:hover {
+   background-color: #5095ce; /*old 8e60f4 */
+    background-image: -moz-linear-gradient(top, #4988bc, #276faa); /* old #956af5, #8452f3 */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4988bc), to(#276faa));
+    background-image: -webkit-linear-gradient(top, #4988bc, #276faa);
+    background-image: -o-linear-gradient(top, #4988bc, #276faa);
+    background-image: linear-gradient(to bottom, #4988bc, #276faa);
+}
+
+.well h2:first-child {
+	margin-top:0px;
+}
+
+/* PA well */
+.well.well-pa { 
+    position: relative;
+    
+    background-color: #8c628b; /* old colour 2c0442 */
+    border: 1px solid rgba(0,0,0,0.3); /* old colour #ceb1cc */
+}
+
+.well.well-pa-fancy { 
+    position: relative;
+    
+    background-image: url("/img/logos/pa_bg.svg");
+	background-size: cover;
+	background-position: 50% 50%;
+	border: 1px solid rgba(0,0,0,0.3);
+}
+
+.well.well-music { 
+    position: relative;
+    
+    background-color: #5398d1;
+    border: 1px solid rgba(0,0,0,0.3); 
+}
+
+.well.well-music-fancy { 
+    position: relative;
+    
+    background-image: url("/img/logos/music_bg.svg");
+	background-size: cover;
+	background-position: 100% 100%;
+    border: 1px solid rgba(0,0,0,0.3); 
+}
+
+.well.well-theatrical { 
+    position: relative;
+    
+    background-color: #5e9176;
+    border: 1px solid rgba(0,0,0,0.3); 
+}
+
+.well.well-theatrical-fancy { 
+    position: relative;
+    
+    background-image: url("/img/logos/theatre_bg.svg");
+	background-size: cover;
+	background-position: 100% 100%;
+    border: 1px solid rgba(0,0,0,0.3); 
+}
+
+.well.well-dance { 
+    position: relative;
+    
+    background-color: #dba453;
+    border: 1px solid rgba(0,0,0,0.3); 
+}
+
+.well.well-dance-fancy { 
+    position: relative;
+    
+    background-image: url("/img/logos/dance_bg.svg");
+	background-size: cover;
+	background-position: 100% 100%;
+    border: 1px solid rgba(0,0,0,0.3); 
+}
+
+/* Music container */
+.container.music {
+	width: 100%;
+    background-image: url("/img/logos/music_bg.svg");
+	background-size: cover;
+	background-position: 50% 100%;
+	background-size:cover;
+}
+
+/* Music container */
+.container.dance {
+	width: 100%;
+    background-image: url("/img/logos/dance_bg.svg");
+	background-size: cover;
+	background-position: 50% 100%;
+	background-size:cover;
+}
+
+/* Music container */
+.container.theatrical {
+	width: 100%;
+    background-image: url("/img/logos/theatre_bg.svg");
+	background-size: cover;
+	background-position: 50% 100%;
+	background-size:cover;
+}
+
+/* Music container */
+.container.pa_container {
+	width: 100%;
+    background-image: url("/img/logos/pa_bg.svg");
+	background-size: cover;
+	background-position: 50% 50%;
+	background-size:cover;
+}
+
+.headerSilhouette {
+	position: absolute;
+	bottom: 10px;
+	right: 0px;
+	max-width: 25vw;
+}
+
+@media (max-width: 900px) {
+	.headerSilhouette {
+		display: none;
+	}
+}
+
+.headerSubtitle {
+  position: absolute;
+	top: 10px;
+	left: 0.5em;
+  font-size: 20px;
+  font-weight: 500;
+	color: #fff;
+}
+
+.fancyActions {
+  text-align: right;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+/* Society background
+.music {
+	background-image: url("/img/backgrounds/Musical.png");
+	background-size: cover;
+} */
+
+/* PA table */
+.table-hover>tbody>tr:hover {
+    background-color: #5b1f5a; /* old 3c065a */
+}
+
+/* Old PA button 
+.btn.btn-pa {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #601499;
+    border-color: #7a1499 #7a1499 #440b55;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+
+    background-image: -moz-linear-gradient(top, #4e1499, #7a1499);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4e1499), to(#7a1499));
+    background-image: -webkit-linear-gradient(top, #4e1499, #7a1499);
+    background-image: -o-linear-gradient(top, #4e1499, #7a1499);
+    background-image: linear-gradient(to bottom, #4e1499, #7a1499);
+    background-repeat: repeat-x;
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4e1499', endColorstr='#ff7a1499', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn.btn-pa:hover {
+    background-color: #7a1499;
+
+    background-position: 0 -15px;
+
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+}
+*/
+
+/* PA button */
+.btn.btn-pa {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #793671;
+    border-color: #96498d #96498d #562a51;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+
+    background-image: -moz-linear-gradient(top, #733578, #96498d);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#733578), to(#96498d));
+    background-image: -webkit-linear-gradient(top, #733578, #96498d);
+    background-image: -o-linear-gradient(top, #733578, #96498d);
+    background-image: linear-gradient(to bottom, #733578, #96498d);
+    background-repeat: repeat-x;
+    
+    transition: color 0.25s ease;
+    
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4e1499', endColorstr='#ff7a1499', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn.btn-pa:hover {
+    background-color: #96498d;
+
+    background-position: 0 -15px;
+
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+}
+
+/* Music button */
+.well-music .btn.btn-pa, .well-music-fancy .btn.btn-pa, .container.music .btn.btn-pa, .btn.btn-music {
+    background-color: #2372b5;
+    border-color: #348edb #348edb #123859;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+
+    background-image: -moz-linear-gradient(top, #2264b5, #348edb);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2264b5), to(#348edb));
+    background-image: -webkit-linear-gradient(top, #2264b5, #348edb);
+    background-image: -o-linear-gradient(top, #2264b5, #348edb);
+    background-image: linear-gradient(to bottom, #2264b5, #348edb);
+    background-repeat: repeat-x;
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4e1499', endColorstr='#ff7a1499', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.well-music .btn.btn-pa:hover, .well-music-fancy .btn.btn-pa:hover, .container.music .btn.btn-pa:hover, .btn.btn-music:hover {
+    background-color: #348edb;
+
+    background-position: 0 -15px;
+
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+}
+
+/* Dance button */
+.well-dance .btn.btn-pa, .well-dance-fancy .btn.btn-pa, .container.dance .btn.btn-pa, .btn.btn-dance {
+    background-color: #ffa126;
+    border-color: #ffb454 #ffb454 #996624;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+
+    background-image: -moz-linear-gradient(top, #ffcf26, #ffb454);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffcf26), to(#ffb454));
+    background-image: -webkit-linear-gradient(top, #ffcf26, #ffb454);
+    background-image: -o-linear-gradient(top, #ffcf26, #ffb454);
+    background-image: linear-gradient(to bottom, #ffcf26, #ffb454);
+    background-repeat: repeat-x;
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4e1499', endColorstr='#ff7a1499', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.well-dance .btn.btn-pa:hover, .well-dance-fancy .btn.btn-pa:hover, .container.dance .btn.btn-pa:hover, , .btn.btn-dance:hover {
+    background-color: #ffb454;
+
+    background-position: 0 -15px;
+
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+}
+
+/* Theatrical button */
+.well-theatrical .btn.btn-pa, .well-theatrical-fancy .btn.btn-pa, .container.theatrical .btn.btn-pa, .btn.btn-theatrical {
+    background-color: #208744;
+    border-color: #2fb75f #2fb75f #0f5126;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+
+    background-image: -moz-linear-gradient(top, #20872c, #2fb75f);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#20872c), to(#2fb75f));
+    background-image: -webkit-linear-gradient(top, #20872c, #2fb75f);
+    background-image: -o-linear-gradient(top, #20872c, #2fb75f);
+    background-image: linear-gradient(to bottom, #20872c, #2fb75f);
+    background-repeat: repeat-x;
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4e1499', endColorstr='#ff7a1499', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.well-theatrical .btn.btn-pa:hover, .well-theatrical-fancy .btn.btn-pa:hover, .container.theatrical .btn.btn-pa:hover, .btn.btn-theatrical:hover {
+    background-color: #2fb75f;
+
+    background-position: 0 -15px;
+
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+}
+
+/* Jumbotrons */
+.jumbotron {
+    padding: 60px;
+    color: #000000;
+    background-image: url("/img/logos/pa_bg.svg");
+	background-color: rgba(255,255,255,0);
+	background-blend-mode: screen;
+	background-size: cover;
+	background-position: 100% 0%;
+}
+.jumbotron p {
+    line-height: 30px;
+    font-size: 18px;
+	color: #ffffff;
+}
+
+.jumbotron .lead {
+    margin-bottom: 20px;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+/* Carasol */
+.carousel-inner .item img {
+    max-height: 45vh;
+	height: 45vh;
+	margin: 0 auto;
+}
+#carousel-shows{
+	height: 45vh;
+}
+
+.carousel-control {
+	background-image: none !important;
+}
+
+/* lists */
+.dl-tabbed>dd {
+    text-indent: 3em;
+}
+
+
+.subtle-text {
+    font-size: small;
+    font-weight: 300;
+    text-indent: 1em;
+}
+
+/* Panels */
+.panel-default>.panel-body {
+    color: #000;
+}
+
+/* Check boxes */
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left:0; top: 2px;
+  width: 17px; height: 17px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: 3px; left: 4px;
+  font-size: 18px;
+  line-height: 0.8;
+  color: #09ad7e;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 1px dotted blue;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #4778d9!important;
+}

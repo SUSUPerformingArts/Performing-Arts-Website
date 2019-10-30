@@ -1,0 +1,23 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Su :: Token mangement") }}
+
+    <div class="well well-pa">
+        <h1>Token Management</h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+        <h2>Generate a token</h2>
+
+        <form autocomplete="off" action="{{ urlFor("super_tokens_generate") }}" method="POST" class="form-inline">
+            <div class="form-group">
+                <label for="generate_user">Username/ID:</label>
+                <input type="text" id="generate_user" name="user" placeholder="Username/ID" class="form-control">
+                <input type="submit" class="btn btn-primary" value="Generate">
+            </div>
+        </form>
+    </div>
+
+{# Standard PA footer #}
+{{ footer() }}

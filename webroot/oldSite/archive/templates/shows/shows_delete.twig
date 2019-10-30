@@ -1,0 +1,20 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Shows :: Delete") }}
+
+	<div class="well well-pa">
+	    <h1>Delete show</h1>
+	</div>
+
+	{% include "includes/messages.twig" %}
+
+	<p class="lead">Are you sure you want to delete {{ show.name }}?<br>This cannot be undone</p>
+	<form action="" method="post">
+		<input type="hidden" name="confirm" value="true">
+	    <input type="hidden" name="_METHOD" value="DELETE">
+	    <button type="submit" class="btn btn-danger show_submit">Confirm</button>
+	    <a href="{{ getShowUrl({ "id" : show.id, "no_resolve" : true }) }}" class="btn btn-primary">Cancel</a>
+	</form>
+
+
+{# Standard PA footer #}
+{{ footer() }}

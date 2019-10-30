@@ -1,0 +1,86 @@
+[
+   {
+      "offer":"£1 entry",
+      "where":"The Edge nightclub",
+      "detail":"every Thursday night (Half-price entry)",
+      "image":"201701"
+   },
+   {
+      "offer":"10% off",
+      "where":"Stags'",
+      "detail":"every Thursday night",
+      "image":"201702"
+   },
+   {
+      "offer":"10% off",
+      "where":"The Stage Door Southampton",
+      "detail":"on all food and drink",
+      "image":"201703"
+   },
+   {
+      "offer":"15% off",
+      "where":"Aero Taxis",
+      "detail":"on all journeys",
+      "image":"201704"
+   },
+   {
+      "offer":"Free entry",
+      "where":"Jesters",
+      "detail":"every Tuesday, Thursday and Saturday, with £1 entry on Mondays and Fridays (*terms and conditions: Jesters logo on the rear of the PA card must be shown to guarantee entry)",
+      "image":"201705"
+   },
+   {
+      "offer":"25% off entry",
+      "where":"Orange Rooms Southampton",
+      "detail":"every night",
+      "image":"201706"
+   },
+   {
+      "offer":"£2 entry",
+      "where":"Switch Southampton",
+      "detail":"every Tuesday",
+      "image":"201707"
+   },
+   {
+      "offer":"10% off",
+      "where":"La Baronia (Portswood)",
+      "detail":"Sunday-Thursday every week, with a meal deal also available of a beer and a burrito for £10",
+      "image":"201708"
+   },
+   {
+      "offer":"£5 tickets",
+      "where":"Nuffield Theatre",
+      "detail":"until July 2017 (Quote 'SUSUPA5' in person, online or by phone) (*terms and conditions: Only available on Band C & D tickets, PA cards must be brought along to the performance to guarantee entry)",
+      "image":"201709"
+   },
+   {
+      "offer":"£2 tickets",
+      "where":"SUSU 'Laughter Lounge'",
+      "detail":"every other Thursday, with 10% off food and drink at these events",
+      "image":"201710"
+   },
+   {
+      "offer":"20% off",
+      "where":"The Mitre (Portswood)",
+      "detail":"on all food and drink, Monday to Wednesday, between 3-11pm",
+      "image":"201711"
+   },
+   {
+      "offer":"£6.99 pizzas",
+      "where":"Pizza Hut",
+      "detail":"for any standard pizza, any size and any toppings (no stuffed crusts), if bought in person at Pizza Huts in Portswood, Eastleigh, Shirley or Bitterne (deal only available if you order in person-it doesn’t work online, by phone or via Deliveroo etc).",
+      "image":"201712"
+   },
+   {
+      "offer":"Discounted tickets",
+      "where":"PA events and shows",
+      "detail":"varies from society to society",
+      "image":"201713"
+   },
+   {
+      "offer":"Discounted ticket",
+      "where":"The PA ball",
+      "detail":"normally about 5% off",
+      "image":"201714"
+   }
+]

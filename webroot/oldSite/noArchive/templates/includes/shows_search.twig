@@ -1,0 +1,139 @@
+{#
+    Include to create a base for member searching, can be used in models or directly on pages
+    Takes the variables:
+    ms.noautosearch - Does not display the search button, instead searches automatically as the user types
+    ms.selectbutton - Shows a select button to hook a function on to
+    ms.wrapform - Wraps the search box in a form
+    ms.samePage - Open the user when clicked in the current window/tab, instead of a new one
+#}
+
+
+<div class="shows-search shows-search-wrapper" id="shows-search-wrapper" data-autosearch="{{ ms.autosearch?"true":"false" }}">
+    {# Search box #}
+    {% if ms.wrapform %}<form id="shows-search-form">{% endif %}
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label for="shows-search-name" class="sr-only">Name</label>
+                <div class="input-group">
+                    <input type="text" id="shows-search-name" class="form-control" placeholder="Name">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    {% if ms.wrapform %}</form>{% endif %}
+
+
+    {# Results #}
+
+    <div class="shows-search shows-results">
+        <!--<div class="h3">Results</div>-->
+        <table class="table table-hover table-condensed">
+            <thead>
+
+            </thead>
+            <tbody id="shows-results-holder">
+                {#<tr><td>Result 1</td></tr>#}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+(function(){
+
+// Functions for hooks
+var hooks = [];
+function buttonClick(show){
+
+    hooks.forEach(function(h){
+        h.call(this, show);
+    }, this);
+}
+window.showSearch_hook = function(f){
+    hooks.push(f);
+}
+
+    window.addEventListener("load", function(){
+
+        function printShows(search){
+            var fn = (search || "").trim().replace(/\s\s+/g, " "),
+                url = "{{ urlFor("pa_api_shows") }}?limit=20&name=" + fn,
+
+                urlM = "/noArchive/shows/",
+
+                selectButton = {{ ms.selectbutton?"true":"false" }};
+
+            $.getJSON(url, function(data){
+                var resAr = $("#shows-results-holder"),
+                    restds = data.map(function(s){
+                        var tr = document.createElement("tr"),
+                            td = document.createElement("td"),
+                            u = urlM + s.id,
+
+                            aEl = document.createElement("a"),
+                            yearText = document.createTextNode(" (" + s.year + ")");
+
+                        aEl.href = u;
+                        {% if not ms.samePage %}aEl.target = "_blank";{% endif %}
+                        aEl.innerHTML = s.name.replace(new RegExp(fn, "gi"), "<b>$&</b>");
+
+                        td.appendChild(aEl);
+                        td.appendChild(yearText);
+
+                        td.appendChild(document.createTextNode("   "));
+
+                        if(selectButton){
+                            var b = document.createElement("button");
+                            b.type = "button";
+                            b.className = "btn btn-sm btn-primary";
+                            b.innerHTML = "Select";
+                            b.addEventListener("click", function(e){
+                                e.preventDefault();
+                                buttonClick.call(this, s);
+                            });
+
+                            td.appendChild(b);
+                        }
+                        tr.appendChild(td);
+                        return tr;
+                    });
+
+                    resAr.empty().append(restds);
+            });
+        }
+
+
+
+        // Cross button erase
+        $("#shows-search-wrapper button").on("click", function(){
+            $("#shows-search-name").val("");
+
+            $("#shows-results-holder").empty();
+        });
+
+
+        // Esc erase
+        $("#shows-search-name").on("keyup", function(e){
+            var msn = $("#shows-search-name");
+
+            if(e.which === 27){ // On esc
+                msn.val("");
+            }
+
+            if(msn.val().length){
+                printShows(msn.val());
+            }else{
+                $("#shows-results-holder").empty();
+            }
+        });
+
+
+    });
+
+})();
+
+</script>
+

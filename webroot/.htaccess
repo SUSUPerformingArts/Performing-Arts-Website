@@ -1,0 +1,111 @@
+## Redirect to SSL (https)
+RewriteEngine On
+RewriteBase /
+
+## Whoever added this, can you please email me on 'web@susuperformingarts.org'
+#RewriteCond %{HTTP_HOST} ^perform.susu.org$ [NC]
+#RewriteRule ^(.*)$ https://www.susu.org/opportunities/performing-arts.html [R=301,L]
+
+
+## Gone rogue rewrite
+# RewriteCond %{HTTP_HOST} ^gone-rogue.co.uk$ [NC]
+# RewriteRule ^(.*)$ http://www.gone-rogue.co.uk/$1 [L,R=301,QSA]
+
+
+# RewriteCond %{HTTP_HOST} =www.gone-rogue.co.uk [NC]
+# RewriteCond %{ENV:REDIRECT_INT} =2
+# RewriteRule . - [S=2]
+
+# RewriteCond %{HTTP_HOST} =www.gone-rogue.co.uk [NC]
+# RewriteRule ^gonerogue(/.*)? $1 [R=301,L,QSA]
+
+# RewriteCond %{HTTP_HOST} =www.gone-rogue.co.uk [NC]
+# RewriteCond %{REQUEST_URI} !^/gonerogue/
+# RewriteRule ^(.*)$ gonerogue/$1 [L,QSA,E=INT:2]
+
+
+
+## Annex theatre rewrite
+RewriteCond %{HTTP_HOST} annextheatre.co.uk$ [NC]
+RewriteRule ^(.*)$ https://perform.susu.org [L,R=307,QSA]
+
+# RewriteCond %{HTTP_HOST} ^annextheatre.co.uk$ [NC]
+# RewriteRule ^(.*)$ http://www.annextheatre.co.uk/$1 [L,R=301,QSA]
+
+
+# RewriteCond %{HTTP_HOST} =www.annextheatre.co.uk [NC]
+# RewriteCond %{ENV:REDIRECT_INT} =1
+# RewriteRule . - [S=2]
+
+# RewriteCond %{HTTP_HOST} =www.annextheatre.co.uk [NC]
+# RewriteRule ^theannex(/.*)? $1 [R=301,L,QSA]
+
+# RewriteCond %{HTTP_HOST} =www.annextheatre.co.uk [NC]
+# RewriteCond %{REQUEST_URI} !^/theannex/
+# RewriteRule ^(.*)$ theannex/$1 [L,QSA,E=INT:1]
+
+
+## Redirect from unionsouthampton
+RewriteCond %{HTTP_HOST} unionsouthampton\.org$ [NC]
+RewriteRule (.*) https://perform.susu.org/$1 [L,R=301,QSA]
+
+
+## Redirect pau (and all else) to perform
+RewriteCond %{HTTP_HOST} !^perform\.susu\.org$ [NC]
+RewriteCond %{HTTP_HOST} susu\.org$ [NC]
+RewriteRule (.*) https://perform.susu.org/$1 [L,R=301,QSA]
+
+
+### ALWAYS HTTPS
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule (.*) https://perform.susu.org/$1 [L,R=301,QSA]
+
+
+## Rewrite susuperformingarts.org to perform
+RewriteCond %{HTTP_HOST} ^susuperformingarts\.org$ [NC]
+RewriteRule (.*) https://perform.susu.org/$1 [L,R=301,QSA]
+
+
+
+## Some redirects from old to new
+Redirect "/societies.php"  "/societies/index.php"
+RedirectMatch "^/societies/$"  "/societies/index.php"
+Redirect "/society.php"  "/societies/society/"
+Redirect "/about.php"  "/about/"
+Redirect "/boxoffice.php"  "/boxoffice/"
+
+#AliasMatch "^/societies$" "/societies/index.php"
+
+# The various places that the archive has existed
+RewriteRule ^archive/(.*)$ /$1 [R=301,NC,L]
+RewriteRule ^noArchive/(.*)$ /$1 [R=301,NC,L]
+
+
+### Important - do not delete - These 404 areas that shouldn't be accessed
+## Config files
+RewriteRule ^config/ - [L,R=404]
+RewriteRule ^.db_credentials - [L,R=404]
+
+## Composer
+RewriteRule ^vendor/ - [L,R=404]
+RewriteRule ^composer.json - [L,R=404]
+RewriteRule ^composer.lock - [L,R=404]
+
+## PHP includes
+RewriteRule ^php/ - [L,R=404]
+
+## git (just in case)
+RewriteRule ^.git/ - [L,R=404]
+RewriteRule ^.gitignore - [L,R=404]
+
+# All the slim internals
+RewriteRule ^templates/ - [L,R=404]
+RewriteRule ^routes/ - [L,R=404]
+RewriteRule ^cache/ - [L,R=404]
+RewriteRule ^static/ - [L,R=404]
+
+## Slim redirs
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{HTTP_HOST} !gonerogue
+RewriteRule ^ index.php [QSA,L]

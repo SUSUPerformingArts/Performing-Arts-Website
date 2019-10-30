@@ -1,0 +1,18 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Societies") }}
+
+
+    <div class="well well-pa">
+        <h1>Performing Arts Societies</h1>
+    </div>
+
+    <div class="well well-pa">
+    	{% for society in societies %}
+    		<div>
+    			<h2><a href="{{ urlFor("society", { "society" : society.slug }) }}">{{ society.name }}</a></h2>
+    		</div>
+    	{% endfor %}
+    </div>
+
+{# Standard PA footer #}
+{{ footer() }}

@@ -1,0 +1,48 @@
+<button class="btn-danger voting_form" style="width:100%" id="submit_vote"><h4>Seal and submit my vote</h4></button>
+
+	<script>
+		$(".candidates").each(function(index,element) {
+			for (var i = element.children.length; i >= 0; i--) {
+				element.appendChild(element.children[Math.random() * i | 0]);
+			}
+			
+			for (var i = 0; i < 3; i++) {
+				$(element).prepend("<li><a>No vote</a></li>");
+			}
+
+			Sortable.create(element);
+		});
+		
+		$("#submit_vote").click(function(event) {
+			var vote = {};
+			
+			$(".candidates").each(function(index, award) {
+				award = $(award);
+				vote[award.attr('id')] = [award.children()[0].innerText, award.children()[1].innerText, award.children()[2].innerText];
+
+			});
+			
+			vote['outstanding'] = $('#outstanding').val();
+			vote.username = "{{username}}";
+			
+			$.post(
+				"/vote",
+				vote,
+				function(response) {
+					$(".voting_form").each(function(index,element) {
+						$(element).css("display", "none");
+					});
+
+					if (response.success) {
+						$("#successful_vote").css("display", "block");
+					} else if (response.error === "Already voted") {
+						$("#already_voted").css("display", "block");
+					} else if (response.error === "Not logged in") {
+						$("#login").css("display", "block");
+					}
+					
+				},
+				"json");
+		});
+	</script>
+

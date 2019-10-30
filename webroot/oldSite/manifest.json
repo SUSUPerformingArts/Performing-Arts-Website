@@ -1,0 +1,27 @@
+{
+	"lang" : "en-GB",
+
+	"name" : "University of Southampton Students' Union, Performing arts",
+	"short_name" : "SUSU Performing Arts",
+
+	"display": "standalone",
+	"start_url" : "/",
+	"scope" : "/",
+	
+	"splash_screens" : [
+		{
+			"src": "/img/webapp/startup.png"
+		}
+	],
+	"icons" : [
+		{
+			"src": "/img/webapp/icon.png"
+		}
+	],
+
+	"theme_color" : "#3c065a"
+
+	
+
+
+}

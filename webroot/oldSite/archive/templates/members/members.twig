@@ -1,0 +1,116 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Members :: " ~ member.fullName) }}
+
+    <div class="well well-pa">
+        <div class="topleft-indicator">PA Member</div>
+        <h1>
+            {{ member.fullName }}
+            {% if isLoggedIn() %}
+                ({{ member.iSolutionsUsername }})
+                {% if getUserId() == member.id %}<a class="btn btn-pa" href="{{ urlFor("member_edit") }}">Edit</a>{% endif %}
+                {# Special Admin links! #}
+                {% if isPAWebmaster() %}
+                    <a class="btn btn-pa" href="{{ urlFor("super_member_impersonate", { 'member' : member.id }) }}">Impersonate</a>
+                    <a class="btn btn-pa" href="{{ urlFor("super_member_edit", { 'member' : member.id }) }}">Edit Member</a>
+                {% endif %}
+            {% endif %}
+        </h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+
+
+        {% if images.profile %}
+            <div class="member-image visible-xs-block">
+                <img src="{{ images.profile }}" alt="{{ member.fullName }}" class="img-responsive">
+            </div>
+            <div class="member-image pull-right hidden-xs" style="max-width:50%">
+                <img src="{{ images.profile }}" alt="{{ member.fullName }}" class="img-responsive">
+            </div>
+        {% endif %}
+
+
+
+        {% if member.bio %}
+            <div class="archive-block member-block member-bio">
+                <h2>About {{ member.preferredName }}</h2>
+                <div>
+                    {{ member.bio|e|markdown }}
+                </div>
+            </div>
+        {% endif %}
+
+
+        <div class="archive-block member-block member-societies">
+            <h2>Society Membership</h2>
+            {% if societies|length > 0 %}
+                <p>
+                    {{ member.preferredName }} has been a member of {{ societies|length }} {% if societies|length > 1 %}societies{% else %}society{% endif %}
+                    {% if years.min != years.max %} from {{ years.min }} to {{ years.max }}{% endif %}
+                </p>
+                <ul>
+                    {% for soc in societies %}
+                        <li><a href="{{ urlFor("society", { "society" : soc.slug }) }}">{{ soc.name }}</a> ({{ soc.years|join(", ") }})</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>{{ member.preferredName }} has not been a member of any Performing Arts societies.</p>
+            {% endif %}
+        </div>
+
+        <div class="archive-block member-block member-committees">
+            <h2>Committee Positions</h2>
+            {% if committees|length > 0 %}
+                <p>{{ member.preferredName }} has held positions on {{ committees|length }} {% if committees|length > 1 %}committees{% else %}committee{% endif %}:</p>
+                <ul>
+                    {% for comm in committees %}
+                        <li>{{ comm.committeePosition }} for <a href="{{ urlFor("society", { "society" : comm.slug }) }}">{{ comm.name }}</a> in {{ comm.year }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>{{ member.preferredName }} has not held any committee positions.</p>
+            {% endif %}
+        </div>
+
+        <div class="archive-block member-block member-shows">
+            <h2>Shows</h2>
+            {% if allShows|length > 0 %}
+                <p>{{ member.preferredName }} has been a part of {{ showNum }} {% if showNum > 1 %}shows{% else %}show{% endif %} in the Performing Arts:</p>
+
+                <ul style="list-style: none;">
+                {% for soc, shows in allShows %}
+                    <li>
+                        <h3 class="h4">With {{ soc }}</h3>
+                        <ul>
+                            {% for show in shows %}
+                                <li>{{ show.roleName }}{% if show.notes %}, <em>{{ show.notes }}</em>{% endif %} in <a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">{{ show.showName }}</a> ({{ show.year }})</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+                </ul>
+
+            {% else %}
+                <p>{{ member.preferredName }} has not taken part in any recorded Performing Arts shows.</p>
+            {% endif %}
+        </div>
+
+        {% if externalProfiles|length > 0 %}
+            <div class="archive-block member-block member-externalProfiles">
+                <h2>{{ member.preferredName }} elsewhere in PA</h2>
+                <ul style="list-style: none;">
+                    {% for profile in externalProfiles %}
+                        <li><a href="{{ profile.profileUrl }}">{{ profile.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+
+        {# Keeps the floating images bounded by the parent box #}
+        <div class="clearfix"></div>
+    </div>
+{# Standard PA footer #}
+{{ footer() }}

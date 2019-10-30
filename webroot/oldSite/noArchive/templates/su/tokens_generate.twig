@@ -1,0 +1,20 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Su :: Token mangement") }}
+
+    <div class="well well-pa">
+        <h1>Token Management</h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+        <h2>Token generated for: <a href="{{ urlFor("pa_member", { "member" : user }) }}">{{ user }}</a></h2>
+        <div>
+            <pre>
+{{- token -}}
+            </pre>
+        </div>
+    </div>
+
+{# Standard PA footer #}
+{{ footer() }}

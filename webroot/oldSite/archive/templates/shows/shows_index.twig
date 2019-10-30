@@ -1,0 +1,67 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Shows") }}
+
+
+    <div class="well well-pa">
+        <h1>Performing Arts Shows
+            {% if canAdd %}
+                <a class="btn btn-primary" href="{{ urlFor("show_add") }}">Add show</a>
+            {% endif %}</h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+        <p class="lead">Go to the <a href="/calendar">Performing Arts Calendar</a></p>
+        <div class="archive-block shows-block upcoming-shows">
+        <h2>{% if year %}Shows in {{ year }}{% else %}Upcoming shows{% endif %}</h2>
+            <div class="form-group form-inline">
+                <label for="society-type-filter">Filter: </label>
+                <select class="form-control" id="society-type-filter">
+                    <option name="0" selected>All</option>
+                    {% for type in societyTypes %}
+                        <option name="{{ type.id }}">{{ type.name }}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;
+                or click <a href="{{ urlFor("shows_search") }}">here</a> to search all shows.
+            </div>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr><th>Show</th><th>Society</th><th>Dates</th></tr>
+                </thead>
+                <tbody>
+                    {% for show in upcomingShows %}
+                        <tr class="upcoming-show society-type-{{ show.societyType }}">
+                            <td><a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">{{ show.name }}</a></td>
+                            <td><a href="{{ urlFor("society", { "society" : show.societySlug }) }}">{{ show.societyName }}</a></td>
+                            <td>{{ show.firstShowDate|date(dateformatShort) }}{% if show.firstShowDate != show.lastShowDate %} - {{ show.lastShowDate|date(dateformatShort) }}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+<script>
+window.addEventListener("load", (function(){
+    $("#society-type-filter").on("change", function(e){
+        var id = $(this.selectedOptions[0]).attr("name");
+
+        if(id == 0){
+            $(".upcoming-show").show();
+        }else{
+            // Select all options
+            $(".upcoming-show:not(.society-type-" + id + ")").hide();
+            $(".upcoming-show.society-type-" + id).show();
+        }
+    });
+}));
+</script>
+
+{# Standard PA footer #}
+{{ footer() }}

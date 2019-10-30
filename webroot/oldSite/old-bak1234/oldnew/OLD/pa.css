@@ -1,0 +1,352 @@
+/* CSS for basic Freshers SUSU PA Website */
+
+@font-face {
+    font-family: 'MuseoSlab500Regular';
+    src: url('fonts/Museo_Slab_500-webfont.eot');
+    src: url('fonts/Museo_Slab_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Museo_Slab_500-webfont.woff') format('woff'),
+         url('fonts/Museo_Slab_500-webfont.ttf') format('truetype'),
+         url('fonts/Museo_Slab_500-webfont.svg#MuseoSlab500Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MuseoSans500Regular';
+    src: url('fonts/MuseoSans_500-webfont.eot');
+    src: url('fonts/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/MuseoSans_500-webfont.woff') format('woff'),
+         url('fonts/MuseoSans_500-webfont.ttf') format('truetype'),
+         url('fonts/MuseoSans_500-webfont.svg#MuseoSans500Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+body {
+    padding: 0;
+    background: #000000;
+    color: #000000;
+    /*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+        font-family: 'MuseoSans500Regular';
+    /*font-weight: 300;*/
+    margin: 0;
+}
+
+h1, h2, h3, h4 {
+font-family: "MuseoSlab500Regular", Helvetica, sans-serif;
+font-weight: 500;
+}
+
+h1 {
+    font-size: 0pt;
+    line-height: 100%;
+    
+}
+
+h2 {
+    font-size: 20pt;
+    line-height: 100%;
+    vertical-align: middle;
+    font-weight: 1000;
+}
+
+h3 {
+    font-size: 16pt;
+    line-height: 30%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+h4 {
+    line-height: 30%;
+}
+a {
+    color: #400080;
+        font-weight: 1000;
+}
+
+a:visited {
+    color: #400080;
+        font-weight: 1000;
+}
+#wrapper {
+    max-width: 800px;
+    height: 100% auto;
+    margin: 0 auto;
+    padding: 0px;
+    clear: both;
+    background: #000000;
+    color: #FFFFFF;
+    -webkit-box-shadow:  0px 5px 100px 5px rgba(109, 5, 213, 0.6);
+    box-shadow:  0px 5px 100px 5px rgba(109, 5, 213, 0.6);
+}
+
+#hero {
+    display: block;
+    max-width: 780px;
+    padding: 10px;
+    min-height: 150px;
+    background-color: #FFFFFF;
+    color: #000000;
+    -webkit-box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+    
+}
+
+#hero p {
+    vertical-align: middle;
+}
+
+#hero img {
+    float: left;
+    padding: 10px;
+    
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+#hero a{
+    display:inline;
+}
+
+#societies {
+clear: both;
+}
+
+#societies h2{
+    margin-left: 15px;
+    font-family: "MuseoSlab500Regular";
+}
+#societies h3{
+    margin-left: 15px;
+}
+#societies a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+hr {
+    border: 0px;
+    height: 0px;
+    background-color: #CCCCCC;
+    width: 90%;
+    clear: both;
+}
+
+footer {
+display: block;
+background-color: #400080;
+color: #FFFFFF;
+width: 100%;
+}
+
+#fwrapper {
+width: 800px;
+height: 50px;
+padding:20px;
+padding-top: 10px;
+
+margin: 0 auto;
+padding-bottom: 70px;
+}
+
+#fwrapper ul {
+    float: left;
+    margin: 0;
+    list-style: none;
+}
+
+#fwrapper ul li {
+    float: left;
+}
+
+#desc {
+    font-size: 12pt;
+    padding-top: 15px;
+    padding-left: 0;
+    color: #000000;
+    line-height: 100%;
+    /*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+        font-family: 'MuseoSans500Regular';
+
+}
+
+#fwrapper p {
+    float: left;
+    display: block;
+    width: 50%;
+}
+
+.group {
+    margin-left: 30px;
+    clear: both;
+}
+
+.society {
+display: block;
+width: 180px;
+height: 180px;
+float: left;
+margin: 2px;
+padding: 0px;
+font-family: "MuseoSlab500Regular";
+}
+
+.society:hover {
+        background-color: #FFFFFF;
+    color: #000000;
+        -webkit-box-shadow:  0px 5px 50px 5px rgba(109, 5, 213, 0.4);
+    box-shadow:  0px 5px 50px 5px rgba(109, 5, 213, 0.4);
+}
+
+#societies .society:hover a {
+	background-color: #FFFFFF;
+	color: #400080;
+	font-weight: bold;
+	text-decoration: underline;
+	vertical-align: bottom;
+}
+
+.society h3 {
+	/*float: left;*/
+	font-size: 25px;
+	line-height: 100%;
+	padding-top: 0;
+	text-align: left;
+	text-justify-trim: true;
+	margin: 15px;
+	/*font-weight: bold;*/
+	font-family: "MuseoSlab500Regular";
+}
+
+.society p {
+    font-size: 11pt;
+    padding-left: 15px;
+    color: #000000;
+    line-height: 100%;
+    /*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+        font-family: 'MuseoSans500Regular';
+    padding-top: 0px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    vertical-align: bottom;
+}
+
+.stagesoc h3 {
+	/*float: left;*/
+	font-size: 25px;
+	line-height: 100%;
+	padding-top: 0;
+	text-align: left;
+	text-justify-trim: true;
+	margin: 15px;
+	/*font-weight: bold;*/
+	font-family: "MuseoSlab500Regular";
+}
+
+.stagesoc:hover a {
+	background-color: #FFFFFF;
+	color: #400080;
+	font-weight: bold;
+	text-decoration: underline;
+	vertical-align: bottom;
+	    line-height: 3em;
+}
+
+.stagesoc p {
+    font-size: 11pt;
+    float: right;
+    padding-left: 15px;
+    text-align: right;
+    padding: 10px;
+    line-height: 100%;
+    /*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+        font-family: 'MuseoSans500Regular';
+    padding-top: 0px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    vertical-align: bottom;
+
+}
+
+.stagesoc {
+display: block;
+min-height: 90px;
+width: 97%;
+float: left;
+margin: 10px;
+padding: 0px;
+        background-color: #400080;
+    color: #fff;
+    clear: both;
+}
+
+.stagesoc .left{
+display: block;
+width:85px;
+float: left;
+}
+.stagesoc .right{
+display: block;
+float: right;
+min-width: 200px;
+width:30%;
+}
+
+.stagesoc:hover a {
+
+line-height: 1em;
+}
+.stagesoc:hover #fb a {
+    color: #3b5998;
+    vertical-align: bottom;
+    line-height: 1em;
+}
+
+
+.stagesoc:hover {
+        background-color: #FFFFFF;
+    color: #000000;
+}
+
+#societies .society a {
+    color: #000000;
+    vertical-align: bottom;
+    
+}
+
+#societies .society:hover #fb a {
+    color: #3b5998;
+    vertical-align: bottom;
+}
+
+#societies .stagesoc:hover #fb a {
+    color: #3b5998;
+    vertical-align: bottom;
+}
+
+.society a:visited {
+    color: #400080;
+    vertical-align: bottom;
+}
+
+#footerRight p{
+    font-size: 10pt;
+    float: left;
+    display:block;
+    width: 50%;
+}
+
+#footerRight a{
+    color: #CC66FF;
+}
+.details {
+    float: right;
+    margin-right: 10px;
+    font-size: 10pt;
+}

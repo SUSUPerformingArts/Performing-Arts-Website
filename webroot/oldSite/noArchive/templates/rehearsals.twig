@@ -1,0 +1,230 @@
+{# Call the header function to create the standard PA header #}
+{{ header("", ["/libs/moment.js","/libs/fullcalendar/js/fullcalendar/jquery.fullcalendar.min.js","/libs/vex/vex.combined.min.js", "/libs/marked.js"], ["/libs/fullcalendar/css/fullcalendar/fullcalendar.css", "/libs/vex/vex.css", "/libs/vex/vex-theme-default.css"], "2.1.4") }}
+{{ fancySubHeader(0,"Rehearsals and Meetings")}}
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>Today's rehearsals and meetings</h2>
+	</div>
+
+	<div class="col-md-4">
+		<div id="theatrical_today" class="well well-theatrical" style="padding-bottom: 9px">
+			<h2>Theatre</h2>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div id="music_today" class="well well-music" style="padding-bottom: 9px">
+			<h2>Music</h2>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div id="dance_today" class="well well-dance" style="padding-bottom: 9px">
+			<h2>Dance</h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="well well-pa">
+			<h2>Calendar</h2>
+
+			<div id="calendar"></div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		var theatricalEvents = {{ theatricalEvents|json_encode|raw }};
+		var musicEvents = {{ musicEvents|json_encode|raw }};
+		var danceEvents = {{ danceEvents|json_encode|raw }};
+		var allEvents = theatricalEvents.concat(musicEvents,danceEvents);
+
+		var danceEventsToday = filterEventsToToday(danceEvents);
+		var musicEventsToday = filterEventsToToday(musicEvents);
+		var theatricalEventsToday = filterEventsToToday(theatricalEvents);
+
+		for (i in danceEventsToday) {
+			$("#dance_today").append(generateEventView(danceEventsToday[i], "dance"));
+		}
+		if (danceEventsToday.length == 0) $("#dance_today").append("<h3 style=\"text-align: right; \">No events today</h3>");
+
+		for (i in musicEventsToday) {
+			$("#music_today").append(generateEventView(musicEventsToday[i], "music"));
+		}
+		if (musicEventsToday.length == 0) $("#music_today").append("<h3 style=\"text-align: right; \">No events today</h3>");
+
+		for (i in theatricalEventsToday) {
+			$("#theatrical_today").append(generateEventView(theatricalEventsToday[i], "theatre"));
+		}
+		if (theatricalEventsToday.length == 0) $("#theatrical_today").append("<h3 style=\"text-align: right; \">No events today</h3>");
+
+		function formatDate(date) {
+			date = new Date(date);
+
+			var s = "";
+			s += date.getUTCHours() > 12 ? date.getUTCHours()-12 : date.getUTCHours();
+
+			if (date.getMinutes() !== 0) {
+				s += ":";
+				if (date.getMinutes() < 10) s += "0";
+
+				s += date.getMinutes();
+			}
+
+			s += date.getUTCHours() >= 12 ? "pm" : "am";
+
+			return s;
+		}
+
+		function rejoinColon(array) {
+			var res = "";
+			var first = true;
+			for (var i = 1; i < array.length; i++) {
+				if (!first) res += ":";
+				else first = false;
+
+				res += array[i];
+			}
+
+			return res.trim();
+		}
+
+		function generateEventView(event, area) {
+			var titleParts = event.title.split(":");
+
+			html = "<table style=\"margin-bottom: 10px \"><tr><td style=\"width:25px; background-image: url('/img/logos/";
+			html += area;
+			html += "_bg.svg'); background-size: auto 150%; background-position: center \"></td><td style=\"padding-left: 0.5em\"><h4 style=\"margin-bottom: 1px\">";
+			html += titleParts[0].trim();
+			html += "</h4><p style=\"opacity: 0.8\">";
+			html += rejoinColon(titleParts);
+			html += "<br />";
+			html += formatDate(event.start);
+			html += " | ";
+			html += event.location;
+			html += "</p></td></tr></table>";
+
+			return html;
+		}
+
+		function filterEventsToToday(sourceEvents) {
+			var filteredEvents = [];
+
+			for (i in sourceEvents) {
+				var event = sourceEvents[i];
+
+				var start = new Date(event.start);
+				var end = new Date(event.end);
+
+				var startOfDay = new Date();
+				var endOfDay = new Date(startOfDay);
+				startOfDay.setHours(0,0,0,0);
+				endOfDay.setTime(startOfDay.getTime());
+				endOfDay.setDate(endOfDay.getDate() + 1);
+
+				// Starts today or earlier and ends today or later
+				if (start < endOfDay && end > startOfDay) {
+					filteredEvents.push(event);
+				}
+			}
+
+			return filteredEvents;
+		}
+
+		vex.defaultOptions.className = 'vex-theme-default';
+					
+		$('#calendar').fullCalendar({
+			defaultView: 'month',
+			height: $(window).height() - 160,
+			firstHour: 10,
+			firstDay: 1,
+			events: allEvents,
+			
+			eventClick: function(e, jsEvent, view) {
+				var title_parts = e.title.split(":");
+				var soc = title_parts[0];
+				var title = title_parts[1];
+				
+				title_parts.forEach(function(v,i) {
+					if (i<2) return;
+					
+					title += ":" + v;
+				});
+				
+				var img = "/img/societies/logo_by_name/" + soc.replace(/\s/g, '').toLowerCase();
+				
+				if (e.location == null) e.location = "Southampton";
+				var l = e.location.replace(/\//g, "_");
+				$.get("{{ urlFor("pa_api_cal_format", {"loc_string":""}) }}"+l, function (data) {
+				   e.location = data.humanString;
+				   //var map = e.location.replace(/\s/g, '+');
+				   var map = data.appString;
+				   
+   				if (e.details == null) e.details = "";
+   				var desc = marked(e.details);
+   				
+   				var date = new Date(e.start);
+   				var options = {
+   					weekday: "long", year: "numeric", month: "short",
+   					day: "numeric", hour: "2-digit", minute: "2-digit", hour12: "true"
+   				};
+   				
+   				var printDate = date.toLocaleTimeString("en-gb", options);
+   				
+   				html = "<header><h2><img style='height:3em; margin-right:15.4px' src='" + img + "' onerror='this.style.display = \"none\";' />" + title + "</h2></header><p>" + desc + "</p>\
+   				<p align='center' style='opacity:0.65'>"+e.location + " | " + printDate + " | " + soc + "</p><iframe width='100%' height='250' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCyOvyFMRWdCk2Wa0KSa_sNSyIi_RKN08U&q=" + map + "' allowfullscreen></iframe>";
+   				
+   				var clicked = jsEvent.target;
+   				while (!$(clicked).hasClass("fc-event-inner")) {
+                       clicked = $(clicked.parentNode);
+                   }
+   				
+   				vex.open({content: html, 
+   					contentCSS: {width: '70vw', 
+   						"background-color": $(clicked).css("background-color"), 
+   						"color":"#ffffff"} });
+				}, "json");
+				
+				
+				
+				return false;
+			},
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+		});
+		
+		$(".fc-button").css("margin", "5px");
+		$(".fc-button").removeClass("fc-button").addClass("btn btn-pa");
+		$(".fc-button-inner").each(function(i,e) {
+			e = $(e);
+			e.css("background-color", "rgba(0,0,0,0)");
+			e.css("color", "#ffffff");
+			e.css("border-style", "none");
+		});
+		
+		$(".fc-button-effect").each(function(i,e) {
+			e = $(e);
+			e.css("display", "none");
+		});
+	});
+</script>
+<style>
+	/* Just some custom bits for full calendar */
+	.fc-header-title h2 {
+		opacity: 0.8;
+		font-size: 20px;
+	}
+	
+	.fc-event{
+		cursor: pointer;
+	}
+</style>
+{# Standard PA footer #}
+{{ footer() }}

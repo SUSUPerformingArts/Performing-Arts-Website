@@ -1,0 +1,20 @@
+{# Call the header function to create the standard PA header #}
+{{ header("SUSU Performing Arts - Awards") }}
+
+{{ fancySubHeader(0, "Awards 2018", "", "", null) }}
+
+{% include "vote/intro.html" %}
+{% if closed %}
+	{% include "vote/closed.html" %}
+{% elseif isLoggedIn and not voted %}
+	{% include "vote/style.html" %}
+	{% include "vote/candidates.html" %}
+	{% include "vote/submission.html" %}
+{% elseif voted %}
+	{% include "vote/already_voted.html" %}
+{% else %}
+	{% include "vote/login.html" %}
+{% endif %}
+
+{# Standard PA footer #}
+{{ footer() }}

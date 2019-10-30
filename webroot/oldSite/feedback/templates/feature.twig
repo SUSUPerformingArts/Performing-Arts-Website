@@ -1,0 +1,20 @@
+{{ header("SUSU Performing Arts - Feedback - " ~ title) }}
+
+
+    <div class="well well-pa">
+        <h2>{{ title }} <small><span class="label label-{{ cssClass }}">{{ progressName }}</span></small></h2>
+        <p>
+            {{ body }}
+        </p>
+
+        {% if updates %}
+            <h3>Updates</h3>
+            <p>
+                {{ updates }}
+            </p>
+        {% endif %}
+    </div>
+
+
+
+{{ footer() }}

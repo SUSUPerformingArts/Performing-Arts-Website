@@ -1,0 +1,133 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Su :: Edit member") }}
+
+
+    <div class="well well-pa">
+        <h1>Edit member :: {{ member.fullName }} ({{ member.iSolutionsUsername }})</h1>
+    </div>
+
+    <details class="well well-pa">
+        <summary>Member detail</summary>
+        <dl class="dl-horizontal">
+            {% for k, d in member %}
+                <dt>{{ k }}</dt>
+                <dd>{{ d }}</dd>
+            {% endfor %}
+
+            <dt>societyCount</dt><dd>{{ societyMember|length }}</dd>
+            <dt>yearMin<dt><dd>{{ minyear }}</dd>
+            <dt>yearMax<dt><dd>{{ maxyear }}</dd>
+            <dt>profile</dt><dd><a href="{{ urlFor("pa_member", { "member" : member.id }) }}">{{ urlFor("pa_member", { "member" : member.id }) }}</a></dd>
+            {% if images.profile %}<dt>image</dt><dd><a href="{{ images.profile }}">{{ images.profile }}</a></dd>{% endif %}
+        </dl>
+    </details>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+        <form class="member-edit-form" id="member-edit-form" autocomplete="off" action="" method="post">
+
+            <div class="form-group form-inline h2">
+                <input type="text" class="form-control clear-textbox tb-large" id="member_name_chosen" name="member_name_chosen" placeholder="{{ member.firstName }}" value="{{ member.preferredName }}"> {{ member.lastName }}
+            </div>
+
+
+            <div class="form-group">
+                <label>Societies</label>
+                <div id="member_society_holder_old">
+                    {% for soc in societyMember %}
+                        {% for mem in soc %}
+                            <div class="form-group form-inline">
+                                <select class="form-control" name="member_society_old_id[{{ mem.id }}]" required>
+                                    {% for society in societies %}
+                                        <option value="{{ society.id }}" {% if society.id == mem.societyId %}selected{% endif %}>{{ society.name }}</option>
+                                    {% endfor %}
+                                </select>
+
+                                <input type="number" class="form-control" name="member_society_old_year[{{ mem.id }}]" min="2000" step="1" value="{{ mem.year }}" placeholder="Year" required>
+
+
+                                <select class="form-control" name="member_society_old_comm[{{ mem.id }}]">
+                                    <option value="" selected>No Committee Position</option>
+                                    {% for position in committeePositions %}
+                                        <option value="{{ position.id }}" {% if position.id == mem.committeePositionId %}selected{% endif %}>{{ position.name }}</option>
+                                    {% endfor %}
+                                </select>
+
+
+                                <input type="text" class="form-control" placeholder="External profile ID" value="{{ mem.societyProfileId }}" name="member_society_old_profile[{{ mem.id }}]">
+
+                                <button type="button" class="btn btn-danger btn-sm btn_delete_soc" data-membership-id="{{ mem.id }}"><span class="glyphicon glyphicon-remove"></span></button>
+                            </div>
+                        {% endfor %}
+
+                        <hr class="hr-smaller">
+                    {% endfor %}
+                </div>
+
+
+
+                <div id="member_society_holder"></div>
+
+                
+                <div class="hidden" id="member_society_delete_holder"></div>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-pa" id="member_society_add">Add society</button>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Edit User</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="hidden" id="member_society_base">
+        <div class="form-group form-inline">
+            <select class="form-control" name="member_society_id[]" required>
+                <option value="" disabled selected style="display: none;">Societies</option>
+                {% for society in societies %}
+                    <option value="{{ society.id }}">{{ society.name }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="number" class="form-control" name="member_society_year[]" min="2000" step="1" value="{{ currentYear }}" placeholder="Year" required>
+
+
+            <select class="form-control" name="member_society_comm[]">
+                <option value="" selected>No Committee Position</option>
+                {% for position in committeePositions %}
+                    <option value="{{ position.id }}">{{ position.name }}</option>
+                {% endfor %}
+            </select>
+
+
+            <input type="text" class="form-control" placeholder="External profile ID" name="member_society_profile[]">
+        </div>
+    </div>
+
+
+<script>
+window.addEventListener("load", function(){
+    $("#member_society_add").click(function(){
+        var a = $("#member_society_base").children().first().clone();
+        $("#member_society_holder").append(a);
+    });
+
+
+    $(".btn_delete_soc").click(function(){
+        var id = $(this).data("membership-id");
+
+        $(this).parent().remove();
+
+        var inp = $(document.createElement("input")).attr("type", "hidden").attr("name", "member_society_delete[]").val(id);
+        $("#member_society_delete_holder").append(inp);
+    });
+});
+</script>
+
+
+{# Standard PA footer #}
+{{ footer() }}

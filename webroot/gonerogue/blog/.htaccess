@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /blog
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$  /gonerogue/blog/proxy.php?url=http://gonerogueuk.tumblr.com/$1

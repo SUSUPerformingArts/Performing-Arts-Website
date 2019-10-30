@@ -1,0 +1,40 @@
+{{ header("SUSU Performing Arts - Submit Feedback") }}
+
+
+    <div class="well well-pa">
+        <div class="pull-right"></div>
+        <h1>Submit website feedback</h1>
+        <div class="clearfix"></div>
+    </div>
+
+
+
+
+    <div class="well well-pa">
+        {% if isLoggedIn() %}
+
+            <form autocomplete="off" action="" method="post">
+                <h2>Submit some feedback</h2>
+                <div class="form-group">
+                    <label for="suggest_title">*Title:</label>
+                    <input type="text" class="form-control" name="suggest_title" id="suggest_title" placeholder="Title" required>
+                </div>
+                <div class="form-group">
+                    <label for="suggest_body">Description:</label>
+                    <textarea class="form-control" rows="5" name="suggest_body" id="suggest_body" placeholder="Description"></textarea>
+                </div>
+                <div class="form-group form-inline">
+                    <label for="suggest_suggestion">Is this a feature suggestion?</label>
+                    <input type="checkbox" class="form-control" name="suggest_suggestion" id="suggest_suggestion">
+                </div>
+                <input type="submit" class="btn btn-success" value="Submit">
+            </form>
+
+        {% else %}
+            <p>
+                Please <a href="/archive/login?continue={{ urlFor('submit') }}">login</a> to submit feeback
+            </p>
+        {% endif %}
+    </div>
+
+{{ footer() }}

@@ -1,0 +1,56 @@
+{{ header("SUSU Performing Arts - About") }}
+{{ fancySubHeader(0, "Performing Arts Committee", "", "About PA") }}
+<p class="lead">
+  The PA committee supports the socities, helps in the distribution of funding and organise PA-wide events such as PA ball and socials.
+</p>
+
+
+
+<div class="row">
+  {% for member in paCommittee %}
+    <div class="col-md-4 committeeContainer">
+      {% if member.title=="Dance Societies Representative" %}<div class="well well-dance">
+      {% elseif member.title=="Theatrical Societies Representative" or member.title=="Technical Representative" %}<div class="well well-theatrical">
+      {% elseif member.title=="Music Societies Representative" %}<div class="well well-music">
+      {% else %}<div class="well well-pa">
+      {% endif %}
+        <h4>{{member.title}}</h4>
+        <h3>{{ member.fullName }}</h3>
+        <table width="100%"><tr>
+          <td valign="bottom" style="width: 50%;">
+            <a style="margin-top: 5px; width: 120px;" class="btn btn-pa" href="{{ urlFor("pa_member", {"member":member.memberId}) }}">about {{ member.firstName }}</a>
+            <a style="margin-top: 5px; width: 120px" class="btn btn-pa" href="{{member.email}}">email {{ member.firstName }}</a>
+          </td>
+          <td style="width: 50%;"><div class="commPhoto" style="background-image: url('{{ member.img }}');"></div></td>
+        </tr></table>
+        
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+  .committeeContainer h3 {
+    margin-top: 0px;
+  }
+  .committeeContainer h4 {
+    margin: 0px;
+    opacity: 0.7;
+  }
+  
+  .commPhoto {
+    background-size: cover;
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative; /* If you want text inside of it */
+  }
+</style>
+
+<script>
+  var hash = window.location.hash.substr(1);
+  
+  if (hash === "committee") {
+    $('html,body').animate({scrollTop: ($('#comm').offset().top-50)});
+  }
+</script>
+{{ footer() }}

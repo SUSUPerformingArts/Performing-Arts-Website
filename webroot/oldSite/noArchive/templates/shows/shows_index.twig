@@ -1,0 +1,228 @@
+{# Call the header function to create the standard PA header #}
+{{ header("SUSU Performing Arts - Shows", 
+    ["/libs/moment.js","/libs/fullcalendar/js/fullcalendar/jquery.fullcalendar.min.js","/libs/vex/vex.combined.min.js", "/libs/marked.js"], 
+    ["/libs/fullcalendar/css/fullcalendar/fullcalendar.css", "/libs/vex/vex.css", "/libs/vex/vex-theme-default.css"], 
+    "2.1.4") }}
+
+{{ fancySubHeader(0, "Performing Arts Shows")}}
+    
+    {% if canAdd %}
+        <div class="fancyActions">
+            <a class="btn btn-primary" href="{{ urlFor("pa_show_add") }}">Add show</a>
+        </div>
+    {% endif %}
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+        <div class="archive-block shows-block upcoming-shows">
+        <h2>{% if year %}Shows in {{ year }}{% else %}Upcoming shows{% endif %}</h2>
+            <div class="form-group form-inline">
+                <label for="society-type-filter">Filter: </label>
+                <select class="form-control" id="society-type-filter">
+                    <option name="0" selected>All</option>
+                    {% for type in societyTypes %}
+                        <option name="{{ type.id }}">{{ type.name }}</option>
+                    {% endfor %}
+                </select>
+                &nbsp;
+                or click <a href="{{ urlFor("pa_shows_search") }}">here</a> to search all shows.
+            </div>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr><th>Show</th><th>Society</th><th>Dates</th></tr>
+                </thead>
+                <tbody>
+                    {% for show in upcomingShows %}
+                        <tr class="upcoming-show society-type-{{ show.societyType }}">
+                            <td><a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">{{ show.name }}</a></td>
+                            <td><a href="{{ urlFor("pa_society", { "society" : show.societySlug }) }}">{{ show.societyName }}</a></td>
+                            <td>{{ show.firstShowDate|date(dateformatShort) }}{% if show.firstShowDate != show.lastShowDate %} - {{ show.lastShowDate|date(dateformatShort) }}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-pa">
+                <h2>Shows Calendar</h2>
+
+                <div id='calendar'></div>
+
+                <div style="text-align: right; ">
+                                    <ul class="list-inline">
+                    <li><input type="checkbox" id="dance" checked /><label for="dance">Dance</label></li>
+                    <li><input type="checkbox" id="music" checked /><label for="music">Music</label></li>
+                    <li><input type="checkbox" id="theatre" checked /><label for="theatre">Theatrical</label></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+var musicEvents;
+var danceEvents;
+var theatricalEvents;
+
+var firstLoad = true;
+
+function updateEvents() {
+
+    vex.defaultOptions.className = 'vex-theme-default';
+    var events2 = [];
+    
+    if (document.getElementById('dance').checked) {
+        events2 = events2.concat(danceEvents);
+    }
+    
+    if (document.getElementById('music').checked) {
+        events2 = events2.concat(musicEvents);
+    }
+    
+    if (document.getElementById('theatre').checked) {
+        events2 = events2.concat(theatricalEvents);
+    }
+    
+    $('[id=calendar]').each(function(index, element) {
+       element = $(element);
+       var restore_date  = element.fullCalendar('getDate');
+       var restore_scroll = $(window).scrollTop();
+       element.html("");
+       
+       element.fullCalendar({
+            events: events2,
+            firstDay: 1,
+            firstHour: 10,
+            height: $(window).height() - 200,
+            eventClick: function(e, jsEvent, view) {
+                var title_parts = e.title.split(":");
+                var soc = title_parts[0];
+                var title = title_parts[1];
+                
+                title_parts.forEach(function(v,i) {
+                    if (i<2) return;
+                    
+                    title += ":" + v;
+                });
+                
+                var img = "/img/societies/logo_by_name/" + soc.replace(/\s/g, '').toLowerCase();
+                
+                if (e.location == null) e.location = "Southampton";
+                var map = e.location.replace(/\s/g, '+');
+                
+                if (e.details == null) e.details = "";
+                var desc = marked(e.details);
+                
+                var date = new Date(e.start);
+                var options = {
+                    weekday: "long", year: "numeric", month: "short",
+                    day: "numeric", hour: "2-digit", minute: "2-digit", hour12: "true"
+                };
+                
+                var printDate = date.toLocaleTimeString("en-gb", options);
+                
+                html = "<header><h2><img style='height:3em; margin-right:15.4px' src='" + img + "' onerror='this.style.display = \"none\";' />" + title + "</h2></header><p>" + desc + "</p>\
+                <p align='center'>"+e.location + " | " + printDate + " | " + soc + "</p><iframe width='100%' height='250' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCyOvyFMRWdCk2Wa0KSa_sNSyIi_RKN08U&q=" + map + "' allowfullscreen></iframe>";
+                
+                var clicked = jsEvent.target;
+
+                while (!$(clicked).hasClass("fc-event-inner")) {
+                    clicked = $(clicked.parentNode);
+                }
+                
+                vex.open({content: html, contentCSS: {width: '70vw', 
+                                    "background-color": $(clicked).css("background-color"), 
+                                    "color":"#ffffff"}});
+                
+                
+                return false;
+            },
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+        });
+        if (!firstLoad)
+            element.fullCalendar( 'gotoDate', restore_date);
+
+        $(".fc-button").css("margin", "5px");
+        $(".fc-button").removeClass("fc-button").addClass("btn btn-pa");
+        $(".fc-button-inner").each(function(i,e) {
+            e = $(e);
+            e.css("background-color", "rgba(0,0,0,0)");
+            e.css("color", "#ffffff");
+            e.css("border-style", "none");
+        });
+        
+        $(".fc-button-effect").each(function(i,e) {
+            e = $(e);
+            e.css("display", "none");
+        });
+            
+        $('html, body').animate({scrollTop: restore_scroll + 'px'}, 0);
+    });
+    
+    firstLoad = false;
+}
+
+window.addEventListener("load", (function(){
+    $("#society-type-filter").on("change", function(e){
+        var id = $(this.selectedOptions[0]).attr("name");
+
+        if(id == 0){
+            $(".upcoming-show").show();
+        }else{
+            // Select all options
+            $(".upcoming-show:not(.society-type-" + id + ")").hide();
+            $(".upcoming-show.society-type-" + id).show();
+        }
+    });
+
+    $.get("https://perform.susu.org/schedule/feed.php", 
+        {manualFeed: "https://ics.teamup.com/feed/ksc21e36577debd936/1977699.ics", colour: "#2372b5", json: "true", soc: 0},
+        function (e1) {
+
+            $.get("https://perform.susu.org/schedule/feed.php", 
+                {manualFeed: "https://ics.teamup.com/feed/ksc21e36577debd936/1977684.ics", colour: "#ffa126", json: "true", soc: 0},
+                function (e2) {
+                    
+                    $.get("https://perform.susu.org/schedule/feed.php", 
+                        {manualFeed: "https://ics.teamup.com/feed/ksc21e36577debd936/1977700.ics", colour: "#208744", json: "true", soc: 0},
+                        function (e3) {
+
+                            musicEvents = e1;
+                            danceEvents = e2;
+                            theatricalEvents = e3;
+
+                            updateEvents();
+                            $("#dance").change(updateEvents);
+                            $("#theatre").change(updateEvents);
+                            $("#music").change(updateEvents);
+                        });
+                });
+        });
+}));
+</script>
+
+<style>
+    /* Just some custom bits for full calendar */
+    .fc-header-title h2 {
+        opacity: 0.8;
+        font-size: 20px;
+    }
+    
+    .fc-event{
+        cursor: pointer;
+    }
+</style>
+
+{# Standard PA footer #}
+{{ footer() }}

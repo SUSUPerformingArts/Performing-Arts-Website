@@ -1,0 +1,26 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Members") }}
+{{ fancySubHeader(0, "Performing Arts Members") }}
+
+    <div class="well well-pa">
+        {% 
+            include "includes/members_search.twig" with
+            { "ms" :  {
+                "autosearch" : true,
+                "wrapform" : true,
+                "samePage" : true
+            }} 
+        %}
+
+
+
+
+    	{#% for member in members %}
+    		<div>
+    			<p><a href="{{ urlFor("pa_member", { "member" : member.id }) }}">{{ member.fullName }}</a> ({{ member.societyNumber }} societies)</p>
+    		</div>
+    	{% endfor %#}
+    </div>
+
+{# Standard PA footer #}
+{{ footer() }}

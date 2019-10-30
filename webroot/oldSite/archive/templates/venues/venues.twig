@@ -1,0 +1,57 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Venue :: " ~ venue.name) }}
+
+{% set APIKey = "AIzaSyDAyMoMpniG9ttSfDUBdjTOhjhrlVWXfns" %}
+{% set latlon = venue.venueLat ~ "%2C" ~ venue.venueLon %}
+
+    <div class="well well-pa">
+        <div class="topleft-indicator">Venue</div>
+        <h1>{{ venue.name }}</h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+        <div class="row">
+            <div class="col-sm-6 col-sm-push-6">
+                {% if venue.venueLat and venue.venueLon %}
+                        {# Displayed on the right and on the top #}
+                        <h2>Getting to {{ venue.name }}</h2>
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <iframe src="https://www.google.com/maps/embed/v1/place?q={{ latlon }}&key={{ APIKey }}"></iframe>
+                        </div>
+                {% endif %}
+            </div>
+
+            <div class="col-sm-6 col-sm-pull-6">
+                <p>{{ venue.description|e|markdown }}</p>
+
+                {% if upcomingShows %}
+                    <div class="archive-block venue-block venue-block-shows">
+                        <h2>Upcoming shows</h2>
+                        <ul>
+                            {% for show in upcomingShows %}
+                                <li><a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">{{ show.name }}</a> by <a href="{{ urlFor("society", { "society" : show.societySlug }) }}">{{ show.societyName }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% elseif not year %}
+                    <h2>No upcoming shows</h2>
+                {% else %}
+                    {% if pastShows|length > 0 %}
+                        <h2>Shows in {{ year }} - {{ year + 1 }}</h2>
+                        <ul>
+                            {% for show in pastShows %}
+                                <li><a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">{{ show.name }}</a> by <a href="{{ urlFor("society", { "society" : show.societySlug }) }}">{{ show.societyName }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <h2>There were no shows in {{ year }}</h2>
+                    {% endif %}
+                {% endif %}
+
+        </div>
+    </div>
+
+{# Standard PA footer #}
+{{ footer() }}

@@ -1,0 +1,27 @@
+{# Call the header function to create the standard PA header #}
+{{ header() }}
+{{ fancySubHeader(0, "404 Error", null, "File not found", "/img/icons/lost.gif") }}
+
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+    	<p class="lead">Sorry, that page doesn't exist!</p>
+
+    	<p>
+    		Either it's been moved, or never existed. Double check the spelling/format of the address, but if that's all good use one of the links below to get back.
+		<br>
+		If you got here by clicking something on the site, please tell the web officer so it can be fixed! <a href="mailto:web@susuperformingarts.org">web@susuperformingarts.org</a>
+    	</p>
+
+    	<p>
+    		<ul style="list-unstyled">
+    			<li><a href="javascript:history.go(-1)">Go back</a></li>
+    			<li><a href="/">Go to the homepage</a></li>
+    		</ul>
+    	</p>
+    </div>
+
+
+{# Standard PA footer #}
+{{ footer() }}

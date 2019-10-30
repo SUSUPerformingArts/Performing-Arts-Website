@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'MuseoSans 500';
+	src: url('MuseoSans_500-webfont.eot');
+	src: url('MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'),
+		url('MuseoSans_500-webfont.woff') format('woff'),
+		url('MuseoSans_500-webfont.ttf') format('truetype'),
+		url('MuseoSans_500-webfont.svg') format('svg');
+}

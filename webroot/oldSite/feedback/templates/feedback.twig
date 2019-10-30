@@ -1,0 +1,35 @@
+{{ header("SUSU Performing Arts - Feedback - " ~ title) }}
+
+
+    <div class="well well-pa">
+        <h2>{{ title }}</h2>
+        <div class="row">
+
+            <div class="col-sm-7">
+                <p>
+                    {{ body }}
+                </p>
+            </div>
+
+            <div class="col-sm-5">
+                {% if response %}
+                    <h3 style="margin-top: 0px">Response</h3>
+                    <p>
+                        {{ response }}
+                    </p>
+                {% endif %}
+
+                {% if development %}
+                    <h3 class="h4">This suggestion has been linked to the feature:</h3>
+                    <p>
+                        <a href="{{ urlFor('feature', { 'feature': development.id }) }}">{{ development.title }}</a>
+                    </p>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+
+
+{{ footer() }}

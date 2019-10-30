@@ -1,0 +1,212 @@
+/**
+ * @version		$Id: ccboard.css 188 2009-09-26 07:11:56Z thomasv $
+ * @Project		ccBoard - Joomla! Bulletin Board Extension/Component
+ * @author 		Thomas Varghese 
+ * @package		ccBoard
+ * @copyright	Copyright (C) 2008-2009 codeclassic.org. All rights reserved.
+ * @license 	http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2
+*/
+
+/* COMMON  ------------------------------------------------------------------  */
+div.ccbmaindiv 			{ overflow: hidden; padding: 0px; margin: 0px; word-break: keep-all; }
+td a:link, td a:visited { text-decoration: none; }
+td a:hover              { text-decoration: underline; }
+span.textwhite          { color: white; font-weight:bold; }
+table.ccbnormaltable 	{ table-layout: fixed; width:100%; border:none;  border-collapse: collapse;}
+td.ccbtopleftgreen		{ background-image: url(rhleftgreen.gif); 	vertical-align:middle; height:28px; width:5px; padding: 0px; margin: 0px; } 
+td.ccbtopmiddlegreen	{ background-image: url(rhgreen.gif); 		vertical-align:middle; height:28px; background-repeat: repeat-x; color:white; font-weight:bold; overflow: hidden; word-break: keep-all; padding: 0px; margin: 0px; vertical-align:middle;}
+td.ccbtoprightgreen 	{ background-image: url(rhrightgreen.gif); 	vertical-align:middle; height:28px; width:5px; padding: 0px; margin: 0px; } 
+td.ccbtopleftred		{ background-image: url(rhleftred.gif); 	vertical-align:middle; height:28px; width:5px; padding: 0px; margin: 0px; } 
+td.ccbtopmiddlered		{ background-image: url(rhred.gif); 		vertical-align:middle; height:28px; background-repeat: repeat-x; color:white; font-weight:bold; overflow: hidden; word-break: keep-all; padding: 0px; margin: 0px; vertical-align:middle;}
+td.ccbtoprightred		{ background-image: url(rhrightred.gif); 	vertical-align:middle; height:28px; width:5px; padding: 0px; margin: 0px; } 
+td.ccbtopleftgray		{ background-image: url(rhleftgray.gif); 	vertical-align:middle; height:28px; width:5px; padding: 0px; margin: 0px; } 
+td.ccbtopmiddlegray		{ background-image: url(rhgray.gif); 		vertical-align:middle; height:28px; background-repeat: repeat-x; color:white; font-weight:bold; overflow: hidden; word-break: keep-all; padding: 0px; margin: 0px; vertical-align:middle;}
+td.ccbtoprightgray		{ background-image: url(rhrightgray.gif); 	vertical-align:middle; height:28px; width:5px; padding: 0px; margin: 0px; } 
+td.ccbtopleftblue		{ background-image: url(rhleftblue.gif); 	vertical-align:middle; height:28px; width:5px; padding: 0px; margin: 0px; } 
+td.ccbtopmiddleblue		{ background-image: url(rhblue.gif); 		vertical-align:middle; height:28px; background-repeat: repeat-x; color:white; font-weight:bold; overflow: hidden; word-break: keep-all; padding: 0px; margin: 0px; vertical-align:middle;}
+td.ccbtoprightblue		{ background-image: url(rhrightblue.gif); 	vertical-align:middle; height:28px; width:5px; padding: 0px; margin: 0px; } 
+
+td.ccbleftbody			{ background-image: url(rleftbody.png); 	width: 5px; background-repeat: repeat-y; padding: 0px; margin: 0px;}
+td.ccbrightbody			{ background-image: url(rrightbody.png); 	width: 5px; background-repeat: repeat-y; padding: 0px; margin: 0px;}
+td.ccbbotleft			{ background-image: url(rfl.gif); 			vertical-align:middle; height: 6px; width: 5px; padding: 0px; margin: 0px;}
+td.ccbbotmiddle			{ background-image: url(rf.gif); 			vertical-align:middle; height: 6px; background-repeat: repeat-x; padding: 0px; margin: 0px;}
+td.ccbbotright			{ background-image: url(rfr.gif); 			vertical-align:middle; height: 6px; width: 5px; padding: 0px; margin: 0px;}
+td.ccblinetop 			{ border-top: dotted 1px gray; padding-top: 10px; padding-bottom: 4px; vertical-align: middle; overflow: hidden; word-break: keep-all;}
+
+td.ccbheaderrow    		{ background-color: #EEEEEE; height:40px; padding: 0px 0px 0px 0px;}
+td.ccbheaderlink 		{ width: auto; vertical-align: bottom; }
+td.ccbheaderusername 	{ width: 250px; text-align:right; overflow: hidden; word-break: keep-all; }
+td.ccbheaderavatar 		{ width: 40px; }
+td.ccbtopicicon			{ width: 30px; text-align: left; }
+img.ccbiconimg			{ width: 27px; height: 27px; }
+
+tr.ccbtablefooter		{ margin-bottom: 15px; }
+td.ccbcolspacer			{ height: 15px; }
+td.ccbdatacolumn		{ background-color: #EEEEEE; padding: 0px; margin: 0px; }
+div.ccbdvfooter			{ text-align:center; margin:auto; width: 100%; font-family: Arial, Verdana; font-size: 12px; color: orange; }
+
+
+/* ForumList ------------------------------------------------------------------  */
+td.ccbfrmlast  			{ width: 240px; text-align: left; border-top: dotted 1px gray; padding-top: 10px; padding-bottom: 4px; vertical-align: middle; overflow: hidden; word-break: keep-all; }
+tr.ccbfrmrowheader 		{ background-color: #EEEEEE; padding: 0px; margin: 0px; }
+td.ccbfrmrowcol1		{ width: 30px; height: 60px; text-align: center; }
+td.ccbfrmrowcol2		{ text-align: left; }
+td.ccbfrmrowcol3		{ width: 100px; text-align: center; }
+td.ccbfrmrowcol4		{ width: 100px; text-align: center; }
+td.ccbfrmrowcol5		{ width: 160px; text-align: left; }
+td.ccbfrmlinetop 		{ border-top: dotted 1px gray; padding-top: 10px; padding-bottom: 4px; text-align:center; vertical-align: middle; overflow: hidden; word-break: keep-all;}
+td.ccbfrmrowcol6		{ width: 30px; text-align: center; }
+td.ccbboardsummary      { background-color: #EEEEEE; padding: 5px; margin: 0px;}
+div.graphleft           { float:left;  padding-top: 5px;}
+div.graphright          { float:left;  padding-top: 5px; padding-left:10px;}
+
+/* Topic List ----------------------------- */
+td.ccbtpkmenu 			{ vertical-align: bottom; }
+td.ccbtpkmenucol		{ width: 500px; padding: 10px 0px 5px 0px; overflow:hidden; text-align: left; vertical-align: middle; }
+td.ccbtpkmenucolbot		{ width: 500px; overflow:hidden; text-align: left; vertical-align: middle; }
+td.ccbtpklinktext		{ width: 120px; text-align: left; vertical-align: middle; }
+td.ccbtpkpages			{ width: auto; padding: 10px 0px 5px 0px; text-align: right; }
+td.ccbtpkdetail    		{ background-color: #EEEEEE; padding: 0px 0px 0px 0px; width: 100%;}
+td.ccbtpkdataheader		{ height: 60px; border-bottom: solid 1px white; }
+td.ccbtpkcol3			{ width: 50px; text-align:center; }
+td.ccbtpkpagecount		{ width: 100px; vertical-align: bottom; text-align: right;}
+span.topicavatar        { border:1px solid #CCCCCC; display:block; height: 40px; padding:1px; width:40px; }
+		
+
+/* Post List ----------------------------- */
+td.ccbuserinfo	 		{ background-color: #EEEEEE; padding: 0px 0px 0px 0px; width:150px; text-align:center; vertical-align: top;}
+td.ccbpostuserdetails 	{ font-size: 10px; text-align: left; overflow: hidden; word-break: keep-all;}
+span.ccbdvsubject		{ width:70%; margin: 0px; text-align:left; float:left; overflow: hidden; }
+span.ccbdvpostime		{ width:30%; margin: 0px; text-align: right; float:right; }
+td.ccbpstusername		{ text-align:center; overflow: hidden; }
+img.ccbpostavatar		{ height: 80px; width: 80px; }
+td.ccbpostcenter		{ text-align: center; }
+span.ccbpostrank		{ width:90px; text-align: center; }
+span.ccbposticons		{ text-align: center; }
+td.ccbpostarea			{ vertical-align:top; height:100%; background-color: white; padding-right: 10px;}
+table.ccbposttable		{ margin-left: 5px; width:100%; height:100%; border:none; table-layout: fixed; }
+td.ccbpostediticons		{ text-align: right; height: 40px; }
+td.ccbposttextcol		{ width:100%; height: 100%; text-align:left; vertical-align:top; overflow: hidden; break-word: keep-all; }
+td.ccbpostlogip			{ text-align: right; vertical-align:top; }
+td.ccbpostsignature		{ height: auto; color:gray; border-top:solid 1px silver; text-align:left; vertical-align:top; }
+td.ccbpostemail			{ width: 90px; text-align: center; color: blue; vertical-align: top; }
+span.ccbpostmodified	{ border:dotted 1px gray; display: inline; padding-left: 5px; padding-right: 5px; color: red; font-size: 12px; background: #EEEEFF; overflow:auto; break-word: keep-all; }
+td.ccbpostmod			{ text-align: right; }
+td.ccbmodmenu			{ width: 100%; height: auto; padding-top: 5px; text-align: right; vertical-align:bottom; }
+div.attachbox			{ border: 1px dashed #D8D8D8; clear: left; float:left; margin: 5px 5px 5px 0; padding: 6px; width: auto; background-color: #F9F9FF; border-color: #C9D2D8;  }
+
+/* BBCode Parser Classes --------------------------------------- */
+div.bbcode_quote		{ width: 96%; border: 1px dashed #D8D8D8; clear: left; float:left; margin: 5px 5px 5px 0; padding: 6px;  background-color: #FFFFEA; border-color: #C9D2D8;  }
+div.bbcode_quote_head	{ font-weight: bold; color: maroon; }
+div.bbcode_quote_body	{ width: 100%; font-style: italic;  overflow: auto; max-height: 500px;}
+span.bbcode_spoiler		{ }
+span.bbcode_acronym		{ }
+div.bbcode_left			{ }
+div.bbcode_right		{ }
+div.bbcode_center		{ }
+div.bbcode_indent		{ }
+table.bbcode_columns	{ }
+td.bbcode_column		{ }
+td.bbcode_column bbcode_firstcolumn	{ }
+div.bbcode_code			{ width: 96%;  border: 1px dashed #D8D8D8; clear: left; float:left; margin: 5px 5px 5px 0; padding: 6px;  background-color: #F9FFE8;  }
+div.bbcode_code_head	{ font-weight: bold; color: #008B00; }
+div.bbcode_code_body	{ width: 100%; color: black; font-family:monospace; font-size:12px; font-style: normal;  overflow: auto; max-height: 500px;}
+
+/* Recent List --------------------------------------- */
+div.ccbrcntsubjline		{ width:70%; margin: 0px; text-align:left; float:left; overflow: hidden; }
+div.ccbrcntdateline		{ width:30%; margin: 0px; text-align:right; float:right; }
+
+
+/* Profile -------------------------------------------------------- */
+td.ccbprofiledetail		{ padding: 0px; margin: 0px; }
+span.ccbprofilerank		{ float:left; width:90px; }
+table.ccbprofiletable 	{ table-layout: fixed; width:100%;  }
+td.ccbprofilekey		{ width: 150px; padding-right: 5px; background-color: #EEEEEE; border: solid 1px white; text-align: right; vertical-align: middle;}
+td.ccbprofiletext		{ border: solid 1px silver; }
+td.ccbprofilebutton		{ text-align:center; height:40px; width:50px; }
+td.ccbprofilebuttonarea { height: 80px; text-align: right; background-color: #EEEEEE; }
+
+/* Post Edit ------------------------------------------------------------------------ */
+input.ccbeditsubj		{ border: solid 1px gray; }
+input.ccbeditcapinput	{ border: solid 1px gray; width: 60px; }
+td.ccbeditsubjlabel		{ text-align: left; width: 100px; padding-left: 5px;}
+td.ccbeditsubj			{ text-align: left; width:100%; vertical-align: middle;}
+td.ccbedittext			{ width: 100%; overflow:scroll; padding: 0px; margin: 0px; text-align: center;}
+div.ccbuploadbut		{ float: left; vertical-align: middle; padding-right: 5px; }
+
+td.ccbeditcaplabel		{ width: 60px; }
+td.ccbeditcap			{ width: 130px; }
+td.ccbeditcaptext		{ width: 80px; }
+div.buttonarea			{ float: right; width: auto; }
+div.ccbeditpreview		{ display: none; float:left; width: 100%; text-align:left; }
+span.attachlabels		{ text-align: left; width: 100px; }
+input.attachtext		{ width: 320px; border: solid 1px gray; }
+input.uploadbutton		{ border: solid 1px gray; }
+td.ccbeditattach		{ width: 100%; background-color: #EEEEEE; overflow:scroll; padding: 5px; margin: 0px; text-align: left;}
+label.delattachlink		{ color: red; font-weight: bold; text-decoration: underline; cursor:hand; cursor:pointer;}
+div.replyquote			{ font-style:italic; width:auto; background-color:#EEEFFF; border:dashed 1px blue; }
+td.ccbquickreply        { color: black; background-color: white; padding: 5px 10px 5px 5px; }
+/* -------------------- MOVE -------------------------------------------------- */
+td.ccbmovcap			{ width: 150px; height: 15px; background-color: #EEEEEE; text-align: right; font-weight: bold; padding-right: 5px;}
+
+
+/* -------------------- MYPROFILE -------------------------------------------------- */
+td.ccbprolabel			{ width: 150px; height: auto; background-color: #EEEEEE; text-align: right; font-weight: bold; padding-right: 5px; }
+td.ccbproval			{ width: 100%; text-align: left; padding-left: 10px; }
+
+/* PAGE INDEX ----------------------------------------------------------------- */
+span.pagination span 	{ border:solid 1px #DDDDDD; margin-right: 2px; }
+span.pagination a 		{ border:solid 1px #DDDDDD; font-weight: bold; margin-right: 2px; }
+span.pagination a:link 	{ color: #0063e3; text-decoration: none; }
+span.pagination a:hover { border: solid 1px #666666; background-color: blue; color: white; text-decoration: none; }
+select.inputbox 		{ border: solid 1px #DDDDDD; margin: 0 0 0 0; padding: 2px 0 0 0; vertical-align: top; }
+label.page 				{ vertical-align: middle; }
+
+/*  KARMA -------------------------------------------------------------------- */
+div.ccbkarma			{ display: block; visibility: visible; padding-top: 5px;}
+ul.ccbkarmapanel 		{ margin: 0; padding: 0; width: 100%; height: 25px; }
+ul.ccbkarmapanel li		{ list-style: none; float: right; background: none; padding: 0; margin: 0; }
+li.ccbkarmapanelup a:link,
+li.ccbkarmapanelup a:visited 	{ width: 21px; height: 18px; outline: none; display: block;	cursor: pointer; outline-style:none; background: transparent url(karma.gif) no-repeat 0 -20px; text-indent: -9999px; }
+li.ccbkarmapanelup a:hover 		{ background: transparent url(karma.gif) no-repeat 0 0; }
+li.ccbkarmapaneldown a:link,  
+li.ccbkarmapaneldown a:visited 	{ width: 19px; height: 18px;  outline: none; display: block; cursor: pointer; text-indent: -9999px; background: transparent url(karma.gif) no-repeat 0 -62px; }
+li.ccbkarmapaneldown a:hover 	{ background: transparent url(karma.gif) no-repeat 0 -42px; }
+ul.ccbkarmapanel li.ccbkarmapaneltotal { height: 18px;	width: auto; padding: 0px 5px 0px 8px; display: block; color: #999999; text-align: center; font-weight: 700; font-size: 10px; line-height: 17px; background: transparent url(karma.gif) no-repeat 0 -125px; }
+li.ccbkarmapanelrpt a:link,  
+li.ccbkarmapanelrpt a:visited 	{ width: 20px;	height: 18px;  outline: none; display: block; text-indent: -9999px; cursor: pointer; background: transparent url(karma.gif) no-repeat 0 -103px; }
+li.ccbkarmapanelrpt a:hover 	{ background: transparent url(karma.gif) no-repeat 0px -84px; }
+/*  KARMA -------------------------------------------------------------------- */
+
+
+/* BUTTON -------------------------------------------------------------------- */
+a.ovalbuttongray	{background: transparent url('oval-gray-left.gif') no-repeat top left; display: block; float: left; font: normal 13px Tahoma; line-height: 16px; height: 24px; padding-left: 11px; text-decoration: none;  padding-right: 5px;}
+a:link.ovalbuttongray, a:visited.ovalbuttongray, a:active.ovalbuttongray{ color: #494949; text-decoration: none;}
+a.ovalbuttongray span	{ background: transparent url('oval-gray-right.gif') no-repeat top right; display: block; padding: 4px 11px 4px 0; color: #646464;}
+a.ovalbuttongray:hover	{ background-position: bottom left; text-decoration: none;}
+a.ovalbuttongray:hover span{ background-position: bottom right; color: black; text-decoration: none;}
+
+a.ovalbuttonred	{background: transparent url('oval-red-left.gif') no-repeat top left; display: block; float: left; font: normal 13px Tahoma; line-height: 16px; height: 24px; padding-left: 11px; text-decoration: none;  padding-right: 5px; }
+a:link.ovalbuttonred, a:visited.ovalbuttonred, a:active.ovalbuttonred{ color: #494949; text-decoration: none;}
+a.ovalbuttonred span	{ background: transparent url('oval-red-right.gif') no-repeat top right; display: block; padding: 4px 11px 4px 0; color: #646464;}
+a.ovalbuttonred:hover	{ background-position: bottom left; text-decoration: none;}
+a.ovalbuttonred:hover span{ background-position: bottom right; color: black; text-decoration: none;}
+
+a.ovalbuttonblue	{background: transparent url('oval-blue-left.gif') no-repeat top left; display: block; float: left; font: normal 13px Tahoma; line-height: 16px; height: 24px; padding-left: 11px; text-decoration: none; padding-right: 5px;}
+a:link.ovalbuttonblue, a:visited.ovalbuttonblue, a:active.ovalbuttonblue{color: #494949; text-decoration: none; }
+a.ovalbuttonblue span	{ background: transparent url('oval-blue-right.gif') no-repeat top right; display: block; padding: 4px 11px 4px 0; color: #646464;}
+a.ovalbuttonblue:hover	{ background-position: bottom left; text-decoration: none; }
+a.ovalbuttonblue:hover span{ background-position: bottom right; color: black; text-decoration: none;}
+
+a.ovalbuttongreen	{background: transparent url('oval-green-left.gif') no-repeat top left; display: block; float: left; font: normal 13px Tahoma; line-height: 16px; height: 24px; padding-left: 11px; text-decoration: none;  padding-right: 5px; }
+a:link.ovalbuttongreen, a:visited.ovalbuttongreen, a:active.ovalbuttongreen{ color: #494949; text-decoration: none; }
+a.ovalbuttongreen span	{ background: transparent url('oval-green-right.gif') no-repeat top right; display: block; padding: 4px 11px 4px 0; color: #646464;}
+a.ovalbuttongreen:hover	{ background-position: bottom left; text-decoration: none; }
+a.ovalbuttongreen:hover span{ background-position: bottom right; color: black; text-decoration: none; }
+
+a.squarebutton			{ background: transparent url('square-gray-left.gif') no-repeat top left; display: block; float: right; font: normal 12px Arial; line-height: 15px; height: 23px; padding-left: 9px; margin-left:4px; text-decoration: none; }
+a:link.squarebutton, a:visited.squarebutton, a:active.squarebutton{ color: black;  text-decoration: none;}
+a.squarebutton span		{ background: transparent url('square-gray-right.gif') no-repeat top right; display: block; padding: 4px 9px 4px 0; color: #646464;}
+a.squarebutton:hover	{ background-position: bottom left;  text-decoration: none; }
+a.squarebutton:hover span{ background-position: bottom right; color: black; text-decoration: none;}
+

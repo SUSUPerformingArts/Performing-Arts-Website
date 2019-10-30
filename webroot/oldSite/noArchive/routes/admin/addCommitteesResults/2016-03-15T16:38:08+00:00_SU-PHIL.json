@@ -1,0 +1,32 @@
+{
+    "19": {
+        "name": "SU Phil",
+        "members": [
+            {
+                "position": "President",
+                "name": "Charles Gooderham",
+                "username": "cbg1g14"
+            },
+            {
+                "position": "Secretary",
+                "name": "Lucy-Anne Taylor",
+                "username": "lct1g13"
+            },
+            {
+                "position": "Librarian",
+                "name": "Sarah How",
+                "username": "sh14g15"
+            },
+            {
+                "position": "Treasurer",
+                "name": "Rosie Sheppard",
+                "username": "rss1e15"
+            },
+            {
+                "position": "Social Sec",
+                "name": "Marta Ross",
+                "username": "mr10g15"
+            }
+        ]
+    }
+}

@@ -1,0 +1,100 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Shows :: Edit") }}
+
+
+    
+    <div class="well well-pa">
+        <h1>Edit members in {{ show.showName }}</h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+
+
+    <form class="show-edit-form" id="show-edit-form" autocomplete="off" action="" method="post" enctype="multipart/form-data" data-show="{{ show.showId }}">
+
+        <div class="well well-pa">
+
+            <div class="form-group hidden-xs">
+                <button type="submit" class="btn btn-pa show_submit">Submit</button>
+                <a href="{{ getShowUrl({ "id" : show.showId }) }}" class="btn btn-default">Cancel</a>
+            </div>
+
+            <div class="show-edit-members row">
+                <div class="col-sm-6">
+                        {% 
+                            include "includes/members_search.twig" with
+                            { "ms" :  {
+                                "autosearch" : true,
+                                "selectbutton": true
+                            }} 
+                        %}
+                </div>
+
+                <div class="col-md-6">
+                    <ul class="nav nav-tabs">
+                        {% for areaName, roleArea in roles %}
+                            <li role="presentation" {% if loop.first %}class="active"{% endif %}><a href="#tab_{{ areaName|lower|replace({ ' ' : '' }) }}" data-area="{{ areaName|lower|replace({ ' ' : '' }) }}">{{ areaName }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="tab-content">
+                        {% for areaName, roleArea in roles %}
+                            <div role="tabpanel" class="tab-pane {% if loop.first %}active{% endif %}" id="tab_{{ areaName|lower|replace({ ' ' : '' }) }}">
+                                <ul class="list-group" style="color: #000000;">
+
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </form>
+
+
+
+
+    {# Hidden elements for reuse #}
+    <div id="show-edit-member-base" class="hidden">
+        {% for areaName, roleArea in roles %}
+            <div class="member-edit-base-area {{ areaName|lower|replace({ ' ' : '' }) }}">
+                <select class="form-control" required>
+                    <option value="" disabled selected style="display: none;">Role</option>
+                    {% for role in roleArea %}
+                        <option value="{{ role.id }}">{{ role.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endfor %}
+    </div>
+
+<script>
+{# Kinda hacky way, but it's so much easier!! #}
+var oldMembers = [];
+{%- for member in members -%}
+oldMembers.push({
+{%- for i, j in member -%}
+{{- i -}} : {% if j matches '/^\\d+$/' %}{{- j -}}{% else %}"{{- j -}}"{% endif %},
+{%- endfor -%}
+old : true
+});
+{%- endfor %}
+{%- for member in newMembers -%}
+oldMembers.push({
+{%- for i, j in member -%}
+{{- i -}} : {% if j matches '/^\\d+$/' %}{{- j -}}{% else %}"{{- j -}}"{% endif %},
+{%- endfor -%}
+old : false
+});
+{%- endfor %}
+
+</script>
+
+
+{# PA footer with extra JavaScript #}
+{{ footer({"1" : "/js/shows_edit_members.js"}) }}

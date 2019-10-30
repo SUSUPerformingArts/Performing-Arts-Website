@@ -1,0 +1,82 @@
+{# Call the header function to create the standard PA header #}
+{{ header() }}
+
+    <div class="well well-pa">
+        <h1>Performing Arts show archive</h1>
+    </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="well well-pa">
+                <h2 class="h3"><a href="{{ urlFor("shows") }}" class="white-link">Upcoming shows</a></h2>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" id="showTabs" role="tablist">
+                    {% for type in societyTypes %}
+                        <li role="presentation" {% if loop.first %}class="active"{% endif %}>
+                            <a href="#tab_{{ type.id }}" aria-controls="tab_{{ type.id }}" role="tab" data-toggle="tab">{{ type.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    {% for type in societyTypes %}
+                        <div role="tabpanel" class="tab-pane{% if loop.first %} active{% endif %}" id="tab_{{ type.id }}">
+                            <table class="table table-hover">
+                                <thead>
+                                    <!--<tr><th>Show</th><th>Society</th><th>Dates</th></tr>-->
+                                </thead>
+                                <tbody>
+                                    {% for show in upcomingShowsByType[type.id]|slice(0, 3) %}
+                                        <tr class="upcoming-show society-type-{{ show.societyType }}">
+                                            <td><a href="{{ getShowUrl({ "slug" : show.slug, "society" : show.societySlug, "year" : show.academicYear }) }}">{{ show.name }}</a></td>
+                                            <td><a href="{{ urlFor("society", { "society" : show.societySlug }) }}">{{ show.societyName }}</a></td>
+                                            <td>{{ show.firstShowDate|date(dateformatShort) }}{% if show.firstShowDate != show.lastShowDate %} - {{ show.lastShowDate|date(dateformatShort) }}{% endif %}</td>
+                                        </tr>
+                                    {% else %}
+                                        <tr><td>No shows yet, check back soon!</td></tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <p class="text-right"><a href="{{ urlFor("shows") }}" class="btn btn-pa">See all &#8658;</a>
+            </div>
+
+
+            <div class="well well-pa">
+                <h2 class="h3">Performing arts member?</h2>
+                <p><a href="{{ urlFor("login") }}">Log in</a> with your university credentials to create your PA profile page.</p>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="well well-pa">
+                <h2 class="h3">Try something new!</h2>
+                <hr>
+                <h3 class="h4"><a href="{{ urlFor("society", { 'society' : society.slug }) }}" class="white-link">{{ society.name }}</a></h3>
+                {% if society.logo %}
+                    <img class="img-responsive" style="max-width: 50%; margin-bottom: 1em;" src="{{ society.logo }}" title="{{ society.name }}" alt="{{ society.name }}">
+                {% endif %}
+                <div>{{ society.description|e|markdown }}</div>
+
+                <p class="text-right"><a href="{{ urlFor("society", { "society" : society.slug }) }}" class="btn btn-pa">Learn more &#8658;</a>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+$('#showTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+</script>
+
+{# Standard PA footer #}
+{{ footer() }}

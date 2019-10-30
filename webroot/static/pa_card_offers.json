@@ -1,0 +1,59 @@
+[
+	{
+		"offer":  "10% off Drinks",
+	    "where":  "SUSU Bars",
+        "detail": "10% off drinks in The Stag's, The Bridge and other SUSU Bars",
+        "image":  "susu"
+	},
+	{
+		"offer":  "Discounted Tickets",
+	    "where":  "The Annex",
+        "detail": "Get discounted tickets for any show in The Annex Theatre",
+        "image":  "annex"
+	},
+
+	{
+		"offer":  "Discounted Tickets",
+	    "where":  "The Point",
+        "detail": "Discounted rates on selected shows at The Point, Eastleigh",
+        "image":  "point"
+	},
+
+	{
+		"offer":  "£7.50 Tickets",
+	    "where":  "Turner Sims",
+        "detail": "Get £7.50 tickets to shows in the Turner Sims",
+        "image":  "turnersims"
+	},
+	{
+		"offer":  "Discounted Entry",
+	    "where":  "PopWorld",
+        "detail": "Free entry before Midnight, and £2 entry after",
+        "image":  "popworld"
+	},
+	{
+		"offer":  "Discounted Drinks",
+	    "where":  "The Hobbit",
+        "detail": "Happy hour prices on Hobit Cocktails on a Friday and Saturday (£1 discount), All Hobbit shots and bombs only £1.70, and £1 entry on Friday and Saturday nights",
+        "image":  "hobbit"
+	},
+
+	{
+		"offer":  "Discounted Entry",
+	    "where":  "Jesters",
+        "detail": "£2 discount on entry on Tuesday, Thursday and Saturday, plus £1 discount on Mondays and Fridays",
+        "image":  "jesters"
+	},
+	{
+		"offer":"Discounted ticket",
+		"where":"The PA ball",
+		"detail":"PA Card holders get a discount on PA Ball tickets",
+		"image":"ball"
+	},
+	{
+		"offer":  "Discounted Tickets",
+	    "where":  "The Nuffield",
+        "detail": "Discounted rates on selected shows at The Nuffield Theatres",
+        "image":  "nuffield"
+	}
+]

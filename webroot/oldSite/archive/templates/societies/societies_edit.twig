@@ -1,0 +1,165 @@
+{# Call the header function to create the standard PA header #}
+{{ header("PA Archive :: Society :: Edit") }}
+
+{% set susuPrefix = "https://www.susu.org/groups/" %}
+
+<form class="user-edit-form" id="user-edit-form" autocomplete="off" action="" method="post">
+
+    <div class="well well-pa">
+        <h1>{% if society.logo %}<img src="{{ society.logo }}" alt="{{ society.name }}" style="max-height: 40px;">{% endif %} {{ society.name }}</h1>
+        <input type="text" class="form-control clear-textbox" id="society_edit_subtitle" name="society_edit_subtitle" value="{{ society.subtitle }}" placeholder="Subtitle">
+    </div>
+
+
+    <div class="well well-pa">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="archive-block society-block society-block-description form-group">
+                    <h2>Society Description</h2>
+                    <p>Add styles and links to the description using <a href="{{ urlFor("help_main") ~ "#markdown"}}">Markdown</a></p>
+                    <textarea class="form-control" id="society_edit_description" name="society_edit_description" placeholder="About you" rows="15">{{ society.description }}</textarea>
+                </div>
+
+            </div>
+
+            <div class="col-sm-5">
+                <h2>Links</h2>
+
+                <div class="archive-block society-block society-block-contact soc-main-contact form-horizontal">
+
+
+                        <div class="soc-contact-url form-group">
+                                <div class="col-md-1 text-center"><img src="/img/icons/email.png" alt="Email Logo"> </div>
+                                <div class="col-md-11"><input type="email" class="form-control clear-textbox" id="society_edit_email" name="society_edit_email" value="{{ society.email }}" placeholder="Email address"></div>
+                        </div>
+
+
+                        <div class="soc-contact-url form-group">
+                                <div class="col-md-1 text-center"><img src="/img/icons/web.png" alt="Website Logo"> </div>
+                                <div class="col-md-11"><input type="url" class="form-control clear-textbox" id="society_edit_website" name="society_edit_website" value="{{ society.website }}" placeholder="Society website"></div>
+                        </div>
+
+                    
+
+                        <div class="soc-contact-url row" style="white-space: inherit;">
+                            <div class="col-md-1 text-center">
+                                <a href="{{ susuPrefix }}{{ society.susuPage }}"><img src="/img/icons/susu.png" alt="Website Logo"></a>
+                            </div>
+                            <div class="col-md-11 text-center">
+                                <a href="{{ susuPrefix }}{{ society.susuPage }}">SUSU Groups page</a>
+                                (If this is incorrect please contact the <a href="mailto:web@susuperformingarts.org">Web Officer</a>)
+                            </div>
+                        </div>
+
+
+                        <div class="soc-contact-url form-group">
+                                <div class="col-md-1 text-center"><img src="/img/icons/fb.png" alt="Facebook Logo"> </div>
+                                <div class="col-md-11 form-inline">https://fb.com/<input type="text" class="form-control clear-textbox" id="society_edit_facebookPage" name="society_edit_facebookPage" value="{{ society.facebookPage }}" placeholder="Facebook page url"></div>
+                        </div>
+
+                        <div class="soc-contact-url form-group">
+                            <div class="col-md-1 text-center"><img src="/img/icons/fb.png" alt="Facebook Logo"> </div>
+                            <div class="col-md-11"><input type="url" class="form-control clear-textbox" id="society_edit_facebookGroup" name="society_edit_facebookGroup" value="{{ society.facebookGroup }}" placeholder="Facebook group url"></div>
+                        </div>
+
+
+                        <div class="soc-contact-url form-group">
+                            <div class="col-md-1 text-center"><img src="/img/icons/twitter.png" alt="Twitter Logo"> </div>
+                            <div class="col-md-11 form-inline">https://twitter.com/<input type="text" class="form-control clear-textbox" id="society_edit_twitter" name="society_edit_twitter" value="{{ society.twitter }}" placeholder="Twitter handle"></div>
+                        </div>
+
+                        <div class="soc-contact-url form-group">
+                            <div class="col-md-1 text-center"><img src="/img/icons/instagram.png" alt="Instagram Logo"> </div>
+                            <div class="col-md-11 form-inline">https://instagram.com/<input type="text" class="form-control clear-textbox" id="society_edit_instagram" name="society_edit_instagram" value="{{ society.instagram }}" placeholder="Instagram page"></div>
+                        </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Update Society</button>
+
+
+
+        <hr class="hr-smaller">
+
+        <div class="row soc-members-edit">
+            <div class="col-sm-6 soc-members-add">
+                <div class="h3">
+                    Add new members
+                    <small>(for {{ academicYear }} - {{ academicYear + 1 }})</small>
+                </div>
+                <ul id="add-members-list" class="list-group" style="color: #000000;">
+
+                </ul>
+
+                <div>
+                        {% 
+                            include "includes/members_search.twig" with
+                            { "ms" :  {
+                                "autosearch" : true,
+                                "selectbutton": true
+                            }} 
+                        %}
+                </div>
+            </div>
+
+            <div class="col-sm-6 soc-members-remove">
+                <div class="h3">Current members</div>
+                <ul id="remove-members-list" class="list-group" style="color: #000000;">
+                    {% for member in members %}
+                        <li class="list-group-item">
+                            <span style="font-weight: bold;">{{ member.fullName }}</span>{% if member.committeePosition %} ({{ member.committeePosition }}){% endif %}
+                            {% if not member.committeePosition %}<button type="button" class="btn btn-sm btn-danger pull-right" style="position: relative; bottom: 4px;" data-memberid="{{ member.memberId }}"><span class="glyphicon glyphicon-remove"></span></button>{% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Society</button>
+    </div>
+
+</form>
+
+
+
+<script>
+window.addEventListener("load", function(){
+    $("#remove-members-list button").on("click", function(e){
+        e.preventDefault();
+        var t = $(this);
+        var memberId = t.data("memberid");
+
+        var inp = $(document.createElement("input")).attr("type", "hidden").attr("name", "society_member_remove[]").val(memberId);
+        t.closest("div").append(inp);
+        
+        t.parent().remove();
+    });
+
+    memberSearch_hook(function(member){
+        var li = $(document.createElement("li")).addClass("list-group-item"),
+            span = $(document.createElement("span")).css("font-weight", "bold").html(member.fullName),
+            inp = $(document.createElement("input")).attr("type", "hidden").attr("name", "society_member_add[]").val(member.id),
+            btn = $(document.createElement("button")).addClass("btn btn-sm btn-danger pull-right").css("position", "relative").css("bottom", "4px").on("click", removeNewMember),
+            gly = $(document.createElement("span")).addClass("glyphicon glyphicon-remove");
+
+        btn.append(gly);
+        li.append(inp, span, btn);
+
+        $("#add-members-list").append(li);
+    });
+
+    function removeNewMember(e){
+        e.preventDefault();
+        $(this).parent().remove();
+    }
+});
+</script>
+
+{# Standard PA footer #}
+{{ footer() }}

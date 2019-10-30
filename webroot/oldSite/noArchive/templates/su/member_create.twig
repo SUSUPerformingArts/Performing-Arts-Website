@@ -1,0 +1,91 @@
+{# Call the header function to create the standard PA header #}
+{{ header() }}
+
+
+   <div class="well well-pa">
+        <h1>Create new member</h1>
+   </div>
+
+    {% include "includes/messages.twig" %}
+
+    <div class="well well-pa">
+        <form class="member-create-form" id="member-create-form" autocomplete="off" action="" method="post">
+
+            <p class="lead">
+                Please make sure you have completely checked if this member already exists before creating a new one. 
+                <br>
+                You can search <a href="{{ urlFor("pa_members") }}" target="_blank">here</a>
+            </p>
+
+            <div class="form-group">
+                <label for="member_name_first">First Name</label>
+                <input type="text" id="member_name_first" name="member_name_first" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="member_name_last">Last Name</label>
+                <input type="text" id="member_name_last" name="member_name_last" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="member_username">University username</label>
+                <div><small>Please add if known, as it makes the identification process much easier!!</small></div>
+                <input type="text" id="member_username" name="member_username" class="form-control">
+            </div>
+
+
+            <div class="form-group">
+                <label>Societies</label>
+                <div id="member_society_holder">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-pa" id="member_society_add">Add society</button>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create User</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="hidden" id="member_society_base">
+        <div class="form-group form-inline">
+            <select class="form-control" name="member_society_id[]" required>
+                <option value="" disabled selected style="display: none;">Societies</option>
+                {% for society in societies %}
+                    <option value="{{ society.id }}">{{ society.name }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="number" class="form-control" name="member_society_year[]" min="2000" step="1" value="{{ currentYear }}" placeholder="Year" required>
+
+
+            <select class="form-control" name="member_society_comm[]">
+                <option value="" selected>No Committee Position</option>
+                {% for position in committeePositions %}
+                    <option value="{{ position.id }}">{{ position.name }}</option>
+                {% endfor %}
+            </select>
+
+
+            <input type="text" class="form-control" placeholder="External profile ID" name="member_society_profile[]">
+        </div>
+    </div>
+
+
+<script>
+window.addEventListener("load", function(){
+    $("#member_society_add").click(function(){
+        var a = $("#member_society_base").children().first().clone();
+        $("#member_society_holder").append(a);
+    });
+});
+</script>
+
+
+{# Standard PA footer #}
+{{ footer() }}

@@ -1,0 +1,34 @@
+
+{% macro list_item(item, url) %}
+	<div class="panel panel-default">
+	    <div class="panel-heading">
+	        <h3 class="panel-title">
+	        	{% if url %}<a href="{{ url }}">{% endif %}
+	        		{{ item.title }}
+	        	{% if url %}</a>{% endif %}
+	        </h3>
+	    </div>
+	    {% if item.body or item.labels %}
+	        <div class="panel-body">
+	            {% if item.body %}
+	            	<p>{{ item.body }}</p>
+	            {% endif %}
+	            {% if item.labels %}
+	            	<div style="font-size: larger;">
+	            		{% for label in item.labels %}
+	            			<span class="label label-{{ label.class }}">
+	            				{% if label.link %}
+	            					<a class="white-link" href="{% if label.link == '$this' %}{{ url }}{% else %}{{ label.link }}{% endif %}">
+	            				{% endif %}
+	            					{{ label.text }}
+	            				{% if label.link %}
+	            					</a>
+	            				{% endif %}
+	            			</span> &nbsp;
+	            		{% endfor %}
+	            	</div>
+	            {% endif %}
+	        </div>
+	    {% endif %}
+	</div>
+{% endmacro %}
