@@ -2,15 +2,14 @@
 {{ header("SUSU Performing Arts - " ~ member.fullName) }}
 {{ fancySubHeader(0, member.fullName, isLoggedIn() ? member.iSolutionsUsername : "", memberType) }}
 
+{% if isLoggedIn() %}
 		<div class="fancyActions">
-			{% if isLoggedIn() %}
                 {% if getUserId() == member.id %}<a class="btn btn-pa" href="{{ urlFor("pa_member_edit") }}">Edit</a>{% endif %}
                 {# Special Admin links! #}
                 {% if isPAWebmaster() %}
                     <a class="btn btn-pa" href="{{ urlFor("pa_super_member_impersonate", { 'member' : member.id }) }}">Impersonate</a>
                     <a class="btn btn-pa" href="{{ urlFor("pa_super_member_edit", { 'member' : member.id }) }}">Edit Member</a>
                 {% endif %}
-            {% endif %}
 		</div>
 
     {% include "includes/messages.twig" %}
@@ -99,6 +98,9 @@
 			</div>
 		</div>
 	{% endif %}
+{% else %}
+    You must be logged in to view this page
+{% endif %}
 	
 {# Standard PA footer #}
 {{ footer() }}

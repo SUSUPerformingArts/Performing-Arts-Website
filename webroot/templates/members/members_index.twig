@@ -2,6 +2,7 @@
 {{ header("PA Archive :: Members") }}
 {{ fancySubHeader(0, "Performing Arts Members") }}
 
+{% if isLoggedIn() %}
     <div class="well well-pa">
         {% 
             include "includes/members_search.twig" with
@@ -21,6 +22,9 @@
     		</div>
     	{% endfor %#}
     </div>
+{% else %}
+    You must be logged in to view this page.
+{% endif %}
 
 {# Standard PA footer #}
 {{ footer() }}
